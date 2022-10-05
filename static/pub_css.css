@@ -1,0 +1,40 @@
+@charset "utf-8";
+body{font:normal 13px/1.5 'Noto Sans KR',Malgun Gothic,'맑은고딕', sans-serif, Arial, Verdana;color:#666;margin:0;}
+h1, h2, h3, h4, h5, h6{color:#000;}
+fieldset,ul, ol, dl, dt, dd, p, button, figure{margin:0;padding:0;}
+legend, caption{width:0;height:0;visibility:hidden;font-size:0;line-height:0;}
+em, a , input, textarea, keygen, select, button, isindex, i{font-style:normal;text-decoration:none;color:#666;}
+fieldset, button{background:none;border:0px;}
+ul:after,ol:after,dl:after{content:'';display:block;clear:both;}
+li{list-style:none;}
+img{vertical-align:middle;}
+table{width:100%;border-spacing:0px;border-collapse:collapse;table-layout:fixed;}
+th, td{word-break:break-all;}
+iframe{width:100%;vertical-align:middle;}
+hr{border:0 none;height:1px;background:#e3e3e3;}
+
+
+body { height:100%; background:rgba(0,0,0,0.9)}
+body.scrollLock { overflow: hidden;}
+.eventWrap { display:flex;}
+.eventWrap h1 { position:fixed; top:50px; left:20px;}
+.eventWrap h2 { font-size:40px; color:#fff;}
+.eventWrap .textBox { position:fixed; top:50%; left:20px; transform: translateY(-50%);}
+.eventWrap .imgGroup { visibility: visible; opacity: 1; padding:20px 0; margin-left:auto; margin-right:20px; transition: all .3s ease;}
+.eventWrap .imgGroup a { overflow:hidden; display:block; width:800px; height:200px; margin-bottom:20px; background:#fff;}
+.eventWrap .imgGroup a img { width:100%; height:100%; object-fit: cover; filter:grayscale(1); transition: all .3s ease; opacity:0.9}
+.eventWrap .imgGroup a:hover img { filter:grayscale(0); transform: scale(1.1); opacity:1} 
+.eventWrap .imgGroup.hide { visibility: hidden; opacity:0;}
+
+.eventWrap .imgAction { overflow:hidden; position:fixed; width:800px; height:200px; pointer-events: none;}
+.eventWrap .imgAction img { width:100%; height:100%; object-fit: cover;}
+
+.eventWrap .mySwiper { visibility: hidden; opacity: 0; position:fixed; top:10vh; right:20px; bottom:10vh; width:800px; height:80vh; transition: all .3s ease;}
+.eventWrap .mySwiper .swiper-slide { opacity:0.4; transition: all .3s ease; transform: scale(0.9);}
+.eventWrap .mySwiper .swiper-slide.swiper-slide-active { opacity:1; transform: scale(1);}
+.eventWrap .mySwiper img { width:100%; height:100%; object-fit: cover;}
+
+.eventWrap .mySwiper.on { visibility: visible; opacity: 1;}
+
+.btnBack { visibility:hidden; opacity: 0; position:fixed; bottom:20%; right:1000px; color:#fff; transform: translateY(20px); transition: all .3s ease;}
+.btnBack.on { visibility: visible; opacity: 1; transform: translateY(0);}
