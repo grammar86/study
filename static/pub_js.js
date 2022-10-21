@@ -44,14 +44,15 @@ const eventJs = {
         html += '</div>';
         
         let h = $(window).outerHeight();
-        h = (h - h*0.8)/2
+        let motionH = Math.ceil(h*0.8);
+        h = (h - h*0.8)/2;
         
         $(html).appendTo('.eventWrap').css({'top':t,'left':l}).find('img').attr('src',src);
 
         let animation = anime({
             targets: '.eventWrap .imgAction',
             top:[t, h],
-            height:'80vh',
+            height:motionH,
             delay:300,
             duration: 500,
             easing:'easeInOutSine',
@@ -102,7 +103,7 @@ const eventJs = {
 
         setTimeout(function(){
             $('.eventWrap .imgAction').remove();
-        },200);
+        },300);
     },
     init : function(){
         eventJs.click();
