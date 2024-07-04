@@ -36,7 +36,7 @@
 .search-cont {
     ul {
         li { padding:1.6rem 2rem; border-bottom:1px solid rgba(240, 240, 240, 1);
-            .tit { font-size:1.8rem; color:rgba(0,0,0,0.88); font-weight: 600;}
+            .tit { font-size:1.8rem; color:rgba(0,0,0,0.88); font-weight: 500;}
             .sub-tit { margin-top:.4rem; font-size:1.6rem; color:rgba(0, 0, 0, 0.65); font-weight: 400;}
         }
     }
@@ -50,13 +50,13 @@
 }
 
 .info-box { margin:1.6rem 2rem; padding:1.6rem; background:rgba(230, 244, 255, 1);
-    .tit { font-size:1.6rem; color:rgba(0,0,0,0.88); font-weight: 600;}
+    .tit { font-size:1.6rem; color:rgba(0,0,0,0.88); font-weight: 500;}
     .sub { margin-top:.2rem; font-size:1.4rem; color:rgba(0,0,0,0.88);}
     .sub2 { margin-top:.2rem; font-size:1.2rem; color:rgba(0,0,0,0.88);}
     .label { display: inline-block; padding:.2rem .5rem; margin-right:.4rem; border:1px solid rgba(162, 162, 162, 1); font-size:1.2rem;}
 }
 
-.tab-box { display: flex;
+.tab-box { display: flex; position:sticky; top:0; left:0; z-index:2; background:#fff;
     a { position:relative; display: flex;; width:25%; height:5rem; border-bottom:1px solid rgba(240, 240, 240, 1); align-items: center; justify-content: center; font-size:1.6rem; color:rgba(0,0,0,0.88); font-weight: 500;
         &:after { content:''; visibility: hidden; display: block; position:absolute; bottom:0; left:50%; width:0; height:.2rem; background:rgba(64, 150, 255, 1); transition:all .3s ease; opacity: 0;}
         &.on { color:rgba(64, 150, 255, 1);
@@ -84,7 +84,7 @@
 }
 
 ul.list { display: flex; flex-wrap: wrap; gap:1rem 0;
-    li { width:33.333%; font-size:1.6rem; font-weight: 600; color:rgba(0,0,0,0.88);
+    li { width:33.333%; font-size:1.6rem; font-weight: 500; color:rgba(0,0,0,0.88);
         strong { margin-right:1.6rem; font-size:1.6rem; color:rgba(0, 0, 0, 0.65);}
 
         &.col2 { width:50%;}
@@ -94,7 +94,8 @@ ul.list { display: flex; flex-wrap: wrap; gap:1rem 0;
 
 .btn { display: inline-flex; height:4rem; padding:.4rem 1.2rem; border-radius: .4rem; color:#fff; font-size:1.4rem; background:rgba(64, 150, 255, 1); align-items: center; justify-content: center;}
 
-.hr { display:block; width:100%; height:0; margin:2rem 0; border:0; border-bottom:1px solid rgba(0, 0, 0, 0.06); background:none;}
+.tab-cont-link { display:block; padding:2rem 0; margin:0 2rem;}
+.tab-cont-link + .tab-cont-link { border-top:1px solid rgba(0, 0, 0, 0.06);}
 
 .table-box { margin-top:1.6rem;
     .table-info { display: flex; margin-bottom:.8rem;
@@ -106,14 +107,14 @@ ul.list { display: flex; flex-wrap: wrap; gap:1rem 0;
         tr {
             * + * {border-left:1px solid rgba(240, 240, 240, 1);}
         }
-        th { padding:.8rem; border-bottom:1px solid rgba(240, 240, 240, 1); text-align: left; font-size:1.6rem; color:rgba(0, 0, 0, 0.88); font-weight: 600; background:rgba(0, 0, 0, 0.02);}
+        th { padding:.8rem; border-bottom:1px solid rgba(240, 240, 240, 1); text-align: left; font-size:1.6rem; color:rgba(0, 0, 0, 0.88); font-weight: 500; background:rgba(0, 0, 0, 0.02);}
         td { padding:.8rem; border-bottom:1px solid rgba(240, 240, 240, 1); font-size:1.6rem; color:rgba(0, 0, 0, 0.88);}
     }
     .small-text { margin-top:.8rem; font-size:1.4rem; color:rgba(0,0,0,0.65); text-align: right;}
 }
 
 dl.text {
-    dt { font-size:1.4rem; color:rgba(0,0,0,0.88); font-weight: 600;}
+    dt { font-size:1.4rem; color:rgba(0,0,0,0.88); font-weight: 500;}
     dd { font-size:1.4rem; color:rgba(0,0,0,0.88);}
 }
 
@@ -134,7 +135,7 @@ dl.text {
         }
     }
 
-    .hr { margin:1.3rem 0;}
+    .tab-cont-link { padding:1.5rem 0; margin:0 1.5rem;}
 
     .mo-none { display: none;}
 }
