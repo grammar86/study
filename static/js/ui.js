@@ -2,6 +2,7 @@
 $(function() {
   common.init();
   layerPopup.init();
+  tooltip();
 });
 
 const common = {
@@ -35,6 +36,51 @@ const common = {
     common.tab();
   }
 };
+
+
+const tooltip = function () {
+  $(document).on('click', '.tooltip', function (e) {
+    const space = 20;
+    let tipW = 600;
+    if ($(this).data('width')) {
+      tipW = $(this).data('width');
+    }
+    if($(window).outerWidth() <= 767){
+      tipW = 300
+    }
+
+    let secW = $('.section').outerWidth() - space * 2;
+    if(!secW){
+      secW = $('.content').outerWidth() - space * 2;
+    }
+    let addM = 0;
+    if (($(this).parent().position().left + 10 - space) / secW > 0.5) {
+      addM = 20;
+    }
+    let tipLeft = -Math.round((($(this).parent().position().left + 10 - space) / secW) * tipW) + addM;
+
+    if ($(this).siblings('.tooltip-pop').hasClass('popup')) {
+      if (!$('.popup-dim').length) {
+        $('body').append('<div class="popup-dim"></div>').addClass('scroll-lock');
+      }
+    }
+
+    $('.tooltip-pop').not($(this).siblings('.tooltip-pop')).fadeOut('fast');
+    $(this)
+      .siblings('.tooltip-pop')
+      .css({ width: tipW, left: tipLeft, '--tip-left': tipW - tipLeft - tipW + 6 + 'px' });
+    $(this).siblings('.tooltip-pop').fadeToggle('fast');
+    return false;
+  });
+  $(document).on('click', '.tooltip-pop .btn-close', function () {
+    $(this).closest('.tooltip-pop').fadeOut('fast');
+    $('.popup-dim').fadeOut('fast', function () {
+      $(this).remove();
+    });
+    $('body').removeClass('scroll-lock');
+    return false;
+  });
+}
 
 /* 팝업 */
 const layerPopup = {

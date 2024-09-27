@@ -120,6 +120,28 @@ dl.text {
 
 .footer-box { padding:1.6rem 0; text-align: center; font-size:1.6rem; color:rgba(0, 0, 0, 0.25);}
 
+
+/* tooltip */
+.tooltip-wrap { display:inline-block; position:relative; vertical-align: middle; margin-top:-4px;
+    .tooltip { overflow:hidden; display:block; width:1.6rem; height:1.6rem; font-size:0; 
+        &:before {content: "?"; display: inline-block; width: 100%; height: 100%; font-size: 1.5rem; line-height: 1.4; text-indent: 0; text-align: center; border-radius: 100%; background-color: #eeeef6;}
+    }
+    .tooltip-pop { display:none; position:absolute; top:calc(100% + 1rem); left:0; width:0rem;padding:2rem; border:1px solid #000; border-radius:.3rem; font-size:1.5rem; background:#fff; z-index:10; text-align:left; animation:fadeInUp .6s ease;
+        &:before { content:''; display:block; position:absolute; top:-.5rem; left:var(--tip-left); width:.5rem; height:.5rem; border:.1rem solid #000; border-color:#000 transparent transparent #000; transform: rotate(45deg); background:#fff;}
+        
+        .btn-close { display:block; position:absolute; top:1rem; right:1rem; width:2rem; height:2rem; font-size:0;
+            &:before { content:''; display:block; position:absolute; top:50%; left:50%; width:2px; height:15px; background:#000; transform-origin: 50% 50%; transform:translate(-50%, -50%) rotate(45deg);}
+            &:after { content:''; display:block; position:absolute; top:50%; left:50%; width:15px; height:2px; background:#000; transform-origin: 50% 50%; transform:translate(-50%, -50%) rotate(45deg);}
+        }
+    
+        /* 팝업형태 */
+        &.popup { position:fixed; top:50%; left:50% !important; right:auto !important; z-index:150; transform: translate(-50%,-50%);  animation:fadeIn .6s ease;
+            &:before { display:none;}
+        }
+    }
+}
+
+
 @media screen and (max-width:767px) {
     .tit-box {
         h2 { margin-right:auto;}
