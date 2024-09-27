@@ -54,16 +54,17 @@ const layerPopup = {
     });
   },
   open: function (target, el, style) {
+    console.log(target)
     const cont = $(target).find('.layerPopCont');
     $(target).removeClass('bottom full').addClass(style);
 
     setTimeout(function () {
       $(target).addClass('on');
-    }, 150);
+    }, 100);
 
     setTimeout(function () {
       cont.focus();
-    }, 30);
+    }, 150);
     $('body').addClass('scrollLock');
 
     cont
