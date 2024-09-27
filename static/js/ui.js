@@ -49,10 +49,7 @@ const tooltip = function () {
       tipW = 300
     }
 
-    let secW = $('.section').outerWidth() - space * 2;
-    if(!secW){
-      secW = $('.content').outerWidth() - space * 2;
-    }
+    let secW = $('#container').outerWidth() - space * 2;
     let addM = 0;
     if (($(this).parent().position().left + 10 - space) / secW > 0.5) {
       addM = 20;
