@@ -14,10 +14,11 @@ const common = {
     });
 
     $(document).on('click','.tab-box a',function(){
-      const idx = $(this).index();
-      const top = $('.tab-cont-link').eq(idx).offset().top;
+      const target = $(this).attr('href');
+      const top = $(target).offset().top;
       const tabH = $('.tab-box').outerHeight();
       $('html,body').animate({'scrollTop':top - tabH +1});
+      $(target).focus();
       return false;
     });
 
