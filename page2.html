@@ -9,7 +9,7 @@
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
-	.blind { overflow: hidden; position: absolute; width:0; height:0; font-size: 0;}
+	.blind { overflow: hidden; position: absolute; z-index:-10; width:0; height:0; font-size:medium; line-height: normal; word-break: break-all;}
 </style>
 </head>
 <body>
@@ -41,21 +41,21 @@
 				<div>
 					<a href="#">
 						<span class="blind">히든텍스트</span>
-						내용 테스트
+						내용 테스트- 변화
 					</a>
 					<a href="#">
 						<span class="blind">히든텍스트2</span>
 						<ul>
-							<li>내용 테스트</li>
+							<li>내용 테스트- 변화</li>
 						</ul>
 					</a>
 					<a href="#">
 						<small>
-							<span class="blind">히든텍스트2</span>
-							내용 테스트
+							<span class="blind">히든텍스트3</span>
+							내용 테스트- 변화
 						</small>
-						<span class="blind">히든텍스트3</span>
-						내용 테스트
+						<span class="blind">히든텍스트4</span>
+						내용 테스트- 변화
 					</a>
 				</div>
 
