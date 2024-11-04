@@ -8,6 +8,9 @@
 <link href="./static/css/ui.min.css" rel="stylesheet" />
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
+<style>
+	.blind { overflow: hidden; position: absolute; width:0; height:0; font-size: 0;}
+</style>
 </head>
 <body>
 	<!-- 컨텐츠 영역 -->
@@ -34,6 +37,27 @@
 			</div>
 
 			<div class="tab-cont-link" id="tabCont1" tabindex="0">
+
+				<div>
+					<a href="#">
+						<span class="blind">히든텍스트</span>
+						내용 테스트
+					</a>
+					<a href="#">
+						<span class="blind">히든텍스트2</span>
+						<ul>
+							<li>내용 테스트</li>
+						</ul>
+					</a>
+					<a href="#">
+						<small>
+							<span class="blind">히든텍스트2</span>
+							내용 테스트
+						</small>
+						<span class="blind">히든텍스트3</span>
+						내용 테스트
+					</a>
+				</div>
 
 				<a href="http://www.naver.com" class="btn" target="_blank">네이버</a>
 				<a href="http://www.naver.com" class="btn" target="_blank" title="새창열림">네이버</a>
