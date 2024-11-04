@@ -9,7 +9,7 @@
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
-	.blind { overflow: hidden; position: absolute; z-index:-10; width:0; height:0; font-size:medium; line-height: normal; word-break: break-all;}
+	.blind { overflow: hidden; display: inline-block; position: absolute; z-index:-10; width:0; height:0; font-size:medium; line-height: normal; word-break: break-all;}
 </style>
 </head>
 <body>
@@ -68,9 +68,9 @@
 						</ul>
 					</div>
 					<div>
-						<small>
+						<small style="display: block;">
 							<span class="blind">히든텍스트3</span>
-							small태그 테스트
+							small태그 테스트 - block
 						</small>
 						<span class="blind">히든텍스트4</span>
 						div태그 테스트
