@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+<title>집코드 파인더</title>
+<link href="./static/css/ui.min.css" rel="stylesheet" />
+<script type="text/javascript" src="./static/js/common.js"></script>
+<script type="text/javascript" src="./static/js/ui.js"></script>
+<style>
+	.scrollBox { overflow:hidden auto; height:100vh; transition:all .5s ease;}
+	.scrollBox.proximity { scroll-snap-type:y proximity;}
+	.scrollBox.mandatory { scroll-snap-type:y mandatory;}
+	.scrollBox .fz { margin:20px 0 10px; font-size:20px;}
+
+	.section { display: flex; height:100vh; align-items: center; justify-content: center; font-size:30px; text-transform: uppercase; scroll-snap-align: center; flex-flow: column;}
+	.section:nth-of-type(1) {background: #49b293;}
+	.section:nth-of-type(2) {background: #4cc1be;}
+	.section:nth-of-type(3) {background: #c94e4b;}
+	.section:nth-of-type(4) {background: #8360A6;}
+	.section:nth-of-type(5) {background: #60a669;}
+
+	.scrollTab { display: flex; overflow:auto hidden; width:40%; border:1px solid;}
+	.scrollTab.type1 { scroll-snap-type:x proximity;}
+	.scrollTab.type2 { scroll-snap-type:x mandatory;}
+	.scrollTab a { flex:0 0 auto; padding:20px 60px; font-size:15px;}
+	.scrollTab a.start { scroll-snap-align:start;}
+	.scrollTab a.center { scroll-snap-align:center;}
+	.scrollTab a.end { scroll-snap-align:end;}
+	.scrollTab a:nth-of-type(1) {background: #49b293;}
+	.scrollTab a:nth-of-type(2) {background: #c94e4b;}
+	.scrollTab a:nth-of-type(3) {background: #4cc1be;}
+	.scrollTab a:nth-of-type(4) {background: #8360A6;}
+	.scrollTab a:nth-of-type(5) {background: #60a669;}
+
+	.btnGroup { position:fixed; top:0; left:0;}
+	.btnGroup button { padding:10px; border:1px solid #000; background:rgba(255,255,255,0.5)}
+	.btnGroup button.on { color:#fff; background:#000;}
+</style>
+<script>
+	$(function(){
+		$(document).on('click','.btnGroup button',function(){
+			const idx = $(this).index();
+			if(idx == 0) $('.scrollBox').removeClass('mandatory proximity');
+			if(idx == 1) $('.scrollBox').removeClass('mandatory').addClass('proximity');
+			if(idx == 2) $('.scrollBox').removeClass('proximity').addClass('mandatory');
+
+			$(this).addClass('on').siblings().removeClass('on');
+			return false;
+		});
+	})
+</script>
+</head>
+<body>
+	<div class="btnGroup">
+		<button class="on">기본</button>
+		<button>scroll-snap-type:proximity</button>
+		<button>scroll-snap-type:mandatory</button>
+	</div>
+	<div class="scrollBox">
+		<div class="section">
+			<p>scroll-snap-type:proximity</p>
+			<p class="fz">scroll-snap-align:start;</p>
+			<div class="scrollTab type1">
+				<a href="#" class="start">탭영역1</a>
+				<a href="#" class="start">탭영역2</a>
+				<a href="#" class="start">탭영역3</a>
+				<a href="#" class="start">탭영역4</a>
+				<a href="#" class="start">탭영역5</a>
+				<a href="#" class="start">탭영역6</a>
+			</div>
+			<p class="fz">scroll-snap-align:center;</p>
+			<div class="scrollTab type1">
+				<a href="#" class="center">탭영역1</a>
+				<a href="#" class="center">탭영역2</a>
+				<a href="#" class="center">탭영역3</a>
+				<a href="#" class="center">탭영역4</a>
+				<a href="#" class="center">탭영역5</a>
+				<a href="#" class="center">탭영역6</a>
+			</div>
+			<p class="fz">scroll-snap-align:end;</p>
+			<div class="scrollTab type1">
+				<a href="#" class="end">탭영역1</a>
+				<a href="#" class="end">탭영역2</a>
+				<a href="#" class="end">탭영역3</a>
+				<a href="#" class="end">탭영역4</a>
+				<a href="#" class="end">탭영역5</a>
+				<a href="#" class="end">탭영역6</a>
+			</div>
+		</div>
+		<div class="section">
+			<p>scroll-snap-type:mandatory</p>
+			<p class="fz">scroll-snap-align:start;</p>
+			<div class="scrollTab type2">
+				<a href="#" class="start">탭영역1</a>
+				<a href="#" class="start">탭영역2</a>
+				<a href="#" class="start">탭영역3</a>
+				<a href="#" class="start">탭영역4</a>
+				<a href="#" class="start">탭영역5</a>
+				<a href="#" class="start">탭영역6</a>
+			</div>
+			<p class="fz">scroll-snap-align:center;</p>
+			<div class="scrollTab type2">
+				<a href="#" class="center">탭영역1</a>
+				<a href="#" class="center">탭영역2</a>
+				<a href="#" class="center">탭영역3</a>
+				<a href="#" class="center">탭영역4</a>
+				<a href="#" class="center">탭영역5</a>
+				<a href="#" class="center">탭영역6</a>
+			</div>
+			<p class="fz">scroll-snap-align:end;</p>
+			<div class="scrollTab type2">
+				<a href="#" class="end">탭영역1</a>
+				<a href="#" class="end">탭영역2</a>
+				<a href="#" class="end">탭영역3</a>
+				<a href="#" class="end">탭영역4</a>
+				<a href="#" class="end">탭영역5</a>
+				<a href="#" class="end">탭영역6</a>
+			</div>
+		</div>
+		<div class="section">sec03</div>
+		<div class="section">sec04</div>
+		<div class="section">sec05</div>
+	</div>
+</body>
+</html>
