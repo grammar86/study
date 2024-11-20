@@ -9,12 +9,12 @@
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
-	.scrollBox { overflow:hidden auto; height:100vh; transition:all .5s ease;}
+	.scrollBox { overflow:hidden auto; height:100vh; transition:all .5s ease; scroll-behavior: smooth;}
 	.scrollBox.proximity { scroll-snap-type:y proximity;}
 	.scrollBox.mandatory { scroll-snap-type:y mandatory;}
 	.scrollBox .fz { margin:20px 0 10px; font-size:20px;}
 
-	.section { display: flex; height:100vh; align-items: center; justify-content: center; font-size:30px; text-transform: uppercase; scroll-snap-align: center; flex-flow: column;}
+	.section { display: flex; height:100vh; align-items: center; justify-content: center; font-size:25px; scroll-snap-align: center; flex-flow: column;}
 	.section:nth-of-type(1) {background: #49b293;}
 	.section:nth-of-type(2) {background: #4cc1be;}
 	.section:nth-of-type(3) {background: #c94e4b;}
@@ -37,6 +37,9 @@
 	.btnGroup { position:fixed; top:0; left:0;}
 	.btnGroup button { padding:10px; border:1px solid #000; background:rgba(255,255,255,0.5)}
 	.btnGroup button.on { color:#fff; background:#000;}
+
+	.barLink { display: flex; position:fixed; bottom:0; left:0; width:100%; }
+	.barLink a { flex:1 1 auto; display: block; padding:10px 0; text-align: center;}
 </style>
 <script>
 	$(function(){
@@ -55,11 +58,11 @@
 <body>
 	<div class="btnGroup">
 		<button class="on">기본</button>
-		<button>scroll-snap-type:proximity</button>
-		<button>scroll-snap-type:mandatory</button>
+		<button>proximity</button>
+		<button>mandatory</button>
 	</div>
 	<div class="scrollBox">
-		<div class="section">
+		<div class="section" id="sec01">
 			<p>scroll-snap-type:proximity</p>
 			<p class="fz">scroll-snap-align:start;</p>
 			<div class="scrollTab type1">
@@ -89,7 +92,7 @@
 				<a href="#" class="end">탭영역6</a>
 			</div>
 		</div>
-		<div class="section">
+		<div class="section" id="sec02">
 			<p>scroll-snap-type:mandatory</p>
 			<p class="fz">scroll-snap-align:start;</p>
 			<div class="scrollTab type2">
@@ -119,9 +122,17 @@
 				<a href="#" class="end">탭영역6</a>
 			</div>
 		</div>
-		<div class="section">sec03</div>
-		<div class="section">sec04</div>
-		<div class="section">sec05</div>
+		<div class="section" id="sec03">sec03</div>
+		<div class="section" id="sec04">sec04</div>
+		<div class="section" id="sec05">sec05</div>
+	</div>
+
+	<div class="barLink">
+		<a href="#sec01">sec01</a>
+		<a href="#sec02">sec02</a>
+		<a href="#sec03">sec03</a>
+		<a href="#sec04">sec04</a>
+		<a href="#sec05">sec05</a>
 	</div>
 </body>
 </html>
