@@ -21,10 +21,10 @@
 	.section:nth-of-type(4) {background: #8360A6;}
 	.section:nth-of-type(5) {background: #60a669;}
 
-	.scrollTab { display: flex; overflow:auto hidden; width:40%; border:1px solid;}
+	.scrollTab { display: flex; overflow:auto hidden; width:calc(100% - 20px); max-width:600px; border:1px solid;}
 	.scrollTab.type1 { scroll-snap-type:x proximity;}
 	.scrollTab.type2 { scroll-snap-type:x mandatory;}
-	.scrollTab a { flex:0 0 auto; padding:20px 60px; font-size:15px;}
+	.scrollTab a { flex:0 0 auto; padding:10px 50px; font-size:15px;}
 	.scrollTab a.start { scroll-snap-align:start;}
 	.scrollTab a.center { scroll-snap-align:center;}
 	.scrollTab a.end { scroll-snap-align:end;}
