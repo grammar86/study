@@ -9,7 +9,7 @@
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
-	.scrollBox { overflow:hidden auto; height:100vh; transition:all .5s ease; scroll-behavior: smooth;}
+	.scrollBox { overflow:hidden; height:100vh; scroll-behavior: smooth;}
 	.scrollBox.proximity { scroll-snap-type:y proximity;}
 	.scrollBox.mandatory { scroll-snap-type:y mandatory;}
 	.scrollBox .fz { margin:20px 0 10px; font-size:20px;}
@@ -52,6 +52,27 @@
 			$(this).addClass('on').siblings().removeClass('on');
 			return false;
 		});
+
+		/* 2024-11-21 아직 크롬과 엣지만 이벤트 동작 함(129버전) */
+		scroller.addEventListener('scrollsnapchanging', event => {
+			console.log(event.snapTargetBlock);
+			console.log(event.snapTargetInline);
+		});
+
+		$('.scrollJS').scroll(function(){
+			console.log($(this).scrollLeft());
+		});
+
+		$(document).on('wheel','.scrollBox',function(e){
+			if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+				// scroll up
+				console.log("스크롤 위로");
+			}
+			else {
+				// scroll down
+				console.log("스크롤 아래로");
+			}
+		});
 	})
 </script>
 </head>
@@ -61,7 +82,7 @@
 		<button>proximity</button>
 		<button>mandatory</button>
 	</div>
-	<div class="scrollBox">
+	<div class="scrollBox" id="scroller">
 		<div class="section" id="sec01">
 			<p>scroll-snap-type:proximity</p>
 			<p class="fz">scroll-snap-align:start;</p>
@@ -95,7 +116,7 @@
 		<div class="section" id="sec02">
 			<p>scroll-snap-type:mandatory</p>
 			<p class="fz">scroll-snap-align:start;</p>
-			<div class="scrollTab type2">
+			<div class="scrollTab type2 scrollJS">
 				<a href="#" class="start">탭영역1</a>
 				<a href="#" class="start">탭영역2</a>
 				<a href="#" class="start">탭영역3</a>
