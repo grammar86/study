@@ -11,6 +11,13 @@
 <style>
 	.blind { overflow: hidden; display: inline-block; position: absolute; z-index:-10; width:0; height:0;}
 </style>
+<script>
+	$(function(){
+		$(document).on('click','.addFocus > a',function(){
+			const target = '.addFocus .box'
+		});
+	});
+</script>
 </head>
 <body>
 	<!-- 컨텐츠 영역 -->
@@ -23,8 +30,18 @@
 		</div>
 		<div class="innerbox">
 
-			<a href="#pop2" class="btn popOpen">aria-describedby 있는 버전</a>
-			<a href="#pop3" class="btn popOpen">aria-describedby 없는 버전</a>
+			<div class="addFocus">
+				<a href="#" class="btn">네이버</a>
+				<div class="box"></div>
+			</div>
+
+			<div>
+				<a href="#" role="tab">a 태그 탭</a>
+				<ul>
+					<li role="tab" tabindex="0">a 태그 탭</a>
+				</ul>
+			</div>
+
 
 			<div class="info-box">
 				<p class="tit">서울특별시 송파구 올림픽로 135, 리센츠</p>
@@ -322,52 +339,5 @@
 		</div>
 	  </div>
 	  <!-- //팝업 -->
-
-	<!-- 팝업2 -->
-    <div id="pop2" class="layerPopWrap" aria-labelledby="pop2_cont">
-		<div class="bg"></div>
-		<div class="layerPopCont" tabindex="0" id="pop2_cont">
-			<h1>상세 보기</h1>
-			<div class="popCont">
-			<p>aria-describedby : 삭제 버전</p>
-			<div>
-				<label for="pop_text1">배송지명</label>
-				<input type="text" id="pop_text1" />
-			</div>
-			<div>
-				<input type="checkbox" id="check1" /><label for="check1">체크박스</label>
-			</div>
-
-			<div><button class="btn">테스트 버튼입니다.</button></div>
-
-			</div>
-			<a href="#" class="btnClose btnPopClose">팝업닫기</a>
-		</div>
-	</div>
-	<!-- //팝업2 -->
-
-	<!-- 팝업3 -->
-    <div id="pop3" class="layerPopWrap" aria-describedby="pop3_cont" aria-labelledby="pop3_cont">
-		<div class="bg"></div>
-		<div class="layerPopCont" tabindex="0" id="pop3_cont">
-			<h1>상세 보기</h1>
-			<div class="popCont">
-			<p>aria-describedby 있는 버전</p>
-			<div>
-				<label for="pop_text1">배송지명</label>
-				<input type="text" id="pop_text1" />
-			</div>
-			<div>
-				<input type="checkbox" id="check1" /><label for="check1">체크박스</label>
-			</div>
-
-			<div><button class="btn">테스트 버튼입니다.</button></div>
-
-			</div>
-			<a href="#" class="btnClose btnPopClose">팝업닫기</a>
-		</div>
-	</div>
-	<!-- //팝업2 -->
-
 </body>
 </html>
