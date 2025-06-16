@@ -95,7 +95,7 @@ ul.list { display: flex; flex-wrap: wrap; gap:1rem 0;
 .btn { display: inline-flex; height:4rem; padding:.4rem 1.2rem; border-radius: .4rem; color:#fff; font-size:1.4rem; background:rgba(64, 150, 255, 1); align-items: center; justify-content: center;}
 
 .tab-cont-link { display:block; padding:2rem 0; margin:0 2rem;
-    &:focus-visible { outline:3px solid red !important;}
+    &:focus { outline:3px solid blue !important;}
 }
 .tab-cont-link + .tab-cont-link { border-top:1px solid rgba(0, 0, 0, 0.06);}
 
