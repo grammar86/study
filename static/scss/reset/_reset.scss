@@ -48,3 +48,9 @@ input[type=text]::-ms-clear {
 // @media screen and (max-width:767px) {
 //   html {font-size:52.5%;}
 // }
+
+@supports not selector(*:focus-visible){
+  *:focus { outline:0}
+  *:focus-visible { outline:0}
+
+}
