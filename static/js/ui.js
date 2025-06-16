@@ -17,8 +17,9 @@ const common = {
       const target = $(this).attr('href');
       const top = $(target).offset().top;
       const tabH = $('.tab-box').outerHeight();
-      $('html,body').animate({'scrollTop':top - tabH +1});
-      $(target).focus();
+      $('html,body').animate({'scrollTop':top - tabH +1},200, function(){
+        $(target).focus();
+      });
       return false;
     });
 
