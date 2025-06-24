@@ -1,24 +1,280 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
-<title>집코드 파인더</title>
-<link href="./static/css/ui.min.css" rel="stylesheet" />
-<script type="text/javascript" src="./static/js/common.js"></script>
-<script type="text/javascript" src="./static/js/ui.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 접근성과 사용성 관계</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 300;
+        }
+        
+        .venn-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .venn-diagram {
+            position: relative;
+            width: 500px;
+            height: 350px;
+        }
+        
+        .circle {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .circle:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        
+        .accessibility {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            left: 50px;
+            top: 50px;
+            padding-left: 30px;
+        }
+        
+        .usability {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            right: 50px;
+            top: 50px;
+            padding-right: 30px;
+        }
+        
+        .intersection {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #2c3e50;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 200px;
+            text-align: center;
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+        
+        .legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .legend-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid;
+            transition: transform 0.2s ease;
+        }
+        
+        .legend-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .accessibility-legend {
+            border-left-color: #667eea;
+        }
+        
+        .usability-legend {
+            border-left-color: #f5576c;
+        }
+        
+        .legend-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .legend-content {
+            color: #34495e;
+            line-height: 1.6;
+        }
+        
+        .legend-content li {
+            margin: 5px 0;
+        }
+        
+        .intersection-examples {
+            margin-top: 30px;
+            background: rgba(46, 204, 113, 0.1);
+            border: 2px solid #2ecc71;
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .intersection-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .intersection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .intersection-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #2ecc71;
+            font-size: 0.9em;
+            color: #2c3e50;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .venn-diagram {
+                width: 100%;
+                height: 300px;
+            }
+            
+            .circle {
+                width: 180px;
+                height: 180px;
+                font-size: 0.9em;
+            }
+            
+            .legend {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-	<section>
-		<div class="agent"></div>
-	</section>
-	<!-- //컨텐츠 영역 -->
-	<script>
-		$(function(){
-			const $agent = navigator.userAgent;
-			$('.agent').text($agent)
-		});
-	</script>
+    <div class="container">
+        <h1>웹 접근성과 사용성의 관계</h1>
+        
+        <div class="venn-container">
+            <div class="venn-diagram">
+                <div class="circle accessibility">
+                    웹 접근성<br>
+                    <small>(Accessibility)</small>
+                </div>
+                <div class="circle usability">
+                    사용성<br>
+                    <small>(Usability)</small>
+                </div>
+                <div class="intersection">
+                    <strong>교집합 영역</strong><br>
+                    <small>모든 사용자에게<br>유용한 설계 원칙</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item accessibility-legend">
+                <div class="legend-title">웹 접근성만의 영역</div>
+                <div class="legend-content">
+                    <ul>
+                        <li>스크린 리더 호환성</li>
+                        <li>고대비 색상 지원</li>
+                        <li>키보드 전용 네비게이션</li>
+                        <li>음성 인식 지원</li>
+                        <li>시각/청각 장애 대응</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="legend-item usability-legend">
+                <div class="legend-title">사용성만의 영역</div>
+                <div class="legend-content">
+                    <ul>
+                        <li>시각적 디자인 미학</li>
+                        <li>브랜드 일관성</li>
+                        <li>개인화 기능</li>
+                        <li>고급 인터랙션 효과</li>
+                        <li>성능 최적화</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="intersection-examples">
+            <div class="intersection-title">교집합 영역의 핵심 요소들</div>
+            <div class="intersection-grid">
+                <div class="intersection-item">
+                    <strong>명확한 정보 구조</strong><br>
+                    논리적 제목 계층과 일관된 네비게이션
+                </div>
+                <div class="intersection-item">
+                    <strong>이해하기 쉬운 콘텐츠</strong><br>
+                    간결한 언어와 명확한 지시사항
+                </div>
+                <div class="intersection-item">
+                    <strong>일관된 인터페이스</strong><br>
+                    예측 가능한 동작과 표준 패턴 사용
+                </div>
+                <div class="intersection-item">
+                    <strong>오류 예방과 회복</strong><br>
+                    명확한 오류 메시지와 수정 방법 제시
+                </div>
+                <div class="intersection-item">
+                    <strong>반응형 디자인</strong><br>
+                    다양한 기기와 환경에서의 호환성
+                </div>
+                <div class="intersection-item">
+                    <strong>충분한 클릭 영역</strong><br>
+                    터치와 마우스 모두에 적합한 크기
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
