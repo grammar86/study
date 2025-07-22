@@ -103,7 +103,7 @@
             <!-- 신규 대시보드 포맷 -->
             <div class="dashboard-wrap view-mode">
                 <!-- 로그인 타입 -->
-                <div class="dashboard-box type1">
+                <div class="dashboard-box w-type1 h-type1">
                     <h2>홍길동 <span class="position">보안관리자</span></h2>
                     <p class="text">보안 관리팀</p>
 
@@ -115,7 +115,7 @@
                 <!-- //로그인 타입 -->
 
                 <!-- 메뉴명 -->
-                <div class="dashboard-box type2">
+                <div class="dashboard-box w-type1 h-type2">
                     <h2>메뉴명</h2>
                     <p>
                         <a href="#" class="btn-link">바로가기</a>
@@ -124,7 +124,7 @@
                     <a href="#" class="btn-setting">셋팅</a>
                     <a href="#" class="btn-delete">삭제</a>
                 </div>
-                <div class="dashboard-box type2">
+                <div class="dashboard-box w-type1 h-type2">
                     <h2>메뉴명</h2>
                     <p>
                         <a href="#" class="btn-link">바로가기</a>
@@ -133,7 +133,7 @@
                     <a href="#" class="btn-setting">셋팅</a>
                     <a href="#" class="btn-delete">삭제</a>
                 </div>
-                <div class="dashboard-box type2">
+                <div class="dashboard-box w-type1 h-type2">
                     <h2>메뉴명</h2>
                     <p>
                         <a href="#" class="btn-link">바로가기</a>
@@ -142,7 +142,7 @@
                     <a href="#" class="btn-setting">셋팅</a>
                     <a href="#" class="btn-delete">삭제</a>
                 </div>
-                <div class="dashboard-box type2">
+                <div class="dashboard-box w-type1 h-type2">
                     <h2>메뉴명</h2>
                     <p>
                         <a href="#" class="btn-link">바로가기</a>
@@ -151,7 +151,7 @@
                     <a href="#" class="btn-setting">셋팅</a>
                     <a href="#" class="btn-delete">삭제</a>
                 </div>
-                <div class="dashboard-box type2">
+                <div class="dashboard-box w-type1 h-type2">
                     <h2>메뉴명</h2>
                     <p>
                         <a href="#" class="btn-link">바로가기</a>
@@ -1972,8 +1972,8 @@
                 <!-- //서버 계정 현황 -->
 
                 <!-- 분류별 보안 현황 -->
-                <div class="dashboard-box">
-                    <h2><a href="#">자산별 취약점 현황</a></h2>
+                <div class="dashboard-box h-type4">
+                    <h2><a href="#">분류별 보안 현황</a></h2>
 
                     <div class="flex">
                         <select class="form-control">
@@ -1981,8 +1981,8 @@
                         </select>
                     </div>
 
-                    <div class="box-cont flex">
-                        <canvas id="radarChart1" width="600" height="600"></canvas>
+                    <div class="box-cont">
+                        <canvas id="radarChart1"></canvas>
                     </div>
                     <a href="#" class="btn-setting">셋팅</a>
                     <a href="#" class="btn-delete">삭제</a>
@@ -2011,21 +2011,17 @@
                             },
                             options: {
                                 responsive: true,
+                                maintainAspectRatio:false,
                                 plugins: {
-                                    title: {
-                                        display: true,
-                                        text: '보안 관리 영역별 현황',
-                                        font: {
-                                            size: 16
-                                        }
-                                    },
                                     legend: {
-                                        display: true,
-                                        position: 'top'
+                                        display: false,
                                     }
                                 },
                                 scales: {
                                     r: {
+                                        ticks: {
+                                            display:false
+                                        },
                                         beginAtZero: true,
                                         grid: {
                                             color: 'rgba(200, 200, 200, 0.3)'
@@ -2049,7 +2045,607 @@
                     }
                 </script>
                 <!-- //분류별 보안 현황 -->
-                 
+
+                <!-- 분류별 보안 현황2 -->
+                <div class="dashboard-box w-type2 h-type4">
+                    <h2><a href="#">분류별 보안 현황</a></h2>
+
+                    <div class="tab-list">
+                        <a href="#" class="on">Linux</a>
+                        <a href="#">Windows</a>
+                        <a href="#">Network</a>
+                        <a href="#">DBMS</a>
+                        <a href="#">Security</a>
+                        <a href="#">WEB/WAS</a>
+                    </div>
+
+                    <div class="box-cont">
+                        <div class="flex mb-0">
+                            <div style="width:70%;">
+                                <canvas id="radarChart2" height="280"></canvas>
+                            </div>
+                            <div style="width:30%;">
+                                <table class="dashboard-table">
+                                    <caption>계정 등록 현황</caption>
+                                    <colgroup>
+                                        <col style="width:130px;">
+                                        <col style="width:35px;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">분류</th>
+                                            <th scope="col">점수</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>계정관리</td>
+                                            <td>62</td>
+                                        </tr>
+                                        <tr>
+                                            <td>계정관리</td>
+                                            <td>62</td>
+                                        </tr>
+                                        <tr>
+                                            <td>계정관리</td>
+                                            <td>62</td>
+                                        </tr>
+                                        <tr>
+                                            <td>계정관리</td>
+                                            <td>62</td>
+                                        </tr>
+                                        <tr>
+                                            <td>계정관리</td>
+                                            <td>62</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <script>
+                    $(function(){
+                        radarChart2();
+                    })
+                    const radarChart2 = function(){
+                        const ctx = document.getElementById('radarChart2').getContext('2d');
+                        
+                        const radarChart = new Chart(ctx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['로그 관리', '계정관리', '파일 및 디렉토리 관리', '서비스 관리', '패치 관리'],
+                                datasets: [
+                                    {
+                                        data: [350, 400, 300, 380, 320],
+                                        backgroundColor: 'rgba(22, 119, 255, 0.3)',
+                                        borderColor: '#1677FF',
+                                        borderWidth: 1,
+                                        pointRadius: 0,
+                                        pointHoverRadius: 0
+                                    },
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio:false,
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                    }
+                                },
+                                scales: {
+                                    r: {
+                                        ticks: {
+                                            display:false
+                                        },
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(200, 200, 200, 0.3)'
+                                        },
+                                        angleLines: {
+                                            color: 'rgba(200, 200, 200, 0.3)'
+                                        }
+                                    }
+                                },
+                                elements: {
+                                    line: {
+                                        borderWidth: 2
+                                    },
+                                    point: {
+                                        radius: 4,
+                                        hoverRadius: 6
+                                    }
+                                }
+                            }
+                        });
+                    }
+                </script>
+                <!-- //분류별 보안 현황2 -->
+
+                <!-- 중요도별 정보자산 현황 -->
+                <div class="dashboard-box">
+                    <h2><a href="#">중요도별 정보자산 현황</a></h2>
+
+                    <div class="status-box">
+                        <div class="black">
+                            <p class="tit">전체 자산</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div class="red">
+                            <p class="tit">상</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div class="blue">
+                            <p class="tit">중</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div class="green">
+                            <p class="tit">하</p>
+                            <p class="num">50</p>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <canvas id="barChart2"></canvas>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <script>
+                    $(function(){
+                        barChart2();
+                    })
+                    const barChart2 = function(){
+
+                        // 차트 설정
+                        const ctx = document.getElementById('barChart2').getContext('2d');
+                        let isHorizontal = false;
+                        
+                        // 초기 데이터
+                        const initialData = {
+                            labels: ['상', '중', '하'],
+                            datasets: [{
+                                data: [85,70,35],
+                                backgroundColor: ['rgba(255, 77, 79, 1)','rgba(91, 143, 249, 1)','rgba(115, 209, 61, 1)'],
+                            }]
+                        };
+                        
+                        // 차트 옵션
+                        const options = {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: {
+                                    display: false // 커스텀 범례 사용
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.1)',
+                                        lineWidth: 1
+                                    },
+                                    ticks: {
+                                        color: '#666',
+                                        font: {
+                                            size: 12,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.1)',
+                                        lineWidth: 1
+                                    },
+                                    ticks: {
+                                        color: '#666',
+                                        font: {
+                                            size: 12
+                                        },
+                                        display: true // 수치 숨김
+                                    }
+                                }
+                            },
+                            animation: {
+                                duration: 1000,
+                                easing: 'easeOutQuart'
+                            },
+                            interaction: {
+                                intersect: false
+                            },
+                            hover: {
+                                animationDuration: 200
+                            },
+                            categoryPercentage: 0.5,
+                            barPercentage: 0.7
+                        };
+                        
+                        // 차트 생성
+                        let barChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: JSON.parse(JSON.stringify(initialData)),
+                            options: options
+                        });
+                    }
+                </script>
+                <!-- //중요도별 정보자산 현황 -->
+
+                <!-- 위험도별 보안 준수 현황 -->
+                <div class="dashboard-box">
+                    <h2><a href="#">위험도별 보안 준수 현황</a></h2>
+
+                    <div class="status-box">
+                        <div class="red">
+                            <p class="tit">상</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div class="blue">
+                            <p class="tit">중</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div class="green">
+                            <p class="tit">하</p>
+                            <p class="num">50</p>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <canvas id="barChart3"></canvas>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <script>
+                    $(function(){
+                        barChart3();
+                    })
+                    const barChart3 = function(){
+
+                        // 차트 설정
+                        const ctx = document.getElementById('barChart3').getContext('2d');
+                        let isHorizontal = false;
+                        
+                        // 초기 데이터
+                        const initialData = {
+                            labels: ['상', '중', '하'],
+                            datasets: [{
+                                data: [85,70,35],
+                                backgroundColor: ['rgba(255, 77, 79, 1)','rgba(91, 143, 249, 1)','rgba(115, 209, 61, 1)'],
+                            }]
+                        };
+                        
+                        // 차트 옵션
+                        const options = {
+                            responsive: true,
+                            maintainAspectRatio: true,
+                            plugins: {
+                                legend: {
+                                    display: false // 커스텀 범례 사용
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.1)',
+                                        lineWidth: 1
+                                    },
+                                    ticks: {
+                                        color: '#666',
+                                        font: {
+                                            size: 12,
+                                            weight: 'bold'
+                                        }
+                                    }
+                                },
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    grid: {
+                                        color: 'rgba(0, 0, 0, 0.1)',
+                                        lineWidth: 1
+                                    },
+                                    ticks: {
+                                        color: '#666',
+                                        font: {
+                                            size: 12
+                                        },
+                                        display: true // 수치 숨김
+                                    }
+                                }
+                            },
+                            animation: {
+                                duration: 1000,
+                                easing: 'easeOutQuart'
+                            },
+                            interaction: {
+                                intersect: false
+                            },
+                            hover: {
+                                animationDuration: 200
+                            },
+                            categoryPercentage: 0.5,
+                            barPercentage: 0.7
+                        };
+                        
+                        // 차트 생성
+                        let barChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: JSON.parse(JSON.stringify(initialData)),
+                            options: options
+                        });
+                    }
+                </script>
+                <!-- //중요도별 정보자산 현황 -->
+
+                <!-- 전체 이벤트 알람 현황 -->
+                <div class="dashboard-box">
+                    <h2><a href="#">전체 이벤트 알람 현황</a></h2>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>정보보안</caption>
+                            <colgroup>
+                                <col style="width:95px;">
+                                <col style="width:75px;">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">점검일자</th>
+                                    <th scope="col">심각도</th>
+                                    <th scope="col">호스트(IP)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type4">심각한</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type5">경고</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type3">가벼운</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type4">심각한</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type5">경고</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type3">가벼운</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><span class="circle type3">가벼운</span></td>
+                                    <td><p class="ellipsis">securise_test01</p></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <!-- //전체 이벤트 알람 현황 -->
+
+
+                <!-- ISMS 인증 영역별 보안수준 -->
+                <div class="dashboard-box h-type5">
+                    <h2><a href="#">ISMS 인증 영역별 보안수준</a></h2>
+
+                    <div class="flex">
+                        <div>
+                            <p class="label color1">
+                                <i></i>기준년도
+                            </p>
+                            <select class="form-control">
+                                <option value="1">2025</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p class="label color2">
+                                <i></i>비교년도
+                            </p>
+                            <select class="form-control">
+                                <option value="1">2024</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <canvas id="radarChart4"></canvas>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <script>
+                    $(function(){
+                        radarChart4();
+                    })
+                    const radarChart4 = function(){
+                        const ctx = document.getElementById('radarChart4').getContext('2d');
+                        
+                        const radarChart = new Chart(ctx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['Label', 'Label', 'Label', 'Label', 'Label'],
+                                datasets: [
+                                    {
+                                        data: [350, 400, 300, 380, 320],
+                                        backgroundColor: 'rgba(22, 119, 255, 0.3)',
+                                        borderColor: '#1677FF',
+                                        borderWidth: 1,
+                                        pointRadius: 0,
+                                        pointHoverRadius: 0
+                                    },
+                                    {
+                                        data: [30, 100, 200, 150, 250],
+                                        backgroundColor: 'rgba(160, 217, 17, 0.3)',
+                                        borderColor: 'rgba(160, 217, 17, 1)',
+                                        borderWidth: 1,
+                                        pointRadius: 0,
+                                        pointHoverRadius: 0
+                                    },
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio:false,
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                    }
+                                },
+                                scales: {
+                                    r: {
+                                        ticks: {
+                                            display:false
+                                        },
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(200, 200, 200, 0.3)'
+                                        },
+                                        angleLines: {
+                                            color: 'rgba(200, 200, 200, 0.3)'
+                                        }
+                                    }
+                                },
+                                elements: {
+                                    line: {
+                                        borderWidth: 2
+                                    },
+                                    point: {
+                                        radius: 4,
+                                        hoverRadius: 6
+                                    }
+                                }
+                            }
+                        });
+                    }
+                </script>
+                <!-- //ISMS 인증 영역별 보안수준 -->
+
+                <!-- ISMS 인증 영역별 보안수준2 -->
+                <div class="dashboard-box w-type2 h-type5">
+                    <h2><a href="#">ISMS 인증 영역별 보안수준</a></h2>
+
+                    <div class="tab-list">
+                        <a href="#" class="on">전체</a>
+                        <a href="#">관리체계 수립 및 운영</a>
+                        <a href="#">보호대책 요구사항</a>
+                    </div>
+
+                    <div class="flex position-left-bottom">
+                        <div>
+                            <p class="label color1">
+                                <i></i>기준년도
+                            </p>
+                            <select class="form-control">
+                                <option value="1">2025</option>
+                            </select>
+                        </div>
+                        <div>
+                            <p class="label color2">
+                                <i></i>비교년도
+                            </p>
+                            <select class="form-control">
+                                <option value="1">2024</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <canvas id="radarChart5"></canvas>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <script>
+                    $(function(){
+                        radarChart5();
+                    })
+                    const radarChart5 = function(){
+                        const ctx = document.getElementById('radarChart5').getContext('2d');
+                        
+                        const radarChart = new Chart(ctx, {
+                            type: 'radar',
+                            data: {
+                                labels: ['Label', 'Label', 'Label', 'Label', 'Label'],
+                                datasets: [
+                                    {
+                                        data: [350, 400, 300, 380, 320],
+                                        backgroundColor: 'rgba(22, 119, 255, 0.3)',
+                                        borderColor: '#1677FF',
+                                        borderWidth: 1,
+                                        pointRadius: 0,
+                                        pointHoverRadius: 0
+                                    },
+                                    {
+                                        data: [30, 100, 200, 150, 250],
+                                        backgroundColor: 'rgba(160, 217, 17, 0.3)',
+                                        borderColor: 'rgba(160, 217, 17, 1)',
+                                        borderWidth: 1,
+                                        pointRadius: 0,
+                                        pointHoverRadius: 0
+                                    },
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio:false,
+                                plugins: {
+                                    legend: {
+                                        display: false,
+                                    }
+                                },
+                                scales: {
+                                    r: {
+                                        ticks: {
+                                            display:false
+                                        },
+                                        beginAtZero: true,
+                                        grid: {
+                                            color: 'rgba(200, 200, 200, 0.3)'
+                                        },
+                                        angleLines: {
+                                            color: 'rgba(200, 200, 200, 0.3)'
+                                        }
+                                    }
+                                },
+                                elements: {
+                                    line: {
+                                        borderWidth: 2
+                                    },
+                                    point: {
+                                        radius: 4,
+                                        hoverRadius: 6
+                                    }
+                                }
+                            }
+                        });
+                    }
+                </script>
+                <!-- //ISMS 인증 영역별 보안수준2 -->
 
             </div>
             <!-- //신규 대시보드 포맷 -->
