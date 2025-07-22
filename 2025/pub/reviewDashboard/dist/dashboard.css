@@ -88,7 +88,7 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap .dashboard-box .list li .text:before { content:''; display: block; width:3px; height:3px; margin-right:8px; margin-top:7px; border-radius: 50%; background:rgba(0,0,0,0.88);}
 .dashboard-wrap .dashboard-box .list li .date { flex:0 0 auto; margin-left:auto; font-size:14px; color:rgba(0,0,0,0.45);}
 
-.dashboard-wrap .dashboard-box .tab-list { display: flex; margin:0 0 12px; border-radius: 6px; }
+.dashboard-wrap .dashboard-box .tab-list { display: flex; margin:0 0 10px; border-radius: 6px; }
 .dashboard-wrap .dashboard-box .tab-list a { flex:1 1 auto; height:32px; border:1px solid #D9D9D9; line-height: 32px; color:rgba(0,0,0,0.88); text-align: center;}
 .dashboard-wrap .dashboard-box .tab-list a:first-child { border-radius: 6px 0 0 6px;}
 .dashboard-wrap .dashboard-box .tab-list a:last-child { border-radius: 0 6px 6px 0;}
@@ -140,6 +140,6 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 
 .dashboard-wrap .dashboard-box .chart-container { position: relative; width: 100%; margin:auto;}
 .dashboard-wrap .dashboard-box .chart-container canvas { height: 224px;}
-.dashboard-wrap .dashboard-box .center-text { position: absolute; top: 50%; left:50%; margin-left:-50px; transform: translate(-50%, -50%); text-align: center; pointer-events: none;}
+.dashboard-wrap .dashboard-box .center-text { position: absolute; top: 50%; left:50%; margin-left:-55px; transform: translate(-50%, -50%); text-align: center; pointer-events: none;}
 .dashboard-wrap .dashboard-box .center-text h2 { margin: 0; font-size:30px; color: rgba(0,0,0,0.88); font-weight: bold;}
 .dashboard-wrap .dashboard-box .center-text p { margin: 5px 0 0 0; font-size:14px; color: rgba(0,0,0,0.65);}
