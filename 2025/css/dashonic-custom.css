@@ -1,0 +1,74 @@
+@charset "UTF-8";
+
+body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', helvetica, 'Apple SD Gothic Neo', sans-serif;
+}
+
+h4{font-weight: 600;}
+
+.form-floating > label {
+    font-size: 1.1rem; /* 원하는 크기로 조절 */
+}
+
+/* login - saveID 버튼 : 고유 클래스 명으로 오염 방지 */
+.securise-switch .form-check-input:checked::before {
+    background-color: #fff !important;  /* 흰색으로 강제 덮기 */
+    width: 1rem !important;
+    height: 1rem !important;
+    top: 0.2rem !important;
+    left: 0.2rem !important;
+    display: block !important;
+    position: absolute !important;
+    content: '' !important;
+    border-radius: 50% !important;
+    transform: none;
+}
+
+.securise-switch .form-check-input:checked::after {
+    border:none;
+    border-width:0;
+    transform: none;
+}
+
+.securise-switch .form-check-input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 2.4rem;
+    height: 1.4rem;
+    background-color: #ced4da;
+    border-radius: 1rem;
+    position: relative;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* 내부 동그라미 (스위치 버튼) */
+.securise-switch .form-check-input::before {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0.2rem;
+    left: 0.2rem;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+/* 체크됐을 때 배경색 및 위치 이동 */
+.securise-switch .form-check-input:checked {
+    background-color: #0dcaf0; /* Bootstrap info color */
+}
+
+.securise-switch .form-check-input:checked::before {
+    transform: translateX(1rem);
+}
+
+/* 라벨 위치 */
+.securise-switch .form-check-label {
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}

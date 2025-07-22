@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TIMS">
+    <meta name="author" content="TIMS">
+    <!-- 2024-08-07 수정 및 추가-->
+    <title>Risk Management 포털</title>
+    <link rel="shortcut icon" href="./img/favicon.png">
+    <!-- //2024-08-07 수정 및 추가-->
+
+    <script src="../../js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <link href="../../css/jquery-clockpicker.min.css" rel="stylesheet">
+    <script src="../../js/jquery-clockpicker.min.js"></script>
+    <link href="../../css/fontawesome/fontawesome.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="../../css/common.css">
+    <link rel="stylesheet" type="text/css" href="../../css/default.css">
+    <link rel="stylesheet" type="text/css" href="../../css/darkMode.css">
+    <link rel="stylesheet" type="text/css" href="../../css/jquery.jqChart.css">
+    <link rel="stylesheet" type="text/css" href="../../css/tims.css">
+    
+    <script src="../../js/jquery.jqChart.min.js" type="text/javascript"></script>
+    
+    <script src="../../js/modernizr.custom.js"></script>
+    <script src="../../js/jquery-ui.js"></script>
+    <script src="../../js/moment.js"></script>
+    <script src="../../js/popper.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+
+    <!-- datepicker -->
+    <link href="../../css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
+    <script src="../../js/bootstrap-datepicker.js"></script>
+    
+    <link href="../../css/daterangepicker.css" rel="stylesheet" type="text/css">
+    <script src="../../js/daterangepicker.js"></script>
+    <script src="../../js/bootstrap-datepicker.ko.js"></script>
+    
+    <link href="../../css/bootstrap-timepicker.min.css" rel="stylesheet">
+    <script src="../../js/bootstrap-timepicker.min.js"></script>
+    
+    <link type="text/css" href="../../css/toastr.css" rel="stylesheet">
+    <script src="../../js/toastr.min.js"></script>
+
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="../../js/jquery.slimscroll.js"></script>
+    <script src="../../js/jquery.cookie.js"></script>
+    <script src="../../js/jquery.form.js"></script>
+    <!--Wave Effects -->
+    <script src="../../js/waves.js"></script>
+    
+    <!-- 2024-08 swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="../../css/swiper.css"/>
+
+    <!-- 공통 스크립트 -->
+    <script src="../../js/common.js"></script>
+    <script src="../../js/excel.js"></script>
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/detail.js"></script>
+
+    <!-- 2025-07 대시보드 -->
+    <link rel="stylesheet" href="./dist/dashboard.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
+</head>
+<body>
+    <header class="psm-header">
+        <div class="section">
+            <div class="d-flex justify-content-between">
+                <div class="logo">
+                    <h1><a href="/main.do"><i class="logo">PS&amp;M</i></a></h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="psm-dashboard">
+        <div class="container" id="container">
+            <div class="oldLayout">
+                <div class="row">
+                    <div class="col main-info type1">
+                            <h5>정보자산</h5>
+                            <!--span>전월대비 증감 <em class="fontBig">10 <b class="txtPcolor">▼</b> <b class="txtRedcolor">▲</b></em></span-->
+                        <p class="infoText">0 대</p>
+                    </div>
+                    <div class="col main-info type2">
+                        <h5>보안 진단/미 진단</h5>
+                
+                
+                        <p class="infoText">
+                            0 대 / 0 대
+                        </p>
+                    </div>
+                    <div class="col main-info type3">
+                        <h5>등록된 업무 지식</h5>
+                        <p class="infoText"> 건</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 신규 대시보드 포맷 -->
+            <div class="dashboard-wrap view-mode">
+                <div class="dashboard-box type1">
+                    <h2>홍길동 <span class="position">보안관리자</span></h2>
+                    <p class="text">보안 관리팀</p>
+
+                    <div class="date">마지막 로그인<span>2025-05-01 12:34</span></div>
+
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <div class="dashboard-box type2">
+                    <h2>메뉴명</h2>
+                    <p>
+                        <a href="#" class="btn-link">바로가기</a>
+                    </p>
+                    
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <div class="dashboard-box type2">
+                    <h2>메뉴명</h2>
+                    <p>
+                        <a href="#" class="btn-link">바로가기</a>
+                    </p>
+                    
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <div class="dashboard-box type2">
+                    <h2>메뉴명</h2>
+                    <p>
+                        <a href="#" class="btn-link">바로가기</a>
+                    </p>
+                    
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <div class="dashboard-box type2">
+                    <h2>메뉴명</h2>
+                    <p>
+                        <a href="#" class="btn-link">바로가기</a>
+                    </p>
+                    
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <div class="dashboard-box type2">
+                    <h2>메뉴명</h2>
+                    <p>
+                        <a href="#" class="btn-link">바로가기</a>
+                    </p>
+                    
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <div class="dashboard-box">
+                    <h2><a href="#">나의 정기 업무활동</a></h2>
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>나의 정기 업무 활동</caption>
+                            <colgroup>
+                                <col style="width:93px;">
+                                <col>
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">등록일자</th>
+                                    <th scope="col">정기업무 내용</th>
+                                    <th scope="col">처리상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type1">시작전</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type2">진행중</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type3">완료</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type1">시작전</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type1">시작전</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type1">시작전</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type1">시작전</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">나의 업무 일정</a></h2>
+                    <div class="date-calendar">
+                        <ol class="date">
+                            <li>
+                                <a href="#">
+                                    <p class="text">일</p>
+                                    <p class="day">4</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text">월</p>
+                                    <p class="day" data-schedule="3">5</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text">화</p>
+                                    <p class="day" data-schedule="2">6</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="on">
+                                    <p class="text">수</p>
+                                    <p class="day" data-schedule="4">7</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text">목</p>
+                                    <p class="day" data-schedule="1">8</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text">금</p>
+                                    <p class="day">9</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="text">토</p>
+                                    <p class="day" data-schedule="2">10</p>
+                                </a>
+                            </li>
+                        </ol>
+                        <a href="#" class="btn-prev">이전주</a>
+                        <a href="#" class="btn-next">다음</a>
+                    </div>
+                    <div class="box-cont">
+                        <p class="date">2025-06-07</p>
+                        <ul class="list">
+                           <li>
+                                <p class="text">보안교육 예산 신청</p>
+                                <p class="date">종일</p>
+                            </li>
+                           <li>
+                                <p class="text">보안교육 예산 신청</p>
+                                <p class="date">종일</p>
+                            </li>
+                           <li>
+                                <p class="text">보안교육 예산 신청</p>
+                                <p class="date">종일</p>
+                            </li>
+                        </ul> 
+                    </div>
+
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">나의 결재 업무 현황</a></h2>
+                    <div class="tab-list">
+                        <a href="#" class="on">나의 결재 요청</a>
+                        <a href="#">나의 결재 승인</a>
+                    </div>
+
+                    <div class="status-box">
+                        <div>
+                            <p class="tit">결재 신청</p>
+                            <p class="num">50건</p>
+                        </div>
+                        <div>
+                            <p class="tit">결재 중</p>
+                            <p class="num">50건</p>
+                        </div>
+                        <div>
+                            <p class="tit">결재 반려</p>
+                            <p class="num">50건</p>
+                        </div>
+                        <div>
+                            <p class="tit">결재 완료</p>
+                            <p class="num">50건</p>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>나의 결재 요청</caption>
+                            <colgroup>
+                                <col style="width:93px;">
+                                <col>
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">등록일자</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="circle type1">대기</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="circle type3">승인</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="circle type1">대기</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="circle type3">승인</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">공유 자료실</a></h2>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>공유 자료실</caption>
+                            <colgroup>
+                                <col style="width:93px;">
+                                <col>
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">등록일자</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">문서 등급</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type1">상</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type2">중</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type3">하</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type1">상</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type2">중</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type3">하</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td><span class="label type3">하</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">공지사항</a></h2>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>공지사항</caption>
+                            <colgroup>
+                                <col style="width:93px;">
+                                <col>
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">등록일자</th>
+                                    <th scope="col">제목</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">정기보안 업무 처리 현황</a></h2>
+
+                    <div class="flex">
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                    </div>
+
+                    <div class="box-cont">
+                        <canvas id="pieChart" width="400" height="400"></canvas>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+                <script>
+                    // 차트 데이터 준비
+                    const data = {
+                        labels: [
+                            '업무예정',
+                            '진행중', 
+                            '검토요청',
+                            '검토완료',
+                            '반려'
+                        ],
+                        datasets: [{
+                            label: '부서별 인원',
+                            data: [35, 25, 20, 15, 5],
+                            backgroundColor: [
+                                '#FF6384',
+                                '#36A2EB',
+                                '#FFCE56',
+                                '#4BC0C0',
+                                '#9966FF'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    };
+
+                    // 차트 설정
+                    const config = {
+                        type: 'pie',
+                        data: data,
+                        plugins: [ChartDataLabels],
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        padding: 20,
+                                        font: {
+                                            size: 14
+                                        },
+                                        usePointStyle: true,
+                                        pointStyle: 'circle'
+                                    }
+                                },
+                                datalabels: {
+                                    display: true,
+                                    color: 'white',
+                                    font: {
+                                        size: 14
+                                    },
+                                }
+                            },
+                            animation: {
+                                animateRotate: true,
+                                duration: 1000
+                            },
+                        }
+                    };
+
+                    // 차트 생성
+                    let chart;
+                    
+                    function createChart() {
+                        const ctx = document.getElementById('pieChart');
+                        if (ctx) {
+                            chart = new Chart(ctx, config);
+                            console.log('차트가 생성되었습니다.');
+                        } else {
+                            console.error('Canvas 요소를 찾을 수 없습니다.');
+                        }
+                    }
+
+                    // DOM이 로드된 후 차트 생성
+                    document.addEventListener('DOMContentLoaded', function() {
+                        console.log('DOM 로드 완료');
+                        
+                        // Chart.js가 로드되었는지 확인
+                        if (typeof Chart !== 'undefined') {
+                            console.log('Chart.js 로드됨, 버전:', Chart.version);
+                            createChart();
+                        } else {
+                            console.error('Chart.js가 로드되지 않았습니다.');
+                            
+                            // 몇 초 후 다시 시도
+                            setTimeout(() => {
+                                if (typeof Chart !== 'undefined') {
+                                    console.log('Chart.js 지연 로드됨');
+                                    createChart();
+                                } else {
+                                    document.querySelector('.chart-container').innerHTML = 
+                                        '<p style="text-align:center; color:red;">Chart.js 로드에 실패했습니다. 페이지를 새로고침해주세요.</p>';
+                                }
+                            }, 2000);
+                        }
+                    });
+
+                    // 윈도우 로드 이벤트에서도 시도
+                    window.addEventListener('load', function() {
+                        if (typeof Chart !== 'undefined' && !chart) {
+                            console.log('윈도우 로드에서 차트 생성 시도');
+                            createChart();
+                        }
+                    });
+                </script>
+
+
+                <div class="dashboard-box">
+                    <h2><a href="#">정기 업무활동 부서별 업무 현황</a></h2>
+
+                    <div class="flex">
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                    </div>
+
+                    <div class="box-cont">
+                        <div class="bar-chart-wrap">
+                            <div class="label-list">
+                                <p class="type1">업무예정</p>
+                                <p class="type2">진행중</p>
+                                <p class="type3">검토요청</p>
+                                <p class="type4">검토완료</p>
+                                <p class="type5">반려</p>
+                            </div>
+
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    IT정보보안부서
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    개인정보보호팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    시스템운영팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    보안관제팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    네트워크보안팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    시스템관리팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:50%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">정기보안 업무 현황</a></h2>
+                    <div class="tab-list">
+                        <a href="#" class="on">정보보안</a>
+                        <a href="#">개인정보보호</a>
+                    </div>
+
+                    <div class="status-box">
+                        <div>
+                            <p class="tit">전체 업무</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div>
+                            <p class="tit">임박</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div>
+                            <p class="tit">지연</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div>
+                            <p class="tit">완료</p>
+                            <p class="num">50</p>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>정보보안</caption>
+                            <colgroup>
+                                <col>
+                                <col style="width:75px;">
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">활동구분</th>
+                                    <th scope="col">D-day</th>
+                                    <th scope="col">상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type4">지연</span></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type5">임박</span></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type4">지연</span></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type5">임박</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">보안평가 부서별 업무 현황 </a></h2>
+
+                    <div class="flex">
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                    </div>
+
+                    <div class="box-cont">
+                        <div class="bar-chart-wrap">
+                            <div class="label-list">
+                                <p class="type1">업무예정</p>
+                                <p class="type2">진행중</p>
+                                <p class="type3">검토요청</p>
+                                <p class="type4">검토완료</p>
+                                <p class="type5">반려</p>
+                            </div>
+
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    IT정보보안부서
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    개인정보보호팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    시스템운영팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    보안관제팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    네트워크보안팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:30%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                            <div class="bar-chart-list">
+                                <div class="tit">
+                                    시스템관리팀
+                                    <strong>81% 완료</strong>
+                                </div>
+                                <div class="bar">
+                                    <span style="width:50%"></span>
+                                    <span style="width:15%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:5%"></span>
+                                    <span style="width:10%"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">보안평가 업무 현황</a></h2>
+                    <div class="tab-list">
+                        <a href="#" class="on">ISMS</a>
+                        <a href="#">ISMS-P</a>
+                        <a href="#">ISO27001</a>
+                    </div>
+
+                    <div class="status-box">
+                        <div>
+                            <p class="tit">결제 요청</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div>
+                            <p class="tit">임박</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div>
+                            <p class="tit">지연</p>
+                            <p class="num">50</p>
+                        </div>
+                        <div>
+                            <p class="tit">완료</p>
+                            <p class="num">50</p>
+                        </div>
+                    </div>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>정보보안</caption>
+                            <colgroup>
+                                <col>
+                                <col style="width:75px;">
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">평가제목</th>
+                                    <th scope="col">D-day</th>
+                                    <th scope="col">상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type4">지연</span></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type5">임박</span></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type4">지연</span></td>
+                                </tr>
+                                <tr>
+                                    <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
+                                    <td>D+2</td>
+                                    <td><span class="circle type5">임박</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">보안평가 부서별 업무 현황 </a></h2>
+
+                    <div class="flex">
+                        <select class="form-control">
+                            <option value="1">구분</option>
+                        </select>
+                    </div>
+
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>나의 정기 업무 활동</caption>
+                            <colgroup>
+                                <col style="width:93px;">
+                                <col>
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">평가종료일</th>
+                                    <th scope="col">평가제목</th>
+                                    <th scope="col">상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td>80%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">보안 예외처리</a></h2>
+                    <div class="box-cont">
+                        <table class="dashboard-table">
+                            <caption>보안 예외처리</caption>
+                            <colgroup>
+                                <col style="width:93px;">
+                                <col style="width:93px;">
+                                <col>
+                                <col style="width:75px;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th scope="col">등록일자</th>
+                                    <th scope="col">적용 대상자</th>
+                                    <th scope="col">업무구분</th>
+                                    <th scope="col">상태</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type2">진행</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type2">진행</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type3">완료</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type2">진행</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type2">진행</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type3">완료</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2025-06-01</td>
+                                    <td>이지훈</td>
+                                    <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                                    <td><span class="circle type3">완료</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <div class="dashboard-box">
+                    <h2><a href="#">자산 보유 현황</a></h2>
+
+                    <div class="box-cont flex">
+                        <div class="chart-container">
+                            <canvas id="donutChart" width="400" height="400"></canvas>
+                            <div class="center-text">
+                                <h2 id="totalValue">999</h2>
+                                <p>전체 자산</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-setting">셋팅</a>
+                    <a href="#" class="btn-delete">삭제</a>
+                </div>
+
+                <script>
+                    // 차트 데이터
+                    const data2 = {
+                        labels: ['Server', 'Network', 'DBMS', 'Security', 'WEB/WAS'],
+                        datasets: [{
+                            data: [30, 25, 20, 15, 10],
+                            backgroundColor: [
+                                '#36CFC9',
+                                '#BAE637',
+                                '#9254DE',
+                                '#F759AB',
+                                '#FFC53D'
+                            ],
+                            borderWidth: 2,
+                            hoverOffset: 10
+                        }]
+                    };
+
+                    // 차트 설정
+                    const config2 = {
+                        type: 'doughnut',
+                        data: data,
+                        plugins: [ChartDataLabels],
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            cutout: '60%', // 도넛 구멍 크기
+                            plugins: {
+                                legend: {
+                                    position: 'right',
+                                    labels: {
+                                        padding: 20,
+                                        font: {
+                                            size: 14
+                                        },
+                                        usePointStyle: true,
+                                        pointStyle: 'circle'
+                                    }
+                                },
+                                datalabels: {
+                                    display: true,
+                                    color: 'white',
+                                    font: {
+                                        size: 14
+                                    },
+                                }
+                            },
+                            animation: {
+                                animateScale: true,
+                                animateRotate: true,
+                                duration: 1500,
+                                easing: 'easeInOutQuart'
+                            },
+                            hover: {
+                                animationDuration: 300
+                            },
+                        }
+                    };
+
+                    // 차트 생성
+                    const ctx2 = document.getElementById('donutChart').getContext('2d');
+                    const donutChart = new Chart(ctx2, config2);
+
+                    // 차트가 로드된 후 애니메이션 효과
+                    setTimeout(() => {
+                        document.querySelector('.container').style.transform = 'translateY(0)';
+                        document.querySelector('.container').style.opacity = '1';
+                    }, 100);
+                </script>
+
+            </div>
+            <!-- //신규 대시보드 포맷 -->
+        </div>
+    </main>
+
+
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+@charset "UTF-8";
+
+.pre-loader {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.pre-loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 9999999;
+    display: block;
+}
+
+.pre-loader .load-con {
+    margin: 35% auto;
+    position: relative;
+    text-align: center;
+}
+
+.spinner {
+    margin: 10px auto 0;
+    width: 70px;
+    text-align: center;
+}
+
+.spinner > div {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.spinner .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        -webkit-transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes bouncedelay {
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+
+/* 드래그 앤 드랍 영역 스타일 */
+.drag-drop-area {
+    border: 2px dashed #ccc !important;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+}
+
+.drag-drop-area:hover {
+    border-color: #007bff !important;
+    background-color: #f8f9fa !important;
+}
+
+.drag-drop-area.drag-over {
+    border-color: #007bff !important;
+    background-color: #e3f2fd !important;
+    transform: scale(1.02);
+}
+
+.drag-drop-area i {
+    font-size: 48px;
+    color: #ccc;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.drag-drop-area p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.drag-drop-area.drag-over i {
+    color: #007bff;
+}
+
+.drag-drop-area.drag-over p {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* 숨겨진 파일 입력 */
+.hidden-file-input {
+    display: none !important;
+}
+
+/* 파일 목록 스타일 개선 */
+.file-a-list table {
+    margin-top: 10px;
+}
+
+.file-a-list table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.file-a-list table td {
+    vertical-align: middle;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+    /* 드래그 앤 드랍 영역 다크모드 */
+    .drag-drop-area {
+        border-color: #555 !important;
+        background-color: #2d2d2d !important;
+        color: #e0e0e0;
+    }
+
+    .drag-drop-area:hover {
+        border-color: #0d6efd !important;
+        background-color: #3d3d3d !important;
+    }
+
+    .drag-drop-area.drag-over {
+        border-color: #0d6efd !important;
+        background-color: #1a365d !important;
+    }
+
+    .drag-drop-area i {
+        color: #888 !important;
+    }
+
+    .drag-drop-area p {
+        color: #ccc !important;
+    }
+
+    .drag-drop-area.drag-over i {
+        color: #0d6efd !important;
+    }
+
+    .drag-drop-area.drag-over p {
+        color: #0d6efd !important;
+    }
+
+    /* 파일 목록 테이블 다크모드 */
+    .file-a-list table,
+    .table.table-white.table-bordered {
+        background-color: #2d2d2d !important;
+        border-color: #555 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .file-a-list table th,
+    .table.table-white.table-bordered th {
+        background-color: #3d3d3d !important;
+        border-color: #555 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .file-a-list table td,
+    .table.table-white.table-bordered td {
+        background-color: #2d2d2d !important;
+        border-color: #555 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .file-a-list table tbody tr:hover,
+    .table.table-white.table-bordered tbody tr:hover {
+        background-color: #3d3d3d !important;
+    }
+
+    /* 파일 목록 링크 다크모드 */
+    .file-a-list table a,
+    .table.table-white.table-bordered a {
+        color: #66b3ff !important;
+    }
+
+    .file-a-list table a:hover,
+    .table.table-white.table-bordered a:hover {
+        color: #99ccff !important;
+    }
+
+    /* 모달 다크모드 (파일 업로드 모달) */
+    .modal-content {
+        background-color: #2d2d2d !important;
+        border-color: #555 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .modal-header {
+        background-color: #3d3d3d !important;
+        border-bottom-color: #555 !important;
+    }
+
+    .modal-title {
+        color: #e0e0e0 !important;
+    }
+
+    .modal-body {
+        background-color: #2d2d2d !important;
+    }
+
+    .modal-footer {
+        background-color: #3d3d3d !important;
+        border-top-color: #555 !important;
+    }
+
+    /* 폼 요소 다크모드 */
+    .form-control {
+        background-color: #3d3d3d !important;
+        border-color: #555 !important;
+        color: #e0e0e0 !important;
+    }
+
+    .form-control:focus {
+        background-color: #3d3d3d !important;
+        border-color: #0d6efd !important;
+        color: #e0e0e0 !important;
+        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25) !important;
+    }
+
+    /* 버튼 다크모드 개선 */
+    .btn-outline-danger {
+        color: #ff6b6b !important;
+        border-color: #ff6b6b !important;
+    }
+
+    .btn-outline-danger:hover {
+        background-color: #ff6b6b !important;
+        border-color: #ff6b6b !important;
+        color: #fff !important;
+    }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .drag-drop-area {
+        padding: 15px;
+    }
+
+    .drag-drop-area i {
+        font-size: 36px;
+    }
+
+    .drag-drop-area p {
+        font-size: 12px;
+    }
+}
+
+.file-btn {
+    display: none !important;
+}

@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+@media (prefers-color-scheme: dark) {
+  :root{
+    --text-color:#fff;
+    --text-color2:rgba(255,255,255,0.8);
+    --text-color3:rgba(255,255,255,0.4);
+    --text-color4:rgba(28,28,28,0.8);
+
+    --btn-gray:rgba(255,255,255,0.1);
+    --btn-gray-hover:rgba(255,255,255,0.2);
+
+    --line-bg:rgba(255,255,255,0.1);
+    --line-bg2:rgba(255,255,255,0.4);
+    --line-bg3:rgba(255,255,255,0.06);
+    --line-bg4:rgba(255,255,255,0.06);
+
+    --bg:rgba(255,255,255,0.1);
+    --bg2:rgba(255,255,255,0.8);
+    --bg3:rgba(255,255,255,0.05);
+    --bg4:rgba(44, 45, 51, 1);
+    --bg5:rgba(255,255,255,0.02);
+    --bg6:rgba(255,255,255,0.12);
+  }
+
+  html,
+  body,
+  .ReportTi { background:#171717;}
+
+  select.form-control { background-image: url('/images/select_arrow2.png');}
+  select.form-control option { background:rgba(44, 45, 51, 1);}
+  textarea { background:rgba(44, 45, 51, 1)}
+
+  input[type=checkbox],
+  input[type=radio] {  background-color: transparent;}
+
+  .form-control:disabled, .form-control[readonly] {background-color:rgba(255,255,255,0.05);}
+
+  a { color:#fff;}
+
+  .fc-theme-standard .fc-list-day-cushion a { color:rgba(28,28,28,0.8) !important}
+  .fc .fc-list-event:hover td { background:rgba(255,255,255,0.2);}
+
+  .form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .form-control::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .form-control::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .login-wrap { background:#171717;}
+  .login-wrap input { background:rgba(255,255,255,0.1);}
+  .login-wrap .login-box .input-group-text{ background:rgba(255,255,255,0.1);}
+
+  .txtBlack02 { color:rgba(255,255,255,0.2) !important;}
+  .txtBlack04 { color:rgba(255,255,255,0.4) !important;}
+  .txtBlack08 { color:rgba(255,255,255,0.8) !important;}
+  .txtBlack1 { color:rgba(255,255,255,1) !important;}
+  
+  .input-daterange { background:rgba(44, 45, 51, 1) !important;}
+
+  header { background:#171717;}
+  .nav-menu a:hover {color: rgba(5, 162, 250, 1);}
+  .active, .accordion:hover {  background-color: #171717; }
+
+  main.index-main { background:rgba(23, 23, 23, 1);}
+  .main-dashboard .box { background:rgba(44, 45, 51, 1);}
+
+  .textarea .max-text-info {color:rgba(255, 255, 255, 0.2);}
+  /*.switch-inp label { background:rgba(255, 255, 255, 0.2);}*/
+  .slider { background:rgba(255, 255, 255, 0.2); }
+
+  .table { color:#fff;}
+  .table-hover tbody tr:hover { color:#fff; background-color:rgba(255,255,255, 0.1)}
+  .table-bordered tr.active { background-color:rgba(255,255,255, 0.1);}
+  .table-bordered tr.active th,
+  .table-bordered tr.active td { color:#fff;}
+
+  .modal-tab-list a.on:after { border-bottom-color:rgba(44, 45, 51, 1)}
+
+  .textarea textarea:focus,
+  .form-control:focus { color:#fff; background-color:rgba(255,255,255,0.1)}
+  .ui-menu { background:rgba(44, 45, 51, 1);}
+
+  .modal-header {border-bottom-color:rgba(255, 255, 255, 0.2);}
+
+  .pagination .page-item.active .page-link { background:rgba(255,255,255,0.2)}
+  .page-link:hover { color:#1c1c1c; background:rgba(255,255,255,0.2)}
+
+  .table-bordered tbody th {background-color:var(--bg)}
+
+  .text-dark { color:var(--text-color2) !important;}
+
+  .fc .fc-list-sticky .fc-list-day > * { background:rgba(28,28,28,0.3);}
+  .fc-theme-standard .fc-listMonth-view .fc-list-day-cushion { background:none !important}
+  .fc-theme-standard .fc-listMonth-view .fc-list-day-cushion a { color:rgba(255,255,255,0.8) !important;}
+
+  .input_calendar { background-image: url('/images/i_calendar_dark.png');}
+
+  .address-pop-box .detail-box .top .form-search { background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.9375 17.9453C17.8208 18.0602 17.6637 18.1247 17.5 18.125C17.334 18.1243 17.1747 18.06 17.0547 17.9453L13.6797 14.5625C12.2583 15.7564 10.4308 16.3555 8.57844 16.2348C6.72607 16.114 4.99182 15.2828 3.73738 13.9146C2.48294 12.5463 1.80518 10.7465 1.84545 8.89063C1.88571 7.03477 2.6409 5.2661 3.9535 3.9535C5.2661 2.6409 7.03477 1.88571 8.89063 1.84545C10.7465 1.80518 12.5463 2.48294 13.9146 3.73738C15.2828 4.99182 16.114 6.72607 16.2348 8.57844C16.3555 10.4308 15.7564 12.2583 14.5625 13.6797L17.9375 17.0547C17.9966 17.1128 18.0434 17.1822 18.0755 17.2586C18.1075 17.3351 18.124 17.4171 18.124 17.5C18.124 17.5829 18.1075 17.6649 18.0755 17.7414C18.0434 17.8178 17.9966 17.8872 17.9375 17.9453ZM9.0625 15C10.2368 15 11.3848 14.6518 12.3612 13.9993C13.3376 13.3469 14.0986 12.4196 14.548 11.3347C14.9974 10.2497 15.115 9.05591 14.8859 7.90415C14.6568 6.75239 14.0913 5.69443 13.2609 4.86405C12.4306 4.03368 11.3726 3.46819 10.2208 3.23909C9.06909 3.00999 7.87525 3.12757 6.79032 3.57696C5.70538 4.02636 4.77807 4.78738 4.12565 5.7638C3.47323 6.74022 3.125 7.88817 3.125 9.0625C3.12707 10.6366 3.75329 12.1456 4.86634 13.2587C5.97938 14.3717 7.48841 14.9979 9.0625 15Z' fill='%23f5f5f5' fill-opacity='0.2'/%3E%3C/svg%3E%0A");}
+
+  .i-delete { background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.16996 4.46481C4.9747 4.26954 4.65811 4.26954 4.46285 4.46481C4.26759 4.66007 4.26759 4.97665 4.46285 5.17191L7.2913 8.00036L4.46289 10.8288C4.26763 11.024 4.26763 11.3406 4.46289 11.5359C4.65815 11.7311 4.97474 11.7311 5.17 11.5359L7.99841 8.70747L10.8268 11.5359C11.0221 11.7311 11.3387 11.7311 11.5339 11.5359C11.7292 11.3406 11.7292 11.024 11.5339 10.8288L8.70551 8.00036L11.534 5.17191C11.7292 4.97665 11.7292 4.66007 11.534 4.46481C11.3387 4.26954 11.0221 4.26954 10.8269 4.46481L7.99841 7.29325L5.16996 4.46481Z' fill='white' fill-opacity='0.4'/%3E%3C/svg%3E%0A");}
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    background:url(../images/inp_time_2.png) no-repeat right center;
+  }
+
+  .tree-list-wrap > .tree > .tree-tit .btn-arrow { background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.8481 9.51562H8.15124C7.92038 9.51562 7.79148 9.75937 7.93445 9.92578L11.7829 14.3883C11.893 14.516 12.1051 14.516 12.2165 14.3883L16.0649 9.92578C16.2079 9.75937 16.079 9.51562 15.8481 9.51562Z' fill='%23ffffff'/%3E%3C/svg%3E%0A");}
+  .tree-list-wrap > .tree > .tree-tit .tit:hover,
+  .tree-list-wrap > .tree > .tree-tit .tit.on { background:#062048}
+
+  .tab-link a.on:after { background:rgba(44, 45, 51, 1);}
+
+  .file-photo-group .file-photo { border-color:rgba(255, 255, 255, 0.20); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M7.53125 2.375H8.46875C8.55208 2.375 8.59375 2.41667 8.59375 2.5V13.5C8.59375 13.5833 8.55208 13.625 8.46875 13.625H7.53125C7.44792 13.625 7.40625 13.5833 7.40625 13.5V2.5C7.40625 2.41667 7.44792 2.375 7.53125 2.375Z' fill='white' fill-opacity='0.45'/%3E%3Cpath d='M2.75 7.40625H13.25C13.3333 7.40625 13.375 7.44792 13.375 7.53125V8.46875C13.375 8.55208 13.3333 8.59375 13.25 8.59375H2.75C2.66667 8.59375 2.625 8.55208 2.625 8.46875V7.53125C2.625 7.44792 2.66667 7.40625 2.75 7.40625Z' fill='white' fill-opacity='0.45'/%3E%3C/svg%3E"); background-color:rgba(255, 255, 255, 0.10);}
+
+  .jstree .jstree-container-ul .jstree-clicked { color:#fff}
+
+  .psm-dashboard .user-info .text-box .label { color:#fff;}
+  .psm-dashboard .box .gray-info .text { color:#fff;}
+  .psm-dashboard .content-location .list ul li button { color:#fff;}
+  .psm-dashboard .dashboard-content .img-light { display:none;}
+  .psm-dashboard .dashboard-content .img-dark { display:block;}
+
+  .guideTi h5 { color:#fff;}
+
+  .guideTi .table {
+    border: 1px solid var(--line-bg);
+    color: var(--text-color);
+    background: var(--bg3);
+  }
+
+  .guideTi .table th,
+  .guideTi .table td {
+    border: 1px solid var(--line-bg);
+  }
+  .guideTi .table th {
+    background-color: var(--bg3);
+    border-color: var(--line-bg);
+    color: var(--text-color);
+  }
+  .guideTi .table .TableTh2 {
+    background:  var(--bg3);
+    color: #fff;
+  }
+  .guideTi .table .TableTh3 {
+    color: #fff;
+  }
+  .guideTi .table b {
+    color: #fff;
+  }
+  .guideTi h6 { color:#fff;}
+
+}
