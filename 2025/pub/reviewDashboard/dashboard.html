@@ -65,6 +65,8 @@
     <link rel="stylesheet" href="./dist/gridstack.min.css">
     <link rel="stylesheet" href="./dist/dashboard.css">
     <script src="./dist/gridstack-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 </head>
 <body class="redefinition">
     <header>
@@ -83,26 +85,22 @@
             <div class="sticky">
                 <div class="tit">위젯 모듈</div>
                 <div class="search-box">
-                    <i class="ico-search"></i><input type="text" placeholder="위젯 검색" />
+                    <input type="text" placeholder="위젯 검색" />
+                    <button>검색</button>
                 </div>
             </div>
             <div class="list">
-                <div class="sub-tit">기본</div>
-                <a href="#widget1" class="widget" data-items="{w: 4, h:3}"><i></i>나의 할일</a>
-                <a href="#widget2" class="widget" data-items="{w: 1, h:1}"><i></i>나의 결재 신청 현황</a>
-                <a href="#widget3" class="widget" data-items="{w: 2, h:2}"><i></i>나의 결재 업무 현황</a>
+                <div class="sub-tit">바로가기</div>
+                <a href="#dashboardLink" class="widget" data-items="{w: 1, h:1}" data-target="./dashboard-item.html"><i></i>바로가기</a>
             </div>
             <div class="list">
                 <div class="sub-tit">기본</div>
-                <a href="#widget1" class="widget" data-items="{w: 3, h:2}"><i></i>나의 할일2</a>
-                <a href="#widget2" class="widget" data-items="{w: 3, h:2}"><i></i>나의 결재 신청 현황2</a>
-                <a href="#widget3" class="widget" data-items="{w: 3, h:2}"><i></i>나의 결재 업무 현황2</a>
-            </div>
-            <div class="list">
-                <div class="sub-tit">기본</div>
-                <a href="#widget1" class="widget" data-items="{w: 2, h:3}"><i></i>나의 할일3</a>
-                <a href="#widget2" class="widget" data-items="{w: 2, h:3}"><i></i>나의 결재 신청 현황3</a>
-                <a href="#widget3" class="widget" data-items="{w: 2, h:3}"><i></i>나의 결재 업무 현황3</a>
+                <a href="#dashboardType1" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>나의 정기 업무활동</a>
+                <a href="#dashboardType2" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>나의 업무 일정</a>
+                <a href="#dashboardType3" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>나의 결재 업무 현황</a>
+                <a href="#dashboardType4" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>공유 자료실</a>
+                <a href="#dashboardType5" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>공지사항</a>
+                <a href="#dashboardType6" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>정기보안 업무 처리 현황</a>
             </div>
         </div>
         <div class="right">
@@ -110,45 +108,60 @@
         </div>
     </div>
 
-    <div class="clone">
-        <div class="dashboard-box">
-            <h2>나의 할일</h2>
-            <div class="box-cont">
-                <ul class="list">
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                    <li>
-                        <p class="text"><input type="checkbox" /> 보안점검 보고서 제출</p>
-                        <p class="date">2025-06-12</p>
-                    </li>
-                </ul> 
-            </div>
-            <a href="#" class="btn-more">더보기</a>
-        </div>
-    </div>
 
+    <!-- 팝업 부분 -->
+    <script>
+        $(function(){
+            $(document).on('click','.dashboard-wrap .btn-setting',function(){
+                const href = $(this).attr('href');
+                if(href !== '#'){
+                    $(href).modal();
+                }
+                return false;
+            });
+        });
+    </script>
+    <div class="modal fade" id="dashboardModal1">
+        <div class="modal-dialog modal-xs">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h6 class="modal-title">바로가기 설정</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>바로가기 이름</th>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="ex. 자주 묻는 질문">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>연결할 주소(URL)</th>
+                                <td>
+                                    <input type="text" class="form-control" placeholder="ex. http://example.com/help">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer type2">
+                    <div class="right">
+                        <button type="button" class="btn btn-sm">취소</button>
+                        <button type="button" class="btn btn-sm btn-info">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- //팝업 부분 -->
+
+    <!-- gridstack 영역 -->
     <script type="text/javascript">
 
         GridStack.renderCB = function(el, w) {
@@ -156,39 +169,200 @@
         };
         
         let opts = {
-            cellHeight: '88', // see other possible values (best to do in here)
+            cellHeight: '100', // see other possible values (best to do in here)
             disableResize:true,
             margin:4
         }
-        let grid = GridStack.init(opts);
+        let list = [{w:1,h:2}];
+        list.forEach((n,i) => {
+            n.content = `
+            <div class="dashboard-box w-type1 h-type1">
+                <h2>홍길동 <span class="position">보안관리자</span></h2>
+                <p class="text">보안 관리팀</p>
+
+                <div class="date">마지막 로그인<span>2025-05-01 12:34</span></div>
+
+                <a href="#" class="btn-setting">셋팅</a>
+                <a href="#" class="btn-delete">삭제</a>
+            </div>`;
+        });
+
+        let grid = GridStack.init(opts).load(list).column(6);
+
+        /* 바로가기 갯수 파악 */
+        let linkCount = 0;
+        let linkCountGroup = [];
+        /* //바로가기 갯수 파악 */
 
         $(document).on('click','.redefinition .widget',function(){
-            const items = $(this).data('items');
+            const $this = $(this);
+            const items = $this.data('items');
             const jsonString = items.replace(/(\w+):/g, '"$1":').replace(/'/g, '"');
             const data = JSON.parse(jsonString);
-
-            data.id = $(this).attr('href').replace('#','');
-            //data.content = '<button class="btn-delete">삭제</button><br>' + $(this).text();
-            data.content = $('.clone').html();
+            const target = $this.data('target');
+            let html = '';
             
+            $.get(target,function(d){
+                const content = $(d).find($this.attr('href')).html();
+                const className = $(d).find($this.attr('href')).attr('class')
+                html = '<div class="' + className + '">' + content + '</div>';
+                
+                data.id = $this.attr('href').replace('#','');
+                data.content = html;
 
-            if($(this).hasClass('on')) {
-                $(this).removeClass('on');
-                grid.removeWidget($('[gs-id=' + data.id + ']')[0])
-            } else {
-                $(this).addClass('on');
-                grid.addWidget(data);
-            }
+                $(d).find($this.attr('href')).find('script').each(function() {
+                    eval(this.innerHTML);
+                });
+                    
+                if($this.attr('href') === '#dashboardLink'){
+                    linkCount++;
+                    linkCountGroup.push($this.attr('href').replace('#','') + linkCount);
+                    data.id = $this.attr('href').replace('#','') + linkCount;
+                    grid.addWidget(data);
+                    $this.attr('data-count',linkCountGroup.length).addClass('count');
+                } else {
+                    if($this.hasClass('on')) {
+                        $this.removeClass('on');
+                        grid.removeWidget($('[gs-id=' + data.id + ']')[0])
+                    } else {
+                        $this.addClass('on');
+                        grid.addWidget(data);
+                    }
+                }
+            });
             return false;
         });
 
         $(document).on('click','.redefinition .grid-stack .btn-delete',function(){
             const target = $(this).closest('.grid-stack-item').attr('gs-id');
             $('.redefinition .widget[href=#' + target + ']').removeClass('on');
-            grid.removeWidget($(this).closest('.grid-stack-item')[0])
+            grid.removeWidget($(this).closest('.grid-stack-item')[0]);
+
+            if(target.indexOf('dashboardLink') == 0){
+                linkCountGroup.pop(target);
+                $('.redefinition .widget.count').attr('data-count',linkCountGroup.length);
+                if(linkCountGroup.length == 0){
+                    $('.redefinition .widget.count').removeClass('count');
+                }
+            }
+
             return false;
         });
 
+    </script>
+    <!-- //gridstack 영역 -->
+
+    <!-- 차트 플러그인 불러오기 -->
+     <script>
+        const pieChart1 = function(){
+            // 차트 데이터 준비
+            const data = {
+                labels: [
+                    '업무예정',
+                    '진행중', 
+                    '검토요청',
+                    '검토완료',
+                    '반려'
+                ],
+                datasets: [{
+                    label: '부서별 인원',
+                    data: [35, 25, 20, 15, 5],
+                    backgroundColor: [
+                        '#FF6384',
+                        '#36A2EB',
+                        '#FFCE56',
+                        '#4BC0C0',
+                        '#9966FF'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            };
+
+            // 차트 설정
+            const config = {
+                type: 'pie',
+                data: data,
+                plugins: [ChartDataLabels],
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    size: 14
+                                },
+                                usePointStyle: true,
+                                pointStyle: 'rect',
+                                boxWidth: 10,
+                                boxHeight: 10
+                            }
+                        },
+                        datalabels: {
+                            display: true,
+                            color: 'white',
+                            font: {
+                                size: 14
+                            },
+                        }
+                    },
+                    animation: {
+                        animateRotate: true,
+                        duration: 1000
+                    },
+                }
+            };
+
+            // 차트 생성
+            let chart;
+
+            function createChart() {
+                const ctx = document.getElementById('pieChart');
+                if (ctx) {
+                    chart = new Chart(ctx, config);
+                    console.log('차트가 생성되었습니다.');
+                } else {
+                    console.error('Canvas 요소를 찾을 수 없습니다.');
+                }
+            }
+
+            createChart();
+
+            // DOM이 로드된 후 차트 생성
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOM 로드 완료');
+                
+                // Chart.js가 로드되었는지 확인
+                if (typeof Chart !== 'undefined') {
+                    console.log('Chart.js 로드됨, 버전:', Chart.version);
+                    createChart();
+                } else {
+                    console.error('Chart.js가 로드되지 않았습니다.');
+                    
+                    // 몇 초 후 다시 시도
+                    setTimeout(() => {
+                        if (typeof Chart !== 'undefined') {
+                            console.log('Chart.js 지연 로드됨');
+                            createChart();
+                        } else {
+                            document.querySelector('.chart-container').innerHTML = 
+                                '<p style="text-align:center; color:red;">Chart.js 로드에 실패했습니다. 페이지를 새로고침해주세요.</p>';
+                        }
+                    }, 2000);
+                }
+            });
+
+            // 윈도우 로드 이벤트에서도 시도
+            window.addEventListener('load', function() {
+                if (typeof Chart !== 'undefined' && !chart) {
+                    console.log('윈도우 로드에서 차트 생성 시도');
+                    createChart();
+                }
+            });
+        }
     </script>
 </body>
 </html>
