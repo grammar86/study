@@ -7,7 +7,6 @@
 
         <div class="date">마지막 로그인<span>2025-05-01 12:34</span></div>
 
-        <a href="#" class="btn-setting">셋팅</a>
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //로그인 타입 -->
@@ -81,7 +80,6 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //나의 정기 업무활동 -->
@@ -155,7 +153,6 @@
             </ul> 
         </div>
 
-        <a href="#" class="btn-setting">셋팅</a>
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //나의 업무 일정 -->
@@ -226,7 +223,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //나의 결재 업무 현황 -->
@@ -289,7 +286,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //공유 자료실 -->
@@ -343,7 +340,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //공지사항 -->
@@ -373,7 +370,7 @@
         <div class="box-cont">
             <canvas id="pieChart" width="400" height="400"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
         <script>
             $(function(){
@@ -488,7 +485,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //정기 업무활동 부서별 업무 현황 -->
@@ -559,7 +556,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //정기보안 업무 현황 -->
@@ -667,7 +664,7 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //보안평가 부서별 업무 현황 -->
@@ -739,7 +736,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //보안평가 업무 현황 -->
@@ -798,7 +795,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //보안평가 부서별 업무 현황 -->
@@ -869,7 +866,7 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //보안 예외처리 -->
@@ -887,25 +884,39 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    donutChart1();
+                },10)
+            });
+        </script>
     </div>
     <!-- //자산 보유 현황 -->
 
-    <!-- 자산 보유 현황 -->
-    <div class="dashboard-box">
-        <h2><a href="#">자산 보유 현황</a></h2>
+    <!-- 자산 분류 보안 현황 -->
+    <div class="dashboard-box" id="dashboardType14">
+        <h2><a href="#">자산 분류 보안 현황</a></h2>
 
         <div class="box-cont flex">
             <canvas id="stackedBarChart"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    stackedBarChart1();
+                },10)
+            });
+        </script>
     </div>
-    <!-- //자산 보유 현황 -->
+    <!-- //자산 분류 보안 현황 -->
 
     <!-- EoS 대상 자산 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType15">
         <h2><a href="#">EoS 대상 자산</a></h2>
         <div class="tab-list">
             <a href="#" class="on">만료</a>
@@ -963,13 +974,13 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //EoS 대상 자산 -->
 
     <!-- EoS 대상 자산 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType16">
         <h2><a href="#">EoS 대상 자산 현황</a></h2>
 
         <div class="box-cont flex">
@@ -981,13 +992,20 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    donutChart2();
+                },10)
+            });
+        </script>
     </div>
     <!-- //EoS 대상 자산 현황 -->
 
     <!-- 기술적 취약점 종합 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType17">
         <h2><a href="#">기술적 취약점 종합</a></h2>
 
         <div class="box-cont flex">
@@ -999,13 +1017,20 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    donutChart3();
+                },10)
+            });
+        </script>
     </div>
     <!-- //기술적 취약점 종합 -->
 
     <!-- 취약점 발생 상위 항목 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType18">
         <h2><a href="#">취약점 발생 상위 항목</a></h2>
 
         <div class="box-cont">
@@ -1062,13 +1087,13 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //취약점 발생 상위 항목 -->
 
     <!-- 자산별 취약점 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType19">
         <h2><a href="#">자산별 취약점 현황</a></h2>
 
         <div class="flex">
@@ -1080,13 +1105,20 @@
         <div class="box-cont flex">
             <canvas id="barChart1"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    barChart1();
+                },10)
+            });
+        </script>
     </div>
     <!-- //자산별 취약점 현황 -->
 
     <!-- 자산별 취약점 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType20">
         <h2><a href="#">자산별 취약점 현황</a></h2>
 
         <div class="flex">
@@ -1104,13 +1136,20 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    donutChart4();
+                },10)
+            });
+        </script>
     </div>
     <!-- //자산별 취약점 현황 -->
 
     <!-- 계정 등록 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType21">
         <h2><a href="#">계정 등록 현황</a></h2>
         <div class="tab-list">
             <a href="#" class="on">신규 계정</a>
@@ -1166,13 +1205,13 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //계정 등록 현황 -->
 
     <!-- 서버 계정 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType22">
         <h2><a href="#">서버 계정 현황</a></h2>
 
         <div class="box-cont flex">
@@ -1184,13 +1223,20 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    donutChart5();
+                },10)
+            });
+        </script>
     </div>
     <!-- //서버 계정 현황 -->
 
     <!-- 분류별 보안 현황 -->
-    <div class="dashboard-box h-type4">
+    <div class="dashboard-box h-type4" id="dashboardType23">
         <h2><a href="#">분류별 보안 현황</a></h2>
 
         <div class="flex">
@@ -1202,13 +1248,20 @@
         <div class="box-cont">
             <canvas id="radarChart1"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    radarChart1();
+                },10)
+            });
+        </script>
     </div>
     <!-- //분류별 보안 현황 -->
 
     <!-- 분류별 보안 현황2 -->
-    <div class="dashboard-box w-type2 h-type4">
+    <div class="dashboard-box w-type2 h-type4" id="dashboardType24">
         <h2><a href="#">분류별 보안 현황</a></h2>
 
         <div class="tab-list">
@@ -1264,13 +1317,20 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    radarChart2();
+                },10)
+            });
+        </script>
     </div>
     <!-- //분류별 보안 현황2 -->
 
     <!-- 중요도별 정보자산 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType25">
         <h2><a href="#">중요도별 정보자산 현황</a></h2>
 
         <div class="status-box">
@@ -1295,13 +1355,20 @@
         <div class="box-cont">
             <canvas id="barChart2"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    barChart2();
+                },10)
+            });
+        </script>
     </div>
     <!-- //중요도별 정보자산 현황 -->
 
     <!-- 위험도별 보안 준수 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType26">
         <h2><a href="#">위험도별 보안 준수 현황</a></h2>
 
         <div class="status-box">
@@ -1322,13 +1389,20 @@
         <div class="box-cont">
             <canvas id="barChart3"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    barChart3();
+                },10)
+            });
+        </script>
     </div>
     <!-- //중요도별 정보자산 현황 -->
 
     <!-- 전체 이벤트 알람 현황 -->
-    <div class="dashboard-box">
+    <div class="dashboard-box" id="dashboardType27">
         <h2><a href="#">전체 이벤트 알람 현황</a></h2>
 
         <div class="box-cont">
@@ -1385,14 +1459,14 @@
                 </tbody>
             </table>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
     </div>
     <!-- //전체 이벤트 알람 현황 -->
 
 
     <!-- ISMS 인증 영역별 보안수준 -->
-    <div class="dashboard-box h-type4">
+    <div class="dashboard-box h-type4" id="dashboardType28">
         <h2><a href="#">ISMS 인증 영역별 보안수준</a></h2>
 
         <div class="flex">
@@ -1417,13 +1491,21 @@
         <div class="box-cont">
             <canvas id="radarChart4"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    radarChart4();
+                },10)
+            });
+        </script>
     </div>
     <!-- //ISMS 인증 영역별 보안수준 -->
 
     <!-- ISMS 인증 영역별 보안수준2 -->
-    <div class="dashboard-box w-type2 h-type4">
+    <div class="dashboard-box w-type2 h-type4" id="dashboardType29">
         <h2><a href="#">ISMS 인증 영역별 보안수준</a></h2>
 
         <div class="tab-list">
@@ -1454,8 +1536,15 @@
         <div class="box-cont">
             <canvas id="radarChart5"></canvas>
         </div>
-        <a href="#" class="btn-setting">셋팅</a>
+        
         <a href="#" class="btn-delete">삭제</a>
+        <script>
+            $(function(){
+                setTimeout(function(){
+                    radarChart5();
+                },10)
+            });
+        </script>
     </div>
     <!-- //ISMS 인증 영역별 보안수준2 -->
 
