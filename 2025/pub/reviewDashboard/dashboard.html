@@ -90,6 +90,11 @@
                 </div>
             </div>
             <div class="list">
+                <div class="sub-tit">나의정보</div>
+                <a href="#myinfo1" class="widget" data-items="{w: 1, h:1}" data-target="./dashboard-item.html"><i></i>나의정보(small)</a>
+                <a href="#myinfo2" class="widget" data-items="{w: 1, h:2}" data-target="./dashboard-item.html"><i></i>나의정보(large)</a>
+            </div>
+            <div class="list">
                 <div class="sub-tit">바로가기</div>
                 <a href="#dashboardLink" class="widget" data-items="{w: 1, h:1}" data-target="./dashboard-item.html"><i></i>바로가기</a>
             </div>
@@ -118,12 +123,12 @@
                 <a href="#dashboardType21" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>계정 등록 현황</a>
                 <a href="#dashboardType22" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>서버 계정 현황</a>
                 <a href="#dashboardType23" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>분류별 보안 현황</a>
-                <a href="#dashboardType24" class="widget" data-items="{w: 3, h:5}" data-target="./dashboard-item.html"><i></i>분류별 보안 현황2</a>
+                <a href="#dashboardType24" class="widget" data-items="{w: 3, h:4}" data-target="./dashboard-item.html"><i></i>분류별 보안 현황2</a>
                 <a href="#dashboardType25" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>중요도별 정보자산 현황</a>
                 <a href="#dashboardType26" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>위험도별 보안 준수 현황</a>
                 <a href="#dashboardType27" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>전체 이벤트 알람 현황</a>
                 <a href="#dashboardType28" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>ISMS 인증 영역별 보안수준</a>
-                <a href="#dashboardType29" class="widget" data-items="{w: 3, h:5}" data-target="./dashboard-item.html"><i></i>ISMS 인증 영역별 보안수준</a>
+                <a href="#dashboardType29" class="widget" data-items="{w: 3, h:4}" data-target="./dashboard-item.html"><i></i>ISMS 인증 영역별 보안수준</a>
             </div>
         </div>
         <div class="right">
@@ -196,20 +201,8 @@
             disableResize:true,
             margin:4
         }
-        let list = [{w:1,h:2}];
-        list.forEach((n,i) => {
-            n.content = `
-            <div class="dashboard-box w-type1 h-type1">
-                <h2>홍길동 <span class="position">보안관리자</span></h2>
-                <p class="text">보안 관리팀</p>
 
-                <div class="date">마지막 로그인<span>2025-05-01 12:34</span></div>
-
-                <a href="#" class="btn-delete">삭제</a>
-            </div>`;
-        });
-
-        let grid = GridStack.init(opts).load(list).column(6);
+        let grid = GridStack.init(opts).column(6);
 
         /* 바로가기 갯수 파악 */
         let linkCount = 0;
@@ -312,8 +305,9 @@
                     plugins: {
                         legend: {
                             position: 'right',
+                            align: 'end',
                             labels: {
-                                padding: 20,
+                                padding: 10,
                                 font: {
                                     size: 14
                                 },

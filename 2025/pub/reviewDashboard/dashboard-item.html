@@ -1,7 +1,16 @@
 <!-- 신규 대시보드 포맷 -->
 <div class="dashboard-wrap view-mode">
-    <!-- 로그인 타입 -->
-    <div class="dashboard-box w-type1 h-type1">
+    <!-- 로그인 타입1 -->
+    <div class="dashboard-box w-type1 h-type1" id="myinfo1">
+        <h2>홍길동 <span class="position">보안관리자</span></h2>
+        <p class="text">보안 관리팀</p>
+
+        <a href="#" class="btn-delete">삭제</a>
+    </div>
+    <!-- //로그인 타입1 -->
+
+    <!-- 로그인 타입2 -->
+    <div class="dashboard-box w-type1 h-type1" id="myinfo2">
         <h2>홍길동 <span class="position">보안관리자</span></h2>
         <p class="text">보안 관리팀</p>
 
@@ -9,7 +18,7 @@
 
         <a href="#" class="btn-delete">삭제</a>
     </div>
-    <!-- //로그인 타입 -->
+    <!-- //로그인 타입2 -->
 
     <!-- 메뉴명 -->
     <div class="dashboard-box w-type1 h-type2" id="dashboardLink">
@@ -367,7 +376,10 @@
             </select>
         </div>
 
-        <div class="box-cont">
+        <div class="box-cont" style="position: relative;">
+            <div class="pieInfo">
+                <strong>62%</strong>29개중 18개 완료
+            </div>
             <canvas id="pieChart" width="400" height="400"></canvas>
         </div>
         
