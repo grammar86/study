@@ -69,17 +69,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
 </head>
 <body class="redefinition">
-    <header>
+    <div class="header">
         <div class="inner">
-            <p>보안임원</p>
+            <div class="info">
+                <p>대시보드 권한</p>
+                <select class="form-control">
+                    <option value="1">슈퍼관리자</option>
+                </select>
+            </div>
             <div class="btn-group">
-                <button><i class="ico-reset">새로고침</i></button>
-                <button><i class="ico-down">다운로드</i></button>
-                <button class="button">적용하기</button>
-                <button class="button line">나가기</button>
+                <button class="button line">취소</button>
+                <button class="button">저장</button>
             </div>
         </div>
-    </header>
+        <div class="info-text">
+            현재 <strong>슈퍼관리자</strong>에게 보이는 대시보드를 편집중입니다.
+        </div>
+    </div>
+
     <div class="container">
         <div class="left">
             <div class="sticky">
@@ -112,6 +119,7 @@
                 <a href="#dashboardType10" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>보안평가 업무 현황</a>
                 <a href="#dashboardType11" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>보안평가 부서별 업무 현황</a>
                 <a href="#dashboardType12" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>보안 예외처리</a>
+                <a href="#dashboardType30" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>신규 자산목록</a>
                 <a href="#dashboardType13" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>자산 보유 현황</a>
                 <a href="#dashboardType14" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>자산 분류 보안 현황</a>
                 <a href="#dashboardType15" class="widget" data-items="{w: 2, h:4}" data-target="./dashboard-item.html"><i></i>EoS 대상 자산</a>
