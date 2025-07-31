@@ -162,7 +162,17 @@
                     <p class="text">보안교육 예산 신청</p>
                     <p class="date">종일</p>
                 </li>
+                <li>
+                    <p class="text">보안교육 예산 신청</p>
+                    <p class="date">종일</p>
+                </li>
+                <li>
+                    <p class="text">보안교육 예산 신청</p>
+                    <p class="date">종일</p>
+                </li>
             </ul> 
+            <!-- 5개 이상일 때 노출되어야 합니다. -->
+            <a href="#" class="btn-more">더보기</a>
         </div>
 
         <a href="#" class="btn-delete">삭제</a>
@@ -363,19 +373,10 @@
 
         <div class="flex">
             <select class="form-control">
-                <option value="1">구분</option>
+                <option value="1">2025년</option>
             </select>
             <select class="form-control">
-                <option value="1">구분</option>
-            </select>
-            <select class="form-control">
-                <option value="1">구분</option>
-            </select>
-        </div>
-
-        <div class="flex">
-            <select class="form-control">
-                <option value="1">구분</option>
+                <option value="1">정보보안</option>
             </select>
         </div>
 
@@ -543,29 +544,29 @@
                 <thead>
                     <tr>
                         <th scope="col">활동구분</th>
-                        <th scope="col">D-day</th>
+                        <th scope="col">건수</th>
                         <th scope="col">상태</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>2</td>
                         <td><span class="circle type4">지연</span></td>
                     </tr>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>20</td>
                         <td><span class="circle type5">임박</span></td>
                     </tr>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>10</td>
                         <td><span class="circle type4">지연</span></td>
                     </tr>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>15 </td>
                         <td><span class="circle type5">임박</span></td>
                     </tr>
                 </tbody>
@@ -699,15 +700,15 @@
                 <p class="num">50</p>
             </div>
             <div>
-                <p class="tit">임박</p>
+                <p class="tit">진행중</p>
                 <p class="num">50</p>
             </div>
             <div>
-                <p class="tit">지연</p>
+                <p class="tit">반려</p>
                 <p class="num">50</p>
             </div>
             <div>
-                <p class="tit">완료</p>
+                <p class="tit">승인완료</p>
                 <p class="num">50</p>
             </div>
         </div>
@@ -723,29 +724,29 @@
                 <thead>
                     <tr>
                         <th scope="col">평가제목</th>
-                        <th scope="col">D-day</th>
+                        <th scope="col">건수</th>
                         <th scope="col">상태</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>2</td>
                         <td><span class="circle type4">지연</span></td>
                     </tr>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>20</td>
                         <td><span class="circle type5">임박</span></td>
                     </tr>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>15</td>
                         <td><span class="circle type4">지연</span></td>
                     </tr>
                     <tr>
                         <td><p class="ellipsis">외부업체 접근 권한 신청</p></td>
-                        <td>D+2</td>
+                        <td>20</td>
                         <td><span class="circle type5">임박</span></td>
                     </tr>
                 </tbody>
@@ -888,10 +889,10 @@
 
     <!-- 신규 자산목록 -->
     <div class="dashboard-box" id="dashboardType30">
-        <h2><a href="#">신규 자산목록</a></h2>
+        <h2><a href="#">신규 자산 목록</a></h2>
         <div class="box-cont">
             <table class="dashboard-table">
-                <caption>신규 자산목록</caption>
+                <caption>신규 자산 목록</caption>
                 <colgroup>
                     <col style="width:93px;">
                     <col>
@@ -902,53 +903,30 @@
                     <tr>
                         <th scope="col">등록일자</th>
                         <th scope="col">자산명</th>
-                        <th scope="col">문서등급</th>
+                        <th scope="col">자산구분</th>
                         <th scope="col">보안등급</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>06-01</td>
-                        <td>이지훈</td>
                         <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                        <td><span class="label type2">중</span></td>
                         <td><span class="label type1">위험</span></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
-                        <td>이지훈</td>
                         <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
-                        <td><span class="label type2">진행</span></td>
-                    </tr>
-                    <tr>
-                        <td>06-01</td>
-                        <td>이지훈</td>
-                        <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                        <td><span class="label type3">하</span></td>
                         <td><span class="label type3">양호</span></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
-                        <td>이지훈</td>
                         <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
-                        <td><span class="label type1">위험</span></td>
-                    </tr>
-                    <tr>
-                        <td>06-01</td>
-                        <td>이지훈</td>
-                        <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
-                        <td><span class="label type2">진행</span></td>
-                    </tr>
-                    <tr>
-                        <td>06-01</td>
-                        <td>이지훈</td>
-                        <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
+                        <td><span class="label type1">상</span></td>
                         <td><span class="label type3">양호</span></td>
                     </tr>
-                    <tr>
-                        <td>06-01</td>
-                        <td>이지훈</td>
-                        <td><p class="ellipsis">정보보호 및 개인정보보호 정책 점검정보보호 및 개인정보보호 정책 점검</p></td>
-                        <td><span class="label type3">양호</span></td>
-                    </tr>
+                    < 
                 </tbody>
             </table>
         </div>
@@ -1022,6 +1000,7 @@
                 <thead>
                     <tr>
                         <th scope="col">EoS 날짜</th>
+                        <th scope="col">자산구분</th>
                         <th scope="col">D-Day</th>
                         <th scope="col">자산명</th>
                     </tr>
@@ -1029,31 +1008,37 @@
                 <tbody>
                     <tr>
                         <td>06-01</td>
+                        <td>자산구분</td>
                         <td>D+3</td>
                         <td><p class="ellipsis">EoS 대상 자산</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
+                        <td>자산구분</td>
                         <td>D+3</td>
                         <td><p class="ellipsis">EoS 대상 자산</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
+                        <td>자산구분</td>
                         <td>D+3</td>
                         <td><p class="ellipsis">EoS 대상 자산</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
+                        <td>자산구분</td>
                         <td>D+3</td>
                         <td><p class="ellipsis">EoS 대상 자산</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
+                        <td>자산구분</td>
                         <td>D+3</td>
                         <td><p class="ellipsis">EoS 대상 자산</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
+                        <td>자산구분</td> 
                         <td>D+3</td>
                         <td><p class="ellipsis">EoS 대상 자산</p></td>
                     </tr>
@@ -1254,7 +1239,7 @@
                 <thead>
                     <tr>
                         <th scope="col">등록일자</th>
-                        <th scope="col">자산</th>
+                        <th scope="col">호스트명</th>
                         <th scope="col">IP</th>
                         <th scope="col">계정</th>
                     </tr>
@@ -1313,7 +1298,7 @@
                 <canvas id="donutChart5" width="400" height="400"></canvas>
                 <div class="center-text" style="margin-left:-50px;">
                     <h2 id="totalValue">999</h2>
-                    <p>전체 자산</p>
+                    <p>전체 계정</p>
                 </div>
             </div>
         </div>
@@ -1506,12 +1491,14 @@
                     <col style="width:95px;">
                     <col style="width:75px;">
                     <col>
+                    <col>
                 </colgroup>
                 <thead>
                     <tr>
                         <th scope="col">점검일자</th>
                         <th scope="col">심각도</th>
                         <th scope="col">호스트(IP)</th>
+                        <th scope="col">내용</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1519,36 +1506,43 @@
                         <td>06-01</td>
                         <td><span class="circle type4">심각한</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
                         <td><span class="circle type5">경고</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
                         <td><span class="circle type3">가벼운</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
                         <td><span class="circle type4">심각한</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
                         <td><span class="circle type5">경고</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
                         <td><span class="circle type3">가벼운</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                     <tr>
                         <td>06-01</td>
                         <td><span class="circle type3">가벼운</span></td>
                         <td><p class="ellipsis">securise_test01</p></td>
+                        <td><p class="ellipsis">내용내용</p></td>
                     </tr>
                 </tbody>
             </table>

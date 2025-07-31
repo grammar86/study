@@ -95,6 +95,7 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap .dashboard-box .list li .text { display: flex; color:var(--text-color3); color:var(--text-color2); line-height: 1.5;}
 .dashboard-wrap .dashboard-box .list li .text:before { content:''; display: block; width:3px; height:3px; margin-right:8px; margin-top:7px; border-radius: 50%; background:var(--text-color2);}
 .dashboard-wrap .dashboard-box .list li .date { flex:0 0 auto; margin-left:auto; font-size:14px; color:var(--text-color3);}
+.dashboard-wrap .dashboard-box .list + .btn-more { display: block; height:22px; line-height: 22px; margin-top:auto; justify-content: center; text-align: center; font-size:14px; color:rgba(22, 119, 255, 1); text-decoration: underline;}
 
 .dashboard-wrap .dashboard-box .tab-list { display: flex; margin:0 0 10px; border-radius: 6px; }
 .dashboard-wrap .dashboard-box .tab-list a { flex:1 1 auto; height:32px; border:1px solid var(--line-bg); line-height: 32px; color:var(--text-color2); text-align: center;}
