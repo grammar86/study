@@ -1,4 +1,8 @@
 body.redefinition { min-width:1780px; background:#E5E7EB;}
+
+#container .redefinition .header { position:fixed; top:112px; left:0; width:100%; border-top:1px solid var(--line-bg);}
+#container .redefinition .container { margin-top:72px;}
+
 .redefinition .header { position:sticky; top:0; z-index:10; height:92px; border-bottom:2px solid #E5E7EB; background:var(--bg4); }
 .redefinition .header .inner { display: flex; height:56px; padding:0 34px; align-items: center;}
 .redefinition .header .info { display: flex; align-items: center;}
@@ -41,6 +45,10 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap.view-mode .dashboard-box.w-type2 { width:calc(50% - 16px);}
 
 .dashboard-wrap { display: flex; flex-wrap: wrap; }
+
+.dashboard-wrap .grid-stack-item-content { border-radius: 12px; box-shadow: 0px 1px 2px 0px #0000000F, 0px 1px 3px 0px #0000001A;}
+.dashboard-wrap .grid-stack-item-content .dashboard-box { box-shadow: none;}
+
 .dashboard-wrap .dashboard-box { display:flex; flex-flow: column; position:relative; height:100%; border-radius: 12px; padding:20px; box-shadow: 0px 1px 2px 0px #0000000F, 0px 1px 3px 0px #0000001A; background:var(--bg4);}
 .dashboard-wrap .dashboard-box h2 { flex:0 0 auto; margin-bottom:12px; font-size:20px; font-weight:600; color:var(--text-color2); line-height: 1.5;}
 .dashboard-wrap .dashboard-box h2 a { color:var(--text-color2);}
@@ -70,7 +78,9 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap .dashboard-box .dashboard-table { width:100%; table-layout: fixed;}
 .dashboard-wrap .dashboard-box .dashboard-table caption { overflow: hidden; position:absolute; top:0; left:0; width:0; height:0; font-size:0; }
 .dashboard-wrap .dashboard-box .dashboard-table th { height:38px; padding:0 8px; border-bottom:1px solid var(--line-bg4); font-size:14px; font-weight: 600; color:var(--text-color2); background:rgba(0,0,0,0.02);}
-.dashboard-wrap .dashboard-box .dashboard-table td { padding:8px; border-bottom:1px solid var(--line-bg4); font-size:14px; line-height:1.5; color:var(--text-color2);}
+.dashboard-wrap .dashboard-box .dashboard-table td { padding:16px 8px; border-bottom:1px solid var(--line-bg4); font-size:14px; line-height:1.5; color:var(--text-color2);}
+.dashboard-wrap .dashboard-box .dashboard-table.p-type1 td { padding:8px;}
+.dashboard-wrap .dashboard-box .dashboard-table.p-type2 td { padding:11px 8px;}
 
 .dashboard-wrap .dashboard-box .date-calendar { position:relative; margin:8px 16px 0;}
 .dashboard-wrap .dashboard-box .date-calendar .date { display: flex; margin:0 36px; padding:0;}
@@ -95,13 +105,22 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap .dashboard-box .list li .text { display: flex; color:var(--text-color3); color:var(--text-color2); line-height: 1.5;}
 .dashboard-wrap .dashboard-box .list li .text:before { content:''; display: block; width:3px; height:3px; margin-right:8px; margin-top:7px; border-radius: 50%; background:var(--text-color2);}
 .dashboard-wrap .dashboard-box .list li .date { flex:0 0 auto; margin-left:auto; font-size:14px; color:var(--text-color3);}
-.dashboard-wrap .dashboard-box .list + .btn-more { display: block; height:22px; line-height: 22px; margin-top:auto; justify-content: center; text-align: center; font-size:14px; color:rgba(22, 119, 255, 1); text-decoration: underline;}
+.dashboard-wrap .dashboard-box .list + .btn-more { margin-top:auto;}
+.dashboard-wrap .dashboard-box .btn-more { display: block; height:22px; line-height: 22px; margin-top:15px; justify-content: center; text-align: center; font-size:14px; color:rgba(22, 119, 255, 1); text-decoration: underline;}
 
 .dashboard-wrap .dashboard-box .tab-list { display: flex; margin:0 0 10px; border-radius: 6px; }
 .dashboard-wrap .dashboard-box .tab-list a { flex:1 1 auto; height:32px; border:1px solid var(--line-bg); line-height: 32px; color:var(--text-color2); text-align: center;}
 .dashboard-wrap .dashboard-box .tab-list a:first-child { border-radius: 6px 0 0 6px;}
 .dashboard-wrap .dashboard-box .tab-list a:last-child { border-radius: 0 6px 6px 0;}
 .dashboard-wrap .dashboard-box .tab-list a.on { border:1px solid #1677FF; box-shadow: 0px 1px 2px 0px #0000000D; color:#1677FF; background:var(--bg4);}
+
+.dashboard-wrap .dashboard-box .tab-list.type2 a { height:auto; padding:6.5px 15px; text-align: left; font-size:12px; line-height: 1.5;}
+.dashboard-wrap .dashboard-box .tab-list.type2 a .sub-text { margin-top:6px; font-size:16px; color:var(--text-color3);}
+.dashboard-wrap .dashboard-box .tab-list.type2 a .sub-text .number { color:var(--text-color2); font-weight: bold;}
+
+.dashboard-wrap .dashboard-box .tab-list.style-type2 { border-bottom:1px solid var(--line-bg)}
+.dashboard-wrap .dashboard-box .tab-list.style-type2 a { position:relative; flex:0 0 auto; border:0; padding:0 10px;}
+.dashboard-wrap .dashboard-box .tab-list.style-type2 a.on:after { content:''; display: block; position:absolute; bottom:-1px; left:0; width:100%; height:2px; background:#1677FF;}
 
 .dashboard-wrap .dashboard-box .label { display: inline-flex; height:22px; padding:0 8px; border-radius: 4px; font-size:12px; align-items: center;}
 .dashboard-wrap .dashboard-box .label.type1 { border:1px solid #FFCCC7; color:#FF4D4F; background:var(--bg4);}
@@ -162,7 +181,7 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap .dashboard-box .chart-container { position: relative; width: 100%; margin:auto;}
 .dashboard-wrap .dashboard-box .chart-container canvas { height: 224px;}
 .dashboard-wrap .dashboard-box .center-text { position: absolute; top: 50%; left:50%; margin-left:-55px; transform: translate(-50%, -50%); text-align: center; pointer-events: none;}
-.dashboard-wrap .dashboard-box .center-text h2 { margin: 0; font-size:30px; color: var(--text-color2); font-weight: bold;}
+.dashboard-wrap .dashboard-box .center-text h2 { margin: 0; font-size:40px; line-height: 1.2; color: var(--text-color2); font-weight: bold;}
 .dashboard-wrap .dashboard-box .center-text p { margin: 5px 0 0 0; font-size:14px; color: var(--text-color2);}
 
 .dashboard-wrap .dashboard-box .user-img { display: block; overflow: hidden; width:32px; height:32px; border-radius: 50%;}
