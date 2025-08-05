@@ -73,6 +73,16 @@
                 <div class="logo">
                     <h1><a href="/main.do"><i class="logo">PS&amp;M</i></a></h1>
                 </div>
+                <button class="button line" onclick="tabStyle();">tab스타일변경</button>
+                <!-- 스타일 변환용 스크립트 추가 (임시) -->
+                <script>
+                    const tabStyle = () => {
+
+                        $('.tab-list').each(function(){
+                            if(!$(this).hasClass('type2')) $(this).toggleClass('style-type2');
+                        });
+                    }
+                </script>
             </div>
         </div>
     </header>
