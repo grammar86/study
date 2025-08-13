@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+<title>circle 테스트</title>
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: Arial, sans-serif;
+		background: #f5f5f5;
+	}
+	
+	.scroll-box { 
+		overflow-x: auto; 
+		overflow-y: hidden; 
+		width: 1200px; 
+		margin: 50px auto; 
+		border: 1px solid #000; 
+		cursor: pointer; 
+		scroll-snap-type: x proximity; 
+		scroll-behavior: smooth;
+		scrollbar-width: none; 
+		-ms-overflow-style: none;
+		background: white;
+	}
+	
+	.scroll-box::-webkit-scrollbar {
+		display: none;
+	}
+	
+	.scroll-box ul { 
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	
+	.scroll-box ul li {
+		scroll-snap-align: start;
+		flex: 0 0 auto;
+		padding: 10px;
+	}
+	
+	.scroll-box ul li img {
+		width: 350px;
+		height: 350px;
+		object-fit: cover;
+		display: block;
+		border: 1px solid #ddd;
+		-webkit-user-drag: none;
+		-khtml-user-drag: none;
+		-moz-user-drag: none;
+		-o-user-drag: none;
+		user-drag: none;
+	}
+	
+	/* 커스텀 스크롤바 스타일 */
+	.custom-scrollbar {
+		width: 600px;
+		height: 10px;
+		margin: 10px auto 50px auto;
+		position: relative;
+		background: #f0f0f0;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	
+	.scrollbar-track {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		border-radius: 5px;
+	}
+	
+	.scrollbar-thumb {
+		height: 100%;
+		background: linear-gradient(90deg, #666, #999);
+		border-radius: 5px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		cursor: grab;
+		transition: background 0.2s ease;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+		min-width: 15px;
+	}
+	
+	.scrollbar-thumb:hover {
+		background: linear-gradient(90deg, #555, #888);
+	}
+	
+	.scrollbar-thumb:active,
+	.scrollbar-thumb.active {
+		cursor: grabbing;
+		background: linear-gradient(90deg, #444, #777);
+	}
+	
+	.scroll-wrap {
+		position: relative;
+	}
+</style>
+</head>
+<body>
+	<div class="scroll-wrap">
+		<div class="scroll-box">
+			<ul>
+				<li><img alt="제품명 1" src="https://picsum.photos/350/350?random=1" /></li>
+				<li><img alt="제품명 2" src="https://picsum.photos/350/350?random=2" /></li>
+				<li><img alt="제품명 3" src="https://picsum.photos/350/350?random=3" /></li>
+				<li><img alt="제품명 4" src="https://picsum.photos/350/350?random=4" /></li>
+				<li><img alt="제품명 5" src="https://picsum.photos/350/350?random=5" /></li>
+				<li><img alt="제품명 6" src="https://picsum.photos/350/350?random=6" /></li>
+				<li><img alt="제품명 7" src="https://picsum.photos/350/350?random=7" /></li>
+				<li><img alt="제품명 8" src="https://picsum.photos/350/350?random=8" /></li>
+				<li><img alt="제품명 9" src="https://picsum.photos/350/350?random=9" /></li>
+				<li><img alt="제품명 10" src="https://picsum.photos/350/350?random=10" /></li>
+				<li><img alt="제품명 11" src="https://picsum.photos/350/350?random=11" /></li>
+				<li><img alt="제품명 12" src="https://picsum.photos/350/350?random=12" /></li>
+				<li><img alt="제품명 13" src="https://picsum.photos/350/350?random=13" /></li>
+				<li><img alt="제품명 14" src="https://picsum.photos/350/350?random=14" /></li>
+				<li><img alt="제품명 15" src="https://picsum.photos/350/350?random=15" /></li>
+			</ul>
+		</div>
+		
+		<!-- 커스텀 스크롤바 -->
+		<div class="custom-scrollbar">
+			<div class="scrollbar-track">
+				<div class="scrollbar-thumb"></div>
+			</div>
+		</div>
+	</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+	const scrollBox = document.querySelector('.scroll-box');
+	const customScrollbar = document.querySelector('.custom-scrollbar');
+	const scrollbarThumb = document.querySelector('.scrollbar-thumb');
+	
+	// 기존 드래그 스크롤 변수
+	let mouseon = false;
+	let mousestart = 0;
+	let scrollLeft = 0;
+	
+	// 커스텀 스크롤바 변수
+	let isScrollbarDragging = false;
+	let scrollbarStartX = 0;
+	let scrollbarStartLeft = 0;
+	
+	// 애니메이션 함수 (jQuery animate 대체)
+	function animateScrollLeft(element, targetScrollLeft, duration) {
+		const startScrollLeft = element.scrollLeft;
+		const change = targetScrollLeft - startScrollLeft;
+		const startTime = performance.now();
+		
+		function easeInOutQuad(t) {
+			return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+		}
+		
+		function animate(currentTime) {
+			const elapsed = currentTime - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			
+			element.scrollLeft = startScrollLeft + change * easeInOutQuad(progress);
+			
+			if (progress < 1) {
+				requestAnimationFrame(animate);
+			}
+		}
+		
+		requestAnimationFrame(animate);
+	}
+	
+	// 스크롤바 초기화 함수
+	function initScrollbar() {
+		if (!scrollBox) return;
+		
+		const scrollWidth = scrollBox.scrollWidth;
+		const clientWidth = scrollBox.clientWidth;
+		const trackWidth = customScrollbar.offsetWidth;
+		
+		// 스크롤이 필요한지 확인
+		if (scrollWidth <= clientWidth) {
+			customScrollbar.style.display = 'none';
+			return;
+		} else {
+			customScrollbar.style.display = 'block';
+		}
+		
+		// 스크롤바 핸들 크기 계산
+		const thumbWidth = Math.max((clientWidth / scrollWidth) * trackWidth, 15);
+		scrollbarThumb.style.width = thumbWidth + 'px';
+		
+		// 스크롤바 위치 업데이트
+		updateScrollbarPosition();
+	}
+	
+	// 스크롤바 위치 업데이트 함수
+	function updateScrollbarPosition() {
+		if (!scrollBox) return;
+		
+		const currentScrollLeft = scrollBox.scrollLeft;
+		const maxScrollLeft = scrollBox.scrollWidth - scrollBox.clientWidth;
+		const trackWidth = customScrollbar.offsetWidth;
+		const thumbWidth = scrollbarThumb.offsetWidth;
+		
+		if (maxScrollLeft > 0) {
+			const thumbPosition = (currentScrollLeft / maxScrollLeft) * (trackWidth - thumbWidth);
+			scrollbarThumb.style.left = thumbPosition + 'px';
+		}
+	}
+	
+	// 스크롤바 클릭으로 스크롤 이동
+	function scrollToPosition(clickX) {
+		const trackWidth = customScrollbar.offsetWidth;
+		const thumbWidth = scrollbarThumb.offsetWidth;
+		const maxScrollLeft = scrollBox.scrollWidth - scrollBox.clientWidth;
+		
+		const clickRatio = Math.max(0, Math.min(1, (clickX - thumbWidth/2) / (trackWidth - thumbWidth)));
+		const newScrollLeft = clickRatio * maxScrollLeft;
+		
+		animateScrollLeft(scrollBox, newScrollLeft, 200);
+	}
+	
+	// 이미지 로드 완료 후 스크롤바 초기화
+	let loadedImages = 0;
+	const images = scrollBox.querySelectorAll('img');
+	const totalImages = images.length;
+	
+	images.forEach(function(img) {
+		img.addEventListener('load', function() {
+			loadedImages++;
+			if (loadedImages === totalImages) {
+				setTimeout(initScrollbar, 100);
+			}
+		});
+		
+		img.addEventListener('error', function() {
+			loadedImages++;
+			if (loadedImages === totalImages) {
+				setTimeout(initScrollbar, 100);
+			}
+		});
+	});
+	
+	// 타이머로도 초기화 (fallback)
+	setTimeout(initScrollbar, 1000);
+	
+	// 윈도우 리사이즈 시 스크롤바 재초기화
+	window.addEventListener('resize', function() {
+		setTimeout(initScrollbar, 100);
+	});
+	
+	// 실제 스크롤 시 스크롤바 위치 업데이트
+	scrollBox.addEventListener('scroll', function() {
+		if (!isScrollbarDragging) {
+			updateScrollbarPosition();
+		}
+	});
+	
+	// 기존 마우스 드래그 스크롤 기능
+	scrollBox.addEventListener('mousedown', function(e) {
+		if (!isScrollbarDragging) {
+			scrollLeft = scrollBox.scrollLeft;
+			mouseon = true;
+			scrollBox.style.cursor = 'grabbing';
+			e.preventDefault();
+		}
+	});
+	
+	document.addEventListener('mousemove', function(e) {
+		if (mouseon && !isScrollbarDragging) {
+			mousestart == 0 ? mousestart = e.pageX : mousestart;
+			scrollBox.scrollLeft = scrollLeft + (mousestart - e.pageX);
+		}
+		
+		// 스크롤바 드래그 중
+		if (isScrollbarDragging) {
+			e.preventDefault();
+			const deltaX = e.clientX - scrollbarStartX;
+			const trackWidth = customScrollbar.offsetWidth;
+			const thumbWidth = scrollbarThumb.offsetWidth;
+			const maxThumbLeft = trackWidth - thumbWidth;
+			
+			let newThumbLeft = scrollbarStartLeft + deltaX;
+			newThumbLeft = Math.max(0, Math.min(maxThumbLeft, newThumbLeft));
+			
+			scrollbarThumb.style.left = newThumbLeft + 'px';
+			
+			// 실제 스크롤 위치 계산 및 적용
+			const maxScrollLeft = scrollBox.scrollWidth - scrollBox.clientWidth;
+			const scrollRatio = maxThumbLeft > 0 ? newThumbLeft / maxThumbLeft : 0;
+			const newScrollLeft = scrollRatio * maxScrollLeft;
+			
+			scrollBox.scrollLeft = newScrollLeft;
+		}
+	});
+	
+	document.addEventListener('mouseup', function(e) {
+		if (mouseon) {
+			mouseon = false;
+			scrollBox.style.cursor = 'pointer';
+			if (mousestart !== 0 && Math.abs(e.pageX - mousestart) > 150) {
+				// 필요시 추가 로직
+			}
+			mousestart = 0;
+		}
+		
+		if (isScrollbarDragging) {
+			isScrollbarDragging = false;
+			scrollbarThumb.classList.remove('active');
+		}
+	});
+	
+	// 커스텀 스크롤바 트랙 클릭 이벤트
+	customScrollbar.addEventListener('mousedown', function(e) {
+		e.preventDefault();
+		const rect = this.getBoundingClientRect();
+		const clickX = e.clientX - rect.left;
+		const thumbRect = scrollbarThumb.getBoundingClientRect();
+		const thumbLeft = thumbRect.left - rect.left;
+		const thumbRight = thumbLeft + scrollbarThumb.offsetWidth;
+		
+		// 스크롤바 핸들 영역이 아닌 트랙을 클릭한 경우
+		if (clickX < thumbLeft || clickX > thumbRight) {
+			scrollToPosition(clickX);
+		}
+	});
+	
+	// 스크롤바 핸들 드래그 시작
+	scrollbarThumb.addEventListener('mousedown', function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		isScrollbarDragging = true;
+		scrollbarStartX = e.clientX;
+		scrollbarStartLeft = parseFloat(scrollbarThumb.style.left) || 0;
+		scrollbarThumb.classList.add('active');
+	});
+});
+</script>
+</body>
+</html>
