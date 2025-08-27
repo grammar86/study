@@ -1520,27 +1520,13 @@
     <div class="dashboard-box h-type4" id="dashboardType28">
         <h2><a href="#">ISMS 인증 영역별 보안수준</a></h2>
 
-        <div class="flex">
-            <div>
-                <p class="label color1">
-                    <i></i>기준년도
-                </p>
-                <select class="form-control">
-                    <option value="1">2025</option>
-                </select>
-            </div>
-            <div>
-                <p class="label color2">
-                    <i></i>비교년도
-                </p>
-                <select class="form-control">
-                    <option value="1">2024</option>
-                </select>
-            </div>
+        <div>
+            <a href="#" class="text-link">2025년 ISMS 정보보호관리 체계<i class="ico-text-link"></i></a>
         </div>
+
         <div class="flex">
             <select class="form-control">
-                <option value="1">2025</option>
+                <option value="1">개인정보 처리 단계별 요구사항</option>
             </select>
         </div>
 
@@ -1548,6 +1534,7 @@
             <canvas id="radarChart4"></canvas>
         </div>
         
+        <a href="#dashboardModal28" class="btn-setting">셋팅</a>
         <a href="#" class="btn-delete">삭제</a>
 
         <script>
@@ -1564,35 +1551,46 @@
     <div class="dashboard-box w-type2" id="dashboardType29">
         <h2><a href="#">ISMS 인증 영역별 보안수준</a></h2>
 
-        <div class="tab-list">
-            <a href="#" class="on">전체</a>
-            <a href="#">관리체계 수립 및 운영</a>
-            <a href="#">보호대책 요구사항</a>
+        <div class="flex">
+            <select class="form-control">
+                <option value="1">개인정보 처리 단계별 요구사항</option>
+            </select>
         </div>
 
-        <div class="flex position-left-bottom">
-            <div>
-                <p class="label color1">
-                    <i></i>기준년도
-                </p>
-                <select class="form-control">
-                    <option value="1">2025</option>
-                </select>
+        <div class="flex">
+            <div style="width:60%;">
+                <canvas id="radarChart5" height="280"></canvas>
             </div>
-            <div>
-                <p class="label color2">
-                    <i></i>비교년도
-                </p>
-                <select class="form-control">
-                    <option value="1">2024</option>
-                </select>
+            <div style="width:40%;">
+                <div>
+                    <a href="#" class="label color3">
+                        <i></i>2025년 ISMS 정보보호관리 체계<i class="ico-text-link"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="label color4">
+                        <i></i>2024년 ISMS 정보보호관리 체계<i class="ico-text-link"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="label color5">
+                        <i></i>2023년 ISMS 정보보호관리 체계<i class="ico-text-link"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="label color6">
+                        <i></i>2022년 ISMS 정보보호관리 체계<i class="ico-text-link"></i>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="label color7">
+                        <i></i>2021년 ISMS 정보보호관리 체계<i class="ico-text-link"></i>
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="box-cont">
-            <canvas id="radarChart5"></canvas>
-        </div>
-        
+        <a href="#dashboardModal29" class="btn-setting">셋팅</a>
         <a href="#" class="btn-delete">삭제</a>
         <script>
             $(function(){

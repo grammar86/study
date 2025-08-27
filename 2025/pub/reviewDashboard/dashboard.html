@@ -11904,7 +11904,7 @@
     
 
 
-    <!-- 팝업 부분 -->
+     <!-- 팝업 부분 -->
     <script>
         $(function(){
             $(document).on('click','.dashboard-wrap .btn-setting',function(){
@@ -11948,6 +11948,190 @@
                     <div class="right">
                         <button type="button" class="btn btn-sm">취소</button>
                         <button type="button" class="btn btn-sm btn-info">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 2025-08-27 팝업 2종 추가 -->
+    <div class="modal fade" id="dashboardModal28">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h6 class="modal-title">프로젝트 선택</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body --> 
+                <div class="modal-body">
+
+                    <div class="tit-box">
+                        <h3>프로젝트 비교 설정</h3>
+                    </div>
+                    <div class="search-box">
+                        <form class="form-inline searchForm" name="searchForm" method="post" style="display: flex; width:100%; flex-wrap: nowrap;">
+                            <div class="form-group px-1">
+                                <select class="form-control" name="sectypecd">
+                                    <option value="">평가기준</option>
+                                </select>
+                            </div>
+                            <div class="form-group px-1">
+                                <select class="form-control" name="sectypecd">
+                                    <option value="">년도</option>
+                                </select>
+                            </div>
+                            <div class="form-group px-1" style="flex:1 1 auto;">
+                                <input type="text" class="form-control " name="evatitle" placeholder="제목/내용 입력" maxlength="30" value="">
+                                <!-- <button type="submit" class="btn btn-search2"><i>조회</i></button> -->
+                            </div>
+
+                            <button type="button" class="btn btn-info">조회</button>
+                        </form>
+                    </div>
+
+                    <table class="table table-white dashboard-table">
+                        <colgroup> 
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">평가기준</th>
+                                <th scope="col">기준년도</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">조직</th>
+                                <th scope="col">진단등급</th>
+                                <th scope="col">진행률</th>
+                                <th scope="col">액션</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ISMS</td>
+                                <td>2025년</td>
+                                <td>2025년 ISMS 정보보호관리 체계</td>
+                                <td>테크에스지</td>
+                                <td>양호</td>
+                                <td>100%</td>
+                                <td><button>선택</button></td>
+                            </tr>
+                            <tr>
+                                <td>ISMS</td>
+                                <td>2025년</td>
+                                <td>2025년 ISMS 정보보호관리 체계</td>
+                                <td>테크에스지</td>
+                                <td>양호</td>
+                                <td>100%</td>
+                                <td><button>선택</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer type2">
+                    <div class="right">
+                        <button type="button" class="btn btn-sm">닫기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal fade" id="dashboardModal29">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h6 class="modal-title">프로젝트 비교 설정</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+
+                    <div class="tit-box">
+                        <h3>프로젝트 비교 설정</h3>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-gray btn-sm btn-lg">프로젝트 추가</a>
+                        </div>
+                    </div>
+
+                    <table class="table table-white dashboard-table">
+                        <colgroup> 
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                            <col >
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col"><input type="checkbox" /></th>
+                                <th scope="col">평가기준</th>
+                                <th scope="col">기준년도</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">액션</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>ISMS</td>
+                                <td>2025년</td>
+                                <td>2025년 ISMS 정보보호관리 체계</td>
+                                <td>
+                                    <button>삭제</button>
+                                    <button class="ml-2">수정</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>ISMS</td>
+                                <td>2025년</td>
+                                <td>2025년 ISMS 정보보호관리 체계</td>
+                                <td>
+                                    <button>삭제</button>
+                                    <button class="ml-2">수정</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>ISMS</td>
+                                <td>2025년</td>
+                                <td>2025년 ISMS 정보보호관리 체계</td>
+                                <td>
+                                    <button>삭제</button>
+                                    <button class="ml-2">수정</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>ISMS</td>
+                                <td>2025년</td>
+                                <td>2025년 ISMS 정보보호관리 체계</td>
+                                <td>
+                                    <button>삭제</button>
+                                    <button class="ml-2">수정</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-1" style="color:var(--text-color3); font-size:12px;">※ 평가 기준이 다르면 비교 할 수 없습니다.</p>
+
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer type2">
+                    <div class="right">
+                        <button type="button" class="btn btn-sm btn-info">저장</button>
+                        <button type="button" class="btn btn-sm">닫기</button>
                     </div>
                 </div>
             </div>
@@ -12056,7 +12240,7 @@
                         '#4BC0C0',
                         '#9966FF'
                     ],
-                    borderWidth: 2,
+                    borderWidth: 0,
                     borderColor: '#fff'
                 }]
             };
@@ -12072,7 +12256,6 @@
                     plugins: {
                         legend: {
                             position: 'right',
-                            align: 'end',
                             labels: {
                                 padding: 10,
                                 font: {
@@ -12160,7 +12343,7 @@
                         '#F759AB',
                         '#FFC53D'
                     ],
-                    borderWidth: 2,
+                    borderWidth: 0,
                     hoverOffset: 10
                 }]
             };
@@ -12216,17 +12399,16 @@
         const donutChart2 = function(){
             // 차트 데이터
             const data = {
-                labels: ['만료', '7일 이내', '30일 이내', '90일 이내', '180일 이내'],
+                labels: ['만료', '7일 이내', '30일 이내', '90일 이내'],
                 datasets: [{
-                    data: [30, 25, 20, 15, 10],
+                    data: [30, 25, 20, 15],
                     backgroundColor: [
+                        '#002C8C',
                         '#0958D9',
-                        '#1677FF',
                         '#4096FF',
-                        '#69B1FF',
-                        '#69B1FF'
+                        '#91CAFF',
                     ],
-                    borderWidth: 2,
+                    borderWidth: 0,
                     hoverOffset: 10
                 }]
             };
@@ -12290,7 +12472,7 @@
                         '#FFC53D',
                         '#FF4D4F',
                     ],
-                    borderWidth: 2,
+                    borderWidth: 0,
                     hoverOffset: 10
                 }]
             };
@@ -12346,16 +12528,15 @@
         const donutChart4 = function(){
             // 차트 데이터
             const data = {
-                labels: ['양호', '경고', '취약','해당없음'],
+                labels: ['양호', '경고', '취약'],
                 datasets: [{
-                    data: [30, 25, 20, 10],
+                    data: [30, 25, 20],
                     backgroundColor: [
                         '#73D13D',
                         '#FFC53D',
-                        '#FF4D4F',
-                        '#C1C1C1'
+                        '#FF4D4F'
                     ],
-                    borderWidth: 2,
+                    borderWidth: 0,
                     hoverOffset: 10
                 }]
             };
@@ -12411,16 +12592,15 @@
         const donutChart5 = function(){
             // 차트 데이터
             const data = {
-                labels: ['정상', '7일이내', '만료','해당없음'],
+                labels: ['정상', '7일이내', '만료'],
                 datasets: [{
-                    data: [30, 25, 20, 10],
+                    data: [30, 25, 20],
                     backgroundColor: [
                         '#73D13D',
                         '#FFC53D',
-                        '#FF4D4F',
-                        '#C1C1C1'
+                        '#FF4D4F'
                     ],
-                    borderWidth: 2,
+                    borderWidth: 0,
                     hoverOffset: 10
                 }]
             };
@@ -12616,11 +12796,6 @@
                             data: [50, 40, 30, 60, 45],
                             backgroundColor: '#FF4D4F',
                         },
-                        {
-                            label: '해당없음',
-                            data: [20, 30, 25, 15, 35],
-                            backgroundColor: '#C1C1C1',
-                        }
                     ]
                 },
                 options: {
@@ -12671,7 +12846,10 @@
                 labels: ['상', '중', '하'],
                 datasets: [{
                     data: [85,70,35],
-                    backgroundColor: ['rgba(255, 77, 79, 1)','rgba(91, 143, 249, 1)','rgba(115, 209, 61, 1)'],
+                    backgroundColor: [
+                        'rgba(255, 77, 79, 1)',
+                        'rgba(91, 143, 249, 1)',
+                        'rgba(115, 209, 61, 1)'],
                 }]
             };
             
@@ -12935,14 +13113,6 @@
                             pointRadius: 0,
                             pointHoverRadius: 0
                         },
-                        {
-                            data: [30, 100, 200, 150, 250],
-                            backgroundColor: 'rgba(160, 217, 17, 0.3)',
-                            borderColor: 'rgba(160, 217, 17, 1)',
-                            borderWidth: 1,
-                            pointRadius: 0,
-                            pointHoverRadius: 0
-                        },
                     ]
                 },
                 options: {
@@ -12990,16 +13160,40 @@
                     datasets: [
                         {
                             data: [350, 400, 300, 380, 320],
-                            backgroundColor: 'rgba(22, 119, 255, 0.3)',
-                            borderColor: '#1677FF',
+                            backgroundColor: 'rgba(19, 194, 194, 0.25)',
+                            borderColor: 'rgba(19, 194, 194, 1)',
                             borderWidth: 1,
                             pointRadius: 0,
                             pointHoverRadius: 0
                         },
                         {
                             data: [30, 100, 200, 150, 250],
-                            backgroundColor: 'rgba(160, 217, 17, 0.3)',
+                            backgroundColor: 'rgba(160, 217, 17, 0.25)',
                             borderColor: 'rgba(160, 217, 17, 1)',
+                            borderWidth: 1,
+                            pointRadius: 0,
+                            pointHoverRadius: 0
+                        },
+                        {
+                            data: [20, 200, 150, 200, 200],
+                            backgroundColor: 'rgba(114, 46, 209, 0.25)',
+                            borderColor: 'rgba(114, 46, 209, 1)',
+                            borderWidth: 1,
+                            pointRadius: 0,
+                            pointHoverRadius: 0
+                        },
+                        {
+                            data: [300, 350, 250, 330, 280],
+                            backgroundColor: 'rgba(235, 47, 150, 0.25)',
+                            borderColor: 'rgba(235, 47, 150, 1)',
+                            borderWidth: 1,
+                            pointRadius: 0,
+                            pointHoverRadius: 0
+                        },
+                        {
+                            data: [280, 330, 300, 350, 320],
+                            backgroundColor: 'rgba(250, 173, 20, 0.25)',
+                            borderColor: 'rgba(250, 173, 20, 1)',
                             borderWidth: 1,
                             pointRadius: 0,
                             pointHoverRadius: 0
