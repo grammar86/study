@@ -199,3 +199,27 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap .dashboard-box .text-link { display: inline-block; margin-bottom:14px; margin-top:13px; font-size:16px; color:var(--text-color2); font-weight: 400; line-height:1.5;}
 
 .dashboard-wrap .dashboard-box .ico-text-link { display: inline-block; width:16px; height:16px; margin-left:4px; margin-top:-2px; vertical-align: middle; background:var(--text-color2); mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 3L11 8L6 13' stroke='black' stroke-opacity='0.88' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");}
+
+
+.dashboard-wrap .chart-progress-box { flex: 1 1 auto; margin-left:28px;}
+.dashboard-wrap .chart-progress-box h2 { font-size:12px;}
+.dashboard-wrap .chart-progress-box .number { font-size:24px; font-weight: 600;}
+.dashboard-wrap .chart-progress-box > .text { font-size:12px; margin-top:10px;}
+.dashboard-wrap .chart-progress-box > .text + .labels { margin-top:4px;}
+.dashboard-wrap .chart-progress-box .labels { margin-top:16px;}
+.dashboard-wrap .chart-progress-box .labels li + li { margin-top:10px;}
+.dashboard-wrap .chart-progress-box .labels li .text-box { display:flex; align-items: center;}
+.dashboard-wrap .chart-progress-box .labels li .text-box .tit { font-size:12px;}
+.dashboard-wrap .chart-progress-box .labels li .text-box .count { margin-left:auto;}
+.dashboard-wrap .chart-progress-box .labels li .text-box .count span { margin-left:auto;}
+.dashboard-wrap .chart-progress-box .labels li .progress { height:6px; margin-top:2px;}
+.dashboard-wrap .chart-progress-box .labels li .progress.bg span { background:#C1C1C1;}
+.dashboard-wrap .chart-progress-box .labels li .progress.bg1 span { background:#15E336;}
+.dashboard-wrap .chart-progress-box .labels li .progress.bg2 span { background:#FF792E;}
+.dashboard-wrap .chart-progress-box .labels li .progress.bg3 span { background:#FFCC16;}
+.dashboard-wrap .chart-progress-box .labels li .progress.bg4 span { background:#05A2FA;}
+.dashboard-wrap .chart-progress-box .labels li .progress.bg5 span { background:#25E5FF;}
+.dashboard-wrap .chart-wrap { display:flex;}
+.dashboard-wrap .chart-wrap .chart-box { width:50%; flex:0 0 auto;}
+.dashboard-wrap .chart-wrap .chart-info-box { margin-left: 28px; }
+.dashboard-wrap .btn-more { display: block; width:28px; height:28px; font-size:0; background:no-repeat center center / 100%; background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' viewBox='0 0 28 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21.5 14C21.5 14.1658 21.4342 14.3247 21.3169 14.4419C21.1997 14.5592 21.0408 14.625 20.875 14.625H14.625V20.875C14.625 21.0408 14.5592 21.1997 14.4419 21.3169C14.3247 21.4342 14.1658 21.5 14 21.5C13.8342 21.5 13.6753 21.4342 13.5581 21.3169C13.4408 21.1997 13.375 21.0408 13.375 20.875V14.625H7.125C6.95924 14.625 6.80027 14.5592 6.68306 14.4419C6.56585 14.3247 6.5 14.1658 6.5 14C6.5 13.8342 6.56585 13.6753 6.68306 13.5581C6.80027 13.4408 6.95924 13.375 7.125 13.375H13.375V7.125C13.375 6.95924 13.4408 6.80027 13.5581 6.68306C13.6753 6.56585 13.8342 6.5 14 6.5C14.1658 6.5 14.3247 6.56585 14.4419 6.68306C14.5592 6.80027 14.625 6.95924 14.625 7.125V13.375H20.875C21.0408 13.375 21.1997 13.4408 21.3169 13.5581C21.4342 13.6753 21.5 13.8342 21.5 14Z' fill='%231C1C1C' fill-opacity='0.8'/%3E%3C/svg%3E%0A");}
