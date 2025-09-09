@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+<title>circle 테스트</title>
+<link href="./static/css/ui.min.css" rel="stylesheet" />
+<script type="text/javascript" src="./static/js/common.js"></script>
+<script type="text/javascript" src="./static/js/ui.js"></script>
+<style>
+	button { margin-bottom:20px; padding:5px; border:1px solid #000;}
+
+	.circle-box { overflow: hidden; position:relative; display: block; width:300px; height:150px; border-radius: 150px 150px 0 0;}
+	.circle-box .circle { display: block; position: relative; width:300px; height:300px;  border-radius: 50%; background:#e5e7eb;}
+	.circle-box:after { content:''; display: block; position:absolute; top:100%; left:50%; z-index: 10; width:130px; height:130px; border-radius: 50%; transform: translate(-50%,-50%); background:#fff;}
+	.circle-box .arrow { position:absolute; bottom:0; left:50%; z-index:11; width:50px; height:50px; clip-path: polygon(50% 0%, 70% 50%, 50% 100%, 30% 50%); transform-origin:center 100%; transform:translateX(-50%) rotate(0deg); background:#000;}
+	.circle-box .status span { position: absolute; bottom:0; left:0; width:150px; height:150px; border:1px solid #fff; transform-origin: 100% 100%;}
+	.circle-box .status .step1 { z-index: 4; transform: rotate(-45deg);}
+	.circle-box .status .step2 { z-index: 3; transform: rotate(0deg);}
+	.circle-box .status .step3 { z-index: 2; transform: rotate(45deg);}
+	.circle-box .status .step4 { z-index: 1; transform: rotate(90deg);}
+	.circle-box .status-text > span { position:absolute; bottom:0; left:50%; z-index:12; width:150px; height:150px; padding-top:20px; font-size:22px; text-align: center; transform-origin:center 100%; transform: translateX(-50%); line-height: 1;}
+	.circle-box .status-text .step1 { transform: translateX(-50%) rotate(-68deg);}
+	.circle-box .status-text .step2 { transform: translateX(-50%) rotate(-23deg);}
+	.circle-box .status-text .step3 { transform: translateX(-50%) rotate(23deg);}
+	.circle-box .status-text .step4 { transform: translateX(-50%) rotate(68deg);}
+	.circle-box[class*=on] .status .step1,
+	.circle-box[class*=on] .status .step2,
+	.circle-box[class*=on] .status .step3,
+	.circle-box[class*=on] .status .step4 { background:#e5e7eb;}
+	.circle-box.on1 .status .step1 {background:skyblue;}
+	.circle-box.on1 .arrow { transform:translateX(-50%) rotate(-60deg);}
+	.circle-box.on2 .status .step2 {background:hotpink;}
+	.circle-box.on2 .arrow { transform:translateX(-50%) rotate(-20deg);}
+	.circle-box.on3 .status .step3 {background:orange;}
+	.circle-box.on3 .arrow { transform:translateX(-50%) rotate(20deg);}
+	.circle-box.on4 .status .step4 {background:deepskyblue;}
+	.circle-box.on4 .arrow { transform:translateX(-50%) rotate(60deg);}
+</style>
+<script>
+	const active = (e) => {
+		const className = 'on' + e;
+		document.querySelectorAll('.circle-box').forEach(element => {
+			element.className = `circle-box ${className}`;
+		});
+	};
+</script>
+</head>
+<body>
+	<button onclick="active(1)">1번활성화</button>
+	<button onclick="active(2)">2번활성화</button>
+	<button onclick="active(3)">3번활성화</button>
+	<button onclick="active(4)">4번활성화</button>
+	<div class="circle-box on4">
+		<div class="circle"></div>
+		<i class="arrow"></i>
+		<div class="status">
+			<span class="step1"></span>
+			<span class="step2"></span>
+			<span class="step3"></span>
+			<span class="step4"></span>
+		</div>
+		<div class="status-text">
+			<span class="step1">
+				텍스트<br />1
+			</span>
+			<span class="step2">
+				텍스트<br />2
+			</span>
+			<span class="step3">
+				텍스트<br />3
+			</span>
+			<span class="step4">
+				텍스트<br />4
+			</span>
+		</div>
+	</div>
+</body>
+</html>
