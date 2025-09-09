@@ -44,7 +44,7 @@ body.redefinition { min-width:1780px; background:#E5E7EB;}
 .dashboard-wrap.view-mode .dashboard-box.w-type1 { width:calc(16.666% - 16px);}
 .dashboard-wrap.view-mode .dashboard-box.w-type2 { width:calc(50% - 16px);}
 
-.dashboard-wrap { display: flex; flex-wrap: wrap; }
+.dashboard-wrap { display: flex; flex-wrap: wrap; width:100% !important;}
 
 .dashboard-wrap .grid-stack-item-content { border-radius: 12px; box-shadow: 0px 1px 2px 0px #0000000F, 0px 1px 3px 0px #0000001A;}
 .dashboard-wrap .grid-stack-item-content .dashboard-box { box-shadow: none;}
