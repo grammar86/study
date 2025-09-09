@@ -35,23 +35,65 @@
     </div>
     <!-- //메뉴명 -->
 
-    <!-- 타입 별 -->
+    <!-- 보안 평가 총괄 점수 -->
     <div class="dashboard-box w-type1 h-type1" id="dashboardType30">
         <div class="box-cont">
-            <div class="security-appraisal">
-                <i class="ico1"></i>
+            <div class="security-appraisal type1">
+                <i class="ico"></i>
 
-                <p class="text">2025년 ISMS인증 심사 결과</p>
-                <p class="text2">매우양호
+                <p class="tit">2025년 ISMS인증 심사 결과</p>
+                <p class="text">매우양호
                     <span>95점</span>
                 </p>
             </div>
         </div>
 
-        <a href="#" class="btn-setting">셋팅</a>
+        <a href="#dashboardModal30" class="btn-setting">셋팅</a>
         <a href="#" class="btn-delete">삭제</a>
     </div>
-    <!-- //타입 별 -->
+    <!-- //보안 평가 총괄 점수 -->
+
+    <!-- 경보 설정 -->
+    <div class="dashboard-box w-type1 h-type1" id="dashboardType31">
+        <h2>KISA</h2>
+        <div class="box-cont">
+            <p>인터넷 침해사고 경보 단계</p>
+            <!-- 상황에 따라 클래스 변경 
+                on1 : 관심
+                on2 : 주의
+                on3 : 경계
+                on4 : 심각
+            -->
+            <div class="circle-box on4">
+                <div class="circle"></div>
+                <i class="arrow"></i>
+                <div class="status">
+                    <span class="step1"></span>
+                    <span class="step2"></span>
+                    <span class="step3"></span>
+                    <span class="step4"></span>
+                </div>
+                <div class="status-text">
+                    <span class="step1">
+                        관심<br /><span>1</span>
+                    </span>
+                    <span class="step2">
+                        주의<br /><span>2</span>
+                    </span>
+                    <span class="step3">
+                        경계<br /><span>3</span>
+                    </span>
+                    <span class="step4">
+                        심각<br /><span>4</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#dashboardModal31" class="btn-setting">셋팅</a>
+        <a href="#" class="btn-delete">삭제</a>
+    </div>
+    <!-- //경보 설정 -->
 
     <!-- 나의 정기 업무활동 -->
     <div class="dashboard-box" id="dashboardType1">
