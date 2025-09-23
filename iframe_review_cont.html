@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+<title>iframe 테스트</title>
+<link href="./static/css/ui.min.css" rel="stylesheet" />
+<script type="text/javascript" src="./static/js/common.js"></script>
+<script type="text/javascript" src="./static/js/ui.js"></script>
+<style>
+</style>
+<script>
+	$(function(){
+		sample();
+	})
+	const sample = function(){
+		let count = 0;
+		const html = `<li tabindex="0">
+						<p class="tit"></p>
+						<p class="sub-tit"></p>
+					</li>`;
+					
+		for(let i = 0; i < 5; i++){
+			$(html).appendTo('.search-cont .innerbox ul')
+				.find('.tit').text('제목'+ count).siblings('.sub-tit').text('내용이 들어가는 내용입니다.'+ count);
+			count++;
+		}
+
+		$(document).on('click','.search-cont .innerbox .btn',function(){
+			const startCount = count;
+			for(let i = 0; i < 5; i++){
+				$(html).appendTo('.search-cont .innerbox ul')
+					.find('.tit').text('제목'+ count).siblings('.sub-tit').text('내용이 들어가는 내용입니다.'+ count);
+				count++;
+			}
+
+			$('.search-cont .innerbox ul li').eq(startCount).focus();
+			return false;
+		});
+	}
+</script>
+</head>
+<body>
+	<section id="container">
+		<div class="search-cont">
+			<div class="innerbox">
+				<ul>
+				</ul>
+
+				<a href="#" class="btn" style="width:100%; margin-top:20px;">더보기</a>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
