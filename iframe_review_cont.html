@@ -21,23 +21,23 @@
 						<p class="sub-tit"></p>
 					</li>`;
 					
-		for(let i = 0; i < 5; i++){
-			$(html).appendTo('.search-cont .innerbox ul')
-				.find('.tit').text('제목'+ count).siblings('.sub-tit').text('내용이 들어가는 내용입니다.'+ count);
-			count++;
-		}
+		addFor();
 
 		$(document).on('click','.search-cont .innerbox .btn',function(){
 			const startCount = count;
+			addFor();
+
+			$('.search-cont .innerbox ul li').eq(startCount).focus();
+			return false;
+		});
+
+		function addFor(){
 			for(let i = 0; i < 5; i++){
 				$(html).appendTo('.search-cont .innerbox ul')
 					.find('.tit').text('제목'+ count).siblings('.sub-tit').text('내용이 들어가는 내용입니다.'+ count);
 				count++;
 			}
-
-			$('.search-cont .innerbox ul li').eq(startCount).focus();
-			return false;
-		});
+		}
 	}
 </script>
 </head>
