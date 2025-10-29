@@ -189,6 +189,29 @@
             font-weight: 600;
         }
 
+        .day-cell.range-start {
+            background: #007acc;
+            color: white;
+            font-weight: 600;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .day-cell.range-end {
+            background: #007acc;
+            color: white;
+            font-weight: 600;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .day-cell.range-start.range-end {
+            border-radius: 4px;
+        }
+
+        .day-cell.in-range {
+            background: #b3d9ff;
+            color: #003d66;
+        }
+
         .day-cell.disabled {
             color: #ccc;
             cursor: not-allowed;
@@ -228,7 +251,56 @@
     
     <form>
         <div class="form-group">
-            <label for="start-date">시작 날짜</label>
+            <label for="date-range">날짜 범위 선택 (기간 선택 모드)</label>
+            <div class="date-input-wrapper">
+                <input 
+                    type="text" 
+                    id="date-range" 
+                    class="date-input" 
+                    placeholder="기간을 선택하세요"
+                    readonly
+                    aria-haspopup="dialog"
+                    aria-expanded="false"
+                    data-mode="range"
+                >
+                <span class="calendar-icon">📅</span>
+                
+                <div class="calendar-dropdown" id="date-range-calendar" role="dialog" aria-modal="true" aria-labelledby="range-calendar-title">
+                    <div tabindex="0">
+                        <div class="calendar-header">
+                            <button class="nav-button prev-button" type="button" aria-label="이전 달">
+                                <span aria-hidden="true">‹</span>
+                            </button>
+                            <h2 class="month-year" id="range-calendar-title">2024년 1월</h2>
+                            <button class="nav-button next-button" type="button" aria-label="다음 달">
+                                <span aria-hidden="true">›</span>
+                            </button>
+                        </div>
+
+                        <table class="calendar-table" role="grid" aria-labelledby="range-calendar-title">
+                            <thead>
+                                <tr>
+                                    <th scope="col" aria-label="일요일">일</th>
+                                    <th scope="col" aria-label="월요일">월</th>
+                                    <th scope="col" aria-label="화요일">화</th>
+                                    <th scope="col" aria-label="수요일">수</th>
+                                    <th scope="col" aria-label="목요일">목</th>
+                                    <th scope="col" aria-label="금요일">금</th>
+                                    <th scope="col" aria-label="토요일">토</th>
+                                </tr>
+                            </thead>
+                            <tbody class="calendar-days">
+                            </tbody>
+                        </table>
+
+                        <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="start-date">시작 날짜 (단일 선택 모드)</label>
             <div class="date-input-wrapper">
                 <input 
                     type="text" 
@@ -276,7 +348,7 @@
         </div>
 
         <div class="form-group">
-            <label for="end-date">종료 날짜</label>
+            <label for="end-date">종료 날짜 (단일 선택 모드)</label>
             <div class="date-input-wrapper">
                 <input 
                     type="text" 
@@ -333,6 +405,11 @@
                 this.currentDropdown = null;
                 this.focusedDate = null;
                 
+                // 기간 선택 모드를 위한 속성
+                this.rangeMode = false;
+                this.rangeStart = null;
+                this.rangeEnd = null;
+                
                 this.init();
             }
 
@@ -372,6 +449,26 @@
 
                 this.currentInput = input;
                 this.currentDropdown = input.parentElement.querySelector('.calendar-dropdown');
+                
+                // 기간 선택 모드 확인
+                this.rangeMode = input.dataset.mode === 'range';
+                
+                // 기간 선택 모드일 때 기존 값 파싱
+                if (this.rangeMode) {
+                    this.rangeStart = null;
+                    this.rangeEnd = null;
+                    if (input.value) {
+                        const parts = input.value.split(' ~ ');
+                        if (parts.length === 2) {
+                            const startParts = parts[0].split('-');
+                            const endParts = parts[1].split('-');
+                            if (startParts.length === 3 && endParts.length === 3) {
+                                this.rangeStart = new Date(startParts[0], startParts[1] - 1, startParts[2]);
+                                this.rangeEnd = new Date(endParts[0], endParts[1] - 1, endParts[2]);
+                            }
+                        }
+                    }
+                }
                 
                 // 드롭다운 내부 요소들 찾기
                 this.popup = this.currentDropdown.querySelector('[tabindex="0"]');
@@ -419,7 +516,7 @@
                 this.currentDate = new Date();
                 
                 // 기존 값이 있으면 해당 날짜로 설정
-                if (input.value) {
+                if (!this.rangeMode && input.value) {
                     const parts = input.value.split('-');
                     if (parts.length === 3) {
                         const date = new Date(parts[0], parts[1] - 1, parts[2]);
@@ -472,8 +569,8 @@
                 const daysInMonth = lastDay.getDate();
                 
                 // 이전 달의 마지막 날들
-                const prevMonth = new Date(year, month - 1, 0);
-                const daysInPrevMonth = prevMonth.getDate();
+                const prevMonthLastDay = new Date(year, month, 0);
+                const daysInPrevMonth = prevMonthLastDay.getDate();
                 
                 this.daysContainer.innerHTML = '';
                 
@@ -491,18 +588,18 @@
                         
                         if (week === 0 && dayOfWeek < firstDayOfWeek) {
                             // 이전 달 날짜
-                            const day = daysInPrevMonth - (firstDayOfWeek - dayOfWeek - 1);
-                            const date = new Date(year, month - 1, day);
+                            const day = daysInPrevMonth - firstDayOfWeek + dayOfWeek + 1;
+                            const date = new Date(year, month - 1, day, 0, 0, 0, 0);
                             this.createDayCell(cell, day, date, true, false);
                         } else if (currentDay <= daysInMonth) {
                             // 현재 달 날짜
-                            const date = new Date(year, month, currentDay);
+                            const date = new Date(year, month, currentDay, 0, 0, 0, 0);
                             const isToday = this.isToday(date);
                             this.createDayCell(cell, currentDay, date, false, isToday);
                             currentDay++;
                         } else {
                             // 다음 달 날짜
-                            const date = new Date(year, month + 1, nextMonthDay);
+                            const date = new Date(year, month + 1, nextMonthDay, 0, 0, 0, 0);
                             this.createDayCell(cell, nextMonthDay, date, true, false);
                             nextMonthDay++;
                         }
@@ -539,18 +636,49 @@
                     button.classList.add('today');
                 }
                 
-                if (this.selectedDate && this.isSameDate(date, this.selectedDate)) {
-                    button.classList.add('selected');
+                // 기간 선택 모드
+                if (this.rangeMode) {
+                    if (this.rangeStart && this.isSameDate(date, this.rangeStart)) {
+                        button.classList.add('range-start');
+                        if (this.rangeEnd && this.isSameDate(date, this.rangeEnd)) {
+                            button.classList.add('range-end');
+                        }
+                    } else if (this.rangeEnd && this.isSameDate(date, this.rangeEnd)) {
+                        button.classList.add('range-end');
+                    } else if (this.rangeStart && this.rangeEnd) {
+                        // 정규화된 날짜로 범위 체크
+                        const checkDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                        const startDate = new Date(this.rangeStart.getFullYear(), this.rangeStart.getMonth(), this.rangeStart.getDate());
+                        const endDate = new Date(this.rangeEnd.getFullYear(), this.rangeEnd.getMonth(), this.rangeEnd.getDate());
+                        
+                        if (checkDate > startDate && checkDate < endDate) {
+                            button.classList.add('in-range');
+                        }
+                    }
+                } else {
+                    // 단일 선택 모드
+                    if (this.selectedDate && this.isSameDate(date, this.selectedDate)) {
+                        button.classList.add('selected');
+                    }
                 }
                 
                 // 클릭 이벤트
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    this.selectDate(date);
+                    if (this.rangeMode) {
+                        this.selectRangeDate(date);
+                    } else {
+                        this.selectDate(date);
+                    }
                 });
                 
                 button.addEventListener('keydown', (e) => this.handleDayKeydown(e, date));
+                
+                // 포커스 이벤트 - focusedDate 업데이트
+                button.addEventListener('focus', () => {
+                    this.focusedDate = new Date(date);
+                });
                 
                 cell.appendChild(button);
             }
@@ -570,6 +698,65 @@
                 }
                 
                 this.closeCalendar();
+            }
+
+            selectRangeDate(date) {
+                // 날짜를 자정 시간으로 정규화
+                const normalizedDate = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0, 0);
+                
+                if (!this.rangeStart || (this.rangeStart && this.rangeEnd)) {
+                    // 첫 번째 날짜 선택 또는 재선택
+                    this.rangeStart = normalizedDate;
+                    this.rangeEnd = null;
+                    this.renderCalendar();
+                    
+                    // 첫 번째 날짜 선택 후 포커스 유지
+                    setTimeout(() => {
+                        const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(normalizedDate)}"]`);
+                        if (targetCell) {
+                            targetCell.focus();
+                        }
+                    }, 0);
+                } else {
+                    // 두 번째 날짜 선택
+                    if (normalizedDate.getTime() < this.rangeStart.getTime()) {
+                        // 선택한 날짜가 시작일보다 이전이면 순서 바꾸기
+                        this.rangeEnd = new Date(this.rangeStart);
+                        this.rangeStart = normalizedDate;
+                    } else if (normalizedDate.getTime() === this.rangeStart.getTime()) {
+                        // 같은 날짜를 선택하면 그 날짜만 선택
+                        this.rangeEnd = normalizedDate;
+                    } else {
+                        this.rangeEnd = normalizedDate;
+                    }
+                    
+                    // 입력 필드에 값 설정
+                    if (this.currentInput) {
+                        const startStr = this.formatDate(this.rangeStart);
+                        const endStr = this.formatDate(this.rangeEnd);
+                        this.currentInput.value = `${startStr} ~ ${endStr}`;
+                        
+                        // 커스텀 이벤트 발생
+                        const event = new CustomEvent('rangeselected', {
+                            detail: { 
+                                startDate: new Date(this.rangeStart),
+                                endDate: new Date(this.rangeEnd),
+                                startString: startStr,
+                                endString: endStr
+                            }
+                        });
+                        this.currentInput.dispatchEvent(event);
+                    }
+                    
+                    this.closeCalendar();
+                }
+            }
+
+            isInRange(date, start, end) {
+                const time = date.getTime();
+                const startTime = start.getTime();
+                const endTime = end.getTime();
+                return time > startTime && time < endTime;
             }
 
             handleKeydown(e) {
@@ -594,18 +781,120 @@
                 switch (e.key) {
                     case 'Enter':
                     case ' ':
-                        this.selectDate(currentDate);
+                        if (this.rangeMode) {
+                            this.selectRangeDate(currentDate);
+                        } else {
+                            this.selectDate(currentDate);
+                        }
+                        break;
+                    case 'ArrowUp':
+                        this.moveFocus(-7);
+                        break;
+                    case 'ArrowDown':
+                        this.moveFocus(7);
+                        break;
+                    case 'ArrowLeft':
+                        this.moveFocus(-1);
+                        break;
+                    case 'ArrowRight':
+                        this.moveFocus(1);
+                        break;
+                    case 'Home':
+                        this.moveToStartOfWeek(currentDate);
+                        break;
+                    case 'End':
+                        this.moveToEndOfWeek(currentDate);
+                        break;
+                    case 'PageUp':
+                        if (e.shiftKey) {
+                            this.moveYear(-1);
+                        } else {
+                            this.moveMonth(-1);
+                        }
+                        break;
+                    case 'PageDown':
+                        if (e.shiftKey) {
+                            this.moveYear(1);
+                        } else {
+                            this.moveMonth(1);
+                        }
                         break;
                 }
             }
 
+            moveFocus(days) {
+                if (!this.focusedDate) return;
+                
+                const newDate = new Date(this.focusedDate);
+                newDate.setDate(newDate.getDate() + days);
+                
+                // 월이 바뀌면 달력 다시 렌더링
+                if (newDate.getMonth() !== this.focusedDate.getMonth() || 
+                    newDate.getFullYear() !== this.focusedDate.getFullYear()) {
+                    this.currentDate = new Date(newDate);
+                    this.focusedDate = new Date(newDate);
+                    this.renderCalendar();
+                    
+                    setTimeout(() => {
+                        const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(newDate)}"]`);
+                        if (targetCell) {
+                            targetCell.focus();
+                        }
+                    }, 0);
+                } else {
+                    this.focusedDate = new Date(newDate);
+                    const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(newDate)}"]`);
+                    if (targetCell) {
+                        targetCell.focus();
+                    }
+                }
+            }
+
+            moveToStartOfWeek(currentDate) {
+                const dayOfWeek = currentDate.getDay();
+                this.moveFocus(-dayOfWeek);
+            }
+
+            moveToEndOfWeek(currentDate) {
+                const dayOfWeek = currentDate.getDay();
+                this.moveFocus(6 - dayOfWeek);
+            }
+
+            moveMonth(direction) {
+                this.currentDate.setMonth(this.currentDate.getMonth() + direction);
+                this.focusedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+                this.renderCalendar();
+                
+                setTimeout(() => {
+                    const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(this.focusedDate)}"]`);
+                    if (targetCell) {
+                        targetCell.focus();
+                    }
+                }, 0);
+            }
+
+            moveYear(direction) {
+                this.currentDate.setFullYear(this.currentDate.getFullYear() + direction);
+                this.focusedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+                this.renderCalendar();
+                
+                setTimeout(() => {
+                    const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(this.focusedDate)}"]`);
+                    if (targetCell) {
+                        targetCell.focus();
+                    }
+                }, 0);
+            }
+
             previousMonth() {
                 this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+                this.focusedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
                 this.renderCalendar();
             }
 
             nextMonth() {
                 this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+                this.focusedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
                 this.renderCalendar();
             }
 
@@ -652,6 +941,10 @@
             document.querySelectorAll('.date-input').forEach(input => {
                 input.addEventListener('dateselected', (e) => {
                     console.log('선택된 날짜:', e.detail.dateString);
+                });
+                
+                input.addEventListener('rangeselected', (e) => {
+                    console.log('선택된 기간:', e.detail.startString, '~', e.detail.endString);
                 });
             });
         });
