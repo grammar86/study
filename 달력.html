@@ -214,7 +214,7 @@
         }
 
         .close-button:hover {
-            background: #f0f0f0;
+            background: #e0e0e0;
         }
 
         .close-button:focus {
@@ -241,15 +241,14 @@
                 >
                 <span class="calendar-icon">📅</span>
                 
-                <!-- 달력 드롭다운 -->
                 <div class="calendar-dropdown" id="start-date-calendar" role="dialog" aria-modal="true" aria-labelledby="start-calendar-title">
                     <div tabindex="0">
                         <div class="calendar-header">
-                            <button class="nav-button" aria-label="이전 달">
+                            <button class="nav-button prev-button" type="button" aria-label="이전 달">
                                 <span aria-hidden="true">‹</span>
                             </button>
                             <h2 class="month-year" id="start-calendar-title">2024년 1월</h2>
-                            <button class="nav-button" aria-label="다음 달">
+                            <button class="nav-button next-button" type="button" aria-label="다음 달">
                                 <span aria-hidden="true">›</span>
                             </button>
                         </div>
@@ -270,7 +269,7 @@
                             </tbody>
                         </table>
 
-                        <button class="close-button" aria-label="달력 닫기">&times;</button>
+                        <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
                     </div>
                 </div>
             </div>
@@ -290,15 +289,14 @@
                 >
                 <span class="calendar-icon">📅</span>
                 
-                <!-- 달력 드롭다운 -->
                 <div class="calendar-dropdown" id="end-date-calendar" role="dialog" aria-modal="true" aria-labelledby="end-calendar-title">
                     <div tabindex="0">
                         <div class="calendar-header">
-                            <button class="nav-button" aria-label="이전 달">
+                            <button class="nav-button prev-button" type="button" aria-label="이전 달">
                                 <span aria-hidden="true">‹</span>
                             </button>
                             <h2 class="month-year" id="end-calendar-title">2024년 1월</h2>
-                            <button class="nav-button" aria-label="다음 달">
+                            <button class="nav-button next-button" type="button" aria-label="다음 달">
                                 <span aria-hidden="true">›</span>
                             </button>
                         </div>
@@ -319,14 +317,12 @@
                             </tbody>
                         </table>
 
-                        <button class="close-button" aria-label="달력 닫기">&times;</button>
+                        <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
-
-    <!-- 기존의 오버레이 팝업 제거됨 -->
 
     <script>
         class AccessibleCalendar {
@@ -381,14 +377,41 @@
                 this.popup = this.currentDropdown.querySelector('[tabindex="0"]');
                 this.titleElement = this.currentDropdown.querySelector('.month-year');
                 this.daysContainer = this.currentDropdown.querySelector('.calendar-days');
-                this.prevButton = this.currentDropdown.querySelector('.nav-button:first-of-type');
-                this.nextButton = this.currentDropdown.querySelector('.nav-button:last-of-type');
+                this.prevButton = this.currentDropdown.querySelector('.prev-button');
+                this.nextButton = this.currentDropdown.querySelector('.next-button');
                 this.closeButton = this.currentDropdown.querySelector('.close-button');
                 
+                // 기존 이벤트 리스너 제거 (중복 방지)
+                const newPrevButton = this.prevButton.cloneNode(true);
+                const newNextButton = this.nextButton.cloneNode(true);
+                const newCloseButton = this.closeButton.cloneNode(true);
+                
+                this.prevButton.parentNode.replaceChild(newPrevButton, this.prevButton);
+                this.nextButton.parentNode.replaceChild(newNextButton, this.nextButton);
+                this.closeButton.parentNode.replaceChild(newCloseButton, this.closeButton);
+                
+                this.prevButton = newPrevButton;
+                this.nextButton = newNextButton;
+                this.closeButton = newCloseButton;
+                
                 // 이벤트 리스너 설정
-                this.prevButton.addEventListener('click', () => this.previousMonth());
-                this.nextButton.addEventListener('click', () => this.nextMonth());
-                this.closeButton.addEventListener('click', () => this.closeCalendar());
+                this.prevButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.previousMonth();
+                });
+                
+                this.nextButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.nextMonth();
+                });
+                
+                this.closeButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.closeCalendar();
+                });
                 
                 // 키보드 이벤트
                 this.popup.addEventListener('keydown', (e) => this.handleKeydown(e));
@@ -498,10 +521,11 @@
 
             createDayCell(cell, day, date, isOtherMonth, isToday) {
                 const button = document.createElement('button');
+                button.type = 'button';
                 button.className = 'day-cell';
                 button.textContent = day;
                 button.setAttribute('role', 'gridcell');
-                button.setAttribute('tabindex', '0'); // 모든 날짜 버튼을 탭으로 접근 가능하게 설정
+                button.setAttribute('tabindex', '0');
                 
                 const dateStr = this.formatDate(date);
                 button.setAttribute('aria-label', `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`);
@@ -519,7 +543,13 @@
                     button.classList.add('selected');
                 }
                 
-                button.addEventListener('click', () => this.selectDate(date));
+                // 클릭 이벤트
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.selectDate(date);
+                });
+                
                 button.addEventListener('keydown', (e) => this.handleDayKeydown(e, date));
                 
                 cell.appendChild(button);
@@ -549,16 +579,14 @@
                         this.closeCalendar();
                         break;
                     case 'Tab':
-                        // Tab 키는 trapFocus에서 처리하되, 여기서는 기본 동작 허용
                         this.trapFocus(e);
                         break;
                 }
             }
 
             handleDayKeydown(e, currentDate) {
-                // Tab 키는 자연스러운 포커스 이동을 위해 preventDefault 하지 않음
                 if (e.key === 'Tab') {
-                    return; // 기본 Tab 동작 허용
+                    return;
                 }
                 
                 e.preventDefault();
@@ -571,86 +599,14 @@
                 }
             }
 
-            moveFocus(days) {
-                if (!this.focusedDate) return;
-                
-                const newDate = new Date(this.focusedDate);
-                newDate.setDate(newDate.getDate() + days);
-                
-                // 월이 바뀌면 달력 다시 렌더링
-                if (newDate.getMonth() !== this.focusedDate.getMonth() || 
-                    newDate.getFullYear() !== this.focusedDate.getFullYear()) {
-                    this.currentDate = new Date(newDate);
-                    this.focusedDate = new Date(newDate);
-                    this.renderCalendar();
-                    
-                    setTimeout(() => {
-                        const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(newDate)}"]`);
-                        if (targetCell) {
-                            targetCell.focus();
-                        }
-                    }, 0);
-                } else {
-                    this.focusedDate = new Date(newDate);
-                    const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(newDate)}"]`);
-                    if (targetCell) {
-                        this.updateFocusedCell(targetCell);
-                        targetCell.focus();
-                    }
-                }
-            }
-
-            moveToStartOfWeek(currentDate) {
-                const dayOfWeek = currentDate.getDay();
-                this.moveFocus(-dayOfWeek);
-            }
-
-            moveToEndOfWeek(currentDate) {
-                const dayOfWeek = currentDate.getDay();
-                this.moveFocus(6 - dayOfWeek);
-            }
-
-            moveMonth(direction, keepFocusOnButton = false) {
-                this.currentDate.setMonth(this.currentDate.getMonth() + direction);
-                this.focusedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-                this.renderCalendar();
-                
-                if (!keepFocusOnButton) {
-                    setTimeout(() => {
-                        const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(this.focusedDate)}"]`);
-                        if (targetCell) {
-                            targetCell.focus();
-                        }
-                    }, 0);
-                }
-            }
-
-            moveYear(direction, keepFocusOnButton = false) {
-                this.currentDate.setFullYear(this.currentDate.getFullYear() + direction);
-                this.focusedDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
-                this.renderCalendar();
-                
-                if (!keepFocusOnButton) {
-                    setTimeout(() => {
-                        const targetCell = this.daysContainer.querySelector(`[data-date="${this.formatDate(this.focusedDate)}"]`);
-                        if (targetCell) {
-                            targetCell.focus();
-                        }
-                    }, 0);
-                }
-            }
-
-            updateFocusedCell(newCell) {
-                // 이제 모든 날짜 버튼이 탭으로 접근 가능하므로 
-                // tabindex 관리가 필요 없음
-            }
-
             previousMonth() {
-                this.moveMonth(-1, true); // keepFocusOnButton = true
+                this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+                this.renderCalendar();
             }
 
             nextMonth() {
-                this.moveMonth(1, true); // keepFocusOnButton = true
+                this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+                this.renderCalendar();
             }
 
             trapFocus(e) {
