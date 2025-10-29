@@ -125,6 +125,7 @@
             margin-top: 10px;
             table-layout: fixed;
         }
+        .calendar-table caption { overflow: hidden; position:absolute; width:0; height:0; font-size:0;}
 
         .calendar-table th,
         .calendar-table td {
@@ -264,38 +265,6 @@
                     data-mode="range"
                 >
                 <span class="calendar-icon">📅</span>
-                
-                <div class="calendar-dropdown" id="date-range-calendar" role="dialog" aria-modal="true" aria-labelledby="range-calendar-title">
-                    <div tabindex="0">
-                        <div class="calendar-header">
-                            <button class="nav-button prev-button" type="button" aria-label="이전 달">
-                                <span aria-hidden="true">‹</span>
-                            </button>
-                            <h2 class="month-year" id="range-calendar-title">2024년 1월</h2>
-                            <button class="nav-button next-button" type="button" aria-label="다음 달">
-                                <span aria-hidden="true">›</span>
-                            </button>
-                        </div>
-
-                        <table class="calendar-table" role="grid" aria-labelledby="range-calendar-title">
-                            <thead>
-                                <tr>
-                                    <th scope="col" aria-label="일요일">일</th>
-                                    <th scope="col" aria-label="월요일">월</th>
-                                    <th scope="col" aria-label="화요일">화</th>
-                                    <th scope="col" aria-label="수요일">수</th>
-                                    <th scope="col" aria-label="목요일">목</th>
-                                    <th scope="col" aria-label="금요일">금</th>
-                                    <th scope="col" aria-label="토요일">토</th>
-                                </tr>
-                            </thead>
-                            <tbody class="calendar-days">
-                            </tbody>
-                        </table>
-
-                        <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -312,38 +281,6 @@
                     aria-expanded="false"
                 >
                 <span class="calendar-icon">📅</span>
-                
-                <div class="calendar-dropdown" id="start-date-calendar" role="dialog" aria-modal="true" aria-labelledby="start-calendar-title">
-                    <div tabindex="0">
-                        <div class="calendar-header">
-                            <button class="nav-button prev-button" type="button" aria-label="이전 달">
-                                <span aria-hidden="true">‹</span>
-                            </button>
-                            <h2 class="month-year" id="start-calendar-title">2024년 1월</h2>
-                            <button class="nav-button next-button" type="button" aria-label="다음 달">
-                                <span aria-hidden="true">›</span>
-                            </button>
-                        </div>
-
-                        <table class="calendar-table" role="grid" aria-labelledby="start-calendar-title">
-                            <thead>
-                                <tr>
-                                    <th scope="col" aria-label="일요일">일</th>
-                                    <th scope="col" aria-label="월요일">월</th>
-                                    <th scope="col" aria-label="화요일">화</th>
-                                    <th scope="col" aria-label="수요일">수</th>
-                                    <th scope="col" aria-label="목요일">목</th>
-                                    <th scope="col" aria-label="금요일">금</th>
-                                    <th scope="col" aria-label="토요일">토</th>
-                                </tr>
-                            </thead>
-                            <tbody class="calendar-days">
-                            </tbody>
-                        </table>
-
-                        <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -360,38 +297,6 @@
                     aria-expanded="false"
                 >
                 <span class="calendar-icon">📅</span>
-                
-                <div class="calendar-dropdown" id="end-date-calendar" role="dialog" aria-modal="true" aria-labelledby="end-calendar-title">
-                    <div tabindex="0">
-                        <div class="calendar-header">
-                            <button class="nav-button prev-button" type="button" aria-label="이전 달">
-                                <span aria-hidden="true">‹</span>
-                            </button>
-                            <h2 class="month-year" id="end-calendar-title">2024년 1월</h2>
-                            <button class="nav-button next-button" type="button" aria-label="다음 달">
-                                <span aria-hidden="true">›</span>
-                            </button>
-                        </div>
-
-                        <table class="calendar-table" role="grid" aria-labelledby="end-calendar-title">
-                            <thead>
-                                <tr>
-                                    <th scope="col" aria-label="일요일">일</th>
-                                    <th scope="col" aria-label="월요일">월</th>
-                                    <th scope="col" aria-label="화요일">화</th>
-                                    <th scope="col" aria-label="수요일">수</th>
-                                    <th scope="col" aria-label="목요일">목</th>
-                                    <th scope="col" aria-label="금요일">금</th>
-                                    <th scope="col" aria-label="토요일">토</th>
-                                </tr>
-                            </thead>
-                            <tbody class="calendar-days">
-                            </tbody>
-                        </table>
-
-                        <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
-                    </div>
-                </div>
             </div>
         </div>
     </form>
@@ -447,7 +352,45 @@
                     this.closeCalendar();
                 }
 
+                const html = `
+                    <div class="calendar-dropdown" role="dialog" aria-modal="true" aria-labelledby="range-calendar-title">
+                        <div tabindex="0">
+                            <div class="calendar-header">
+                                <button class="nav-button prev-button" type="button" aria-label="이전 달">
+                                    <span aria-hidden="true">‹</span>
+                                </button>
+                                <h2 class="month-year" id="range-calendar-title">2024년 1월</h2>
+                                <button class="nav-button next-button" type="button" aria-label="다음 달">
+                                    <span aria-hidden="true">›</span>
+                                </button>
+                            </div>
+
+                            <table class="calendar-table" role="grid" aria-labelledby="range-calendar-title">
+                                <caption>날짜선택 - 각요일별 기간을 선택 할 수 있습니다.</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" aria-label="일요일">일</th>
+                                        <th scope="col" aria-label="월요일">월</th>
+                                        <th scope="col" aria-label="화요일">화</th>
+                                        <th scope="col" aria-label="수요일">수</th>
+                                        <th scope="col" aria-label="목요일">목</th>
+                                        <th scope="col" aria-label="금요일">금</th>
+                                        <th scope="col" aria-label="토요일">토</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="calendar-days">
+                                </tbody>
+                            </table>
+
+                            <button class="close-button" type="button" aria-label="달력 닫기">&times;</button>
+                        </div>
+                    </div>
+                `;
+
                 this.currentInput = input;
+
+                if(!input.parentElement.querySelector('.calendar-dropdown')) input.parentElement.insertAdjacentHTML('beforeend', html);
+
                 this.currentDropdown = input.parentElement.querySelector('.calendar-dropdown');
                 
                 // 기간 선택 모드 확인
