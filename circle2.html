@@ -14,13 +14,13 @@
 	.circle-box { overflow: hidden; position:relative; display: block; width:300px; height:150px; border-radius: 150px 150px 0 0;}
 	.circle-box .circle { display: block; position: relative; width:300px; height:300px;  border-radius: 50%; background:#e5e7eb;}
 	.circle-box:after { content:''; display: block; position:absolute; top:100%; left:50%; z-index: 10; width:130px; height:130px; border-radius: 50%; transform: translate(-50%,-50%); background:#fff;}
-	.circle-box .arrow { position:absolute; bottom:0; left:50%; z-index:11; width:50px; height:50px; clip-path: polygon(50% 0%, 70% 50%, 50% 100%, 30% 50%); transform-origin:center 100%; transform:translateX(-50%) rotate(0deg); background:#000;}
-	.circle-box .status span { position: absolute; bottom:0; left:0; width:150px; height:150px; border:1px solid #fff; transform-origin: 100% 100%;}
+	.circle-box .arrow { position:absolute; bottom:0; left:50%; z-index:11; width:50px; height:50px; clip-path: polygon(50% 0%, 70% 50%, 50% 100%, 30% 50%); transform-origin:center 100%; transform:translateX(-50%) rotate(0deg); background:#000; transition: all .3s ease;}
+	.circle-box .status span { position: absolute; bottom:0; left:0; width:150px; height:150px; border:1px solid #fff; transform-origin: 100% 100%; transition: all .3s ease;}
 	.circle-box .status .step1 { z-index: 4; transform: rotate(-45deg);}
 	.circle-box .status .step2 { z-index: 3; transform: rotate(0deg);}
 	.circle-box .status .step3 { z-index: 2; transform: rotate(45deg);}
 	.circle-box .status .step4 { z-index: 1; transform: rotate(90deg);}
-	.circle-box .status-text > span { position:absolute; bottom:0; left:50%; z-index:12; width:150px; height:150px; padding-top:20px; font-size:22px; text-align: center; transform-origin:center 100%; transform: translateX(-50%); line-height: 1;}
+	.circle-box .status-text > span { position:absolute; bottom:0; left:50%; z-index:12; width:150px; height:150px; padding-top:20px; font-size:22px; text-align: center; transform-origin:center 100%; transform: translateX(-50%); line-height: 1; transition: all .3s ease;}
 	.circle-box .status-text .step1 { transform: translateX(-50%) rotate(-68deg);}
 	.circle-box .status-text .step2 { transform: translateX(-50%) rotate(-23deg);}
 	.circle-box .status-text .step3 { transform: translateX(-50%) rotate(23deg);}
