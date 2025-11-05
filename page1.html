@@ -10,6 +10,8 @@
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
 	.blind { overflow: hidden; display: inline-block; position: relative; z-index: -1; border: 0; width: 1px; height: 1px; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%);}
+	.blind2 { overflow: hidden; position: absolute; width:1px; height:1px; clip:rect(0,0,0,0); border:0; padding:0; margin:-1px; clip-path: polygon(0 0, 0 0, 0 0); white-space: nowrap;}
+	.ico { display: block; position:relative; width:20px; height:20px; border:1px solid #000;}
 </style>
 </head>
 <body>
@@ -44,6 +46,18 @@
 				</a>
 
 				<p><span class="blind">총금액</span>1000원</p>
+				<p><span class="blind2">총금액</span>2000원</p>
+				<p><span class="blind3">총금액</span>2000원</p>
+
+				<p>아이콘의 경우</p>
+				<i class="ico"><span class="blind">아이콘1</span></i>
+				<a href="#" class="ico"><span class="blind">아이콘1</span></a>
+				<button class="ico"><span class="blind">아이콘1</span></button>
+
+				<p>아이콘의 경우2</p>
+				<i class="ico"><span class="blind2">아이콘2</span></i>
+				<a href="#" class="ico"><span class="blind2">아이콘2</span></a>
+				<button class="ico"><span class="blind2">아이콘2</span></button>
 			</div>
 		</div>
 	</section>
