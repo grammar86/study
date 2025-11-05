@@ -8,6 +8,9 @@
 <link href="./static/css/ui.min.css" rel="stylesheet" />
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
+<style>
+	.blind { overflow: hidden; display: inline-block; position: relative; z-index: -1; border: 0; width: 1px; height: 1px; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%);}
+</style>
 </head>
 <body>
 	<!-- 컨텐츠 영역 -->
@@ -27,31 +30,20 @@
 					<p class="footer">ⓒ Zibcode2.0 Corp.</p>
 				</div> -->
 				<!-- //검색 전 -->
-				<button aria-label="1번 슬라이드 보기" title="현재 슬라이드">1번 슬라이드 보기</button>
-				<ul title="(자사운영)">
-					<li>내용1</li>
-					<li aria-label="(자사운영22)">내용2</li>
-					<li>내용3</li>
-					<li>내용4</li>
-				</ul>
-				<ul>
-					<li><a href="./page2.html">
-						<p class="tit">경기도 하남시 신장1로21번길 71, 리센츠빌</p>
-						<p class="sub-tit">경기도 하남시 신장동 427-199</p>
-					</a></li>
-					<li><a href="./page2.html">
-						<p class="tit">경기도 하남시 신장1로21번길 71, 리센츠빌</p>
-						<p class="sub-tit">경기도 하남시 신장동 427-199</p>
-					</a></li>
-					<li><a href="./page2.html">
-						<p class="tit">경기도 하남시 신장1로21번길 71, 리센츠빌</p>
-						<p class="sub-tit">경기도 하남시 신장동 427-199</p>
-					</a></li>
-					<li><a href="./page2.html">
-						<p class="tit">경기도 하남시 신장1로21번길 71, 리센츠빌</p>
-						<p class="sub-tit">경기도 하남시 신장동 427-199</p>
-					</a></li>
-				</ul>
+				<a href="#">
+					<div>
+						초점 분리 현상 테스트입니다.
+						<p><span class="blind">총금액</span>1000원</p>
+					</div>
+				</a>
+				<a href="#" role="button">
+					<div>
+						(role="button")으로 변경 초점 분리 현상 테스트입니다.
+						<p><span class="blind">총금액</span>1000원</p>
+					</div>
+				</a>
+
+				<p><span class="blind">총금액</span>1000원</p>
 			</div>
 		</div>
 	</section>
