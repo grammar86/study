@@ -99,7 +99,6 @@ const layerPopup = {
     });
   },
   open: function (target, el, style) {
-    console.log(target)
     const cont = $(target).find('.layerPopCont');
     $(target).removeClass('bottom full').addClass(style);
 
@@ -160,5 +159,54 @@ const layerPopup = {
   },
   init: function () {
     layerPopup.click();
+  }
+};
+
+const tostpop = {
+  setting: function () {
+    if (!$('.tost-wrap').length) {
+      let tostWrap = '<div class="tost-wrap"></div>';
+      $('body').append(tostWrap);
+    }
+  },
+  open: function (massege, delay,type, focusCheck, linkTarget) {
+    let delayTime;
+    delay ? (delayTime = delay) : (delayTime = 2000);
+
+    tostpop.setting();
+
+    let text = '';
+
+    if(type == 1){
+      text += '<div class="tost-box" aria-live="polite">' + massege;
+    } else if(type == 2){
+      text += '<div class="tost-box" role="alert">' + massege;
+    } else {
+      text += '<div class="tost-box">' + massege;
+    }
+    text += '</div>';
+
+    const target = $(text).appendTo('.tost-wrap');
+    console.log(focusCheck)
+    if(focusCheck){
+      $(target).attr('tabindex','0');
+    }
+    setTimeout(function () {
+      target.slideDown(function(){
+        if(focusCheck){
+          $(target).focus();
+        }
+      });
+
+      // 삭제
+      setTimeout(function () {
+        target.slideUp(function () {
+          target.remove();
+          if(focusCheck){
+            $(linkTarget).focus();
+          }
+        });
+      }, delayTime);
+    }, 20);
   }
 };

@@ -26,38 +26,32 @@
 		</div>
 		<div class="search-cont">
 			<div class="innerbox">
-				<!-- 검색 전 -->
-				<!-- <div class="date-none">
-					<p class="logo"><img src="static/images/data-none-logo.png" alt="" /></p>
-					<p class="footer">ⓒ Zibcode2.0 Corp.</p>
-				</div> -->
-				<!-- //검색 전 -->
-				<a href="#">
-					<div>
-						초점 분리 현상 테스트입니다.
-						<p><span class="blind">총금액</span>1000원</p>
-					</div>
-				</a>
-				<a href="#" role="button">
-					<div>
-						(role="button")으로 변경 초점 분리 현상 테스트입니다.
-						<p><span class="blind">총금액</span>1000원</p>
-					</div>
-				</a>
+				<div>
+					<p>토스트 팝업 호출 테스트</p>
+					<p><a href="#tost" class="btn tostpop-open">토스트팝업 - 노멀 타입</a></p>
+					<p><a href="#tost" class="btn tostpop-open" data-tost-type="1">토스트팝업 - aria-live="polite" 타입</a></p>
+					<p><a href="#tost" class="btn tostpop-open" data-tost-type="2">토스트팝업 - role="alert" 타입</a></p>
+				</div>
 
-				<p><span class="blind">총금액</span>1000원</p>
-				<p><span class="blind2">총금액</span>2000원</p>
-				<p><span class="blind3">총금액</span>2000원</p>
+				<script>
+				$(function () {
+					$('.tostpop-open').on('click', function () {
+						const type = $(this).data('tost-type');
+						const focus = $(this).data('focus') == undefined ? false : true;
+						const $this = $(this);
 
-				<p>아이콘의 경우</p>
-				<i class="ico"><span class="blind">아이콘1</span></i>
-				<a href="#" class="ico"><span class="blind">아이콘1</span></a>
-				<button class="ico"><span class="blind">아이콘1</span></button>
+						tostpop.open('토스트 팝업 내용입니다.', 2000, type, focus, $this);
+						return false;
+					});
+				});
+				</script>
 
-				<p>아이콘의 경우2</p>
-				<i class="ico"><span class="blind2">아이콘2</span></i>
-				<a href="#" class="ico"><span class="blind2">아이콘2</span></a>
-				<button class="ico"><span class="blind2">아이콘2</span></button>
+				<div>
+					<p>토스트 팝업 호출 테스트 - focus 되는 테스트</p>
+					<p><a href="#tost" class="btn tostpop-open" data-focus>토스트팝업 - 노멀 타입</a></p>
+					<p><a href="#tost" class="btn tostpop-open" data-tost-type="1" data-focus>토스트팝업 - aria-live="polite" 타입</a></p>
+					<p><a href="#tost" class="btn tostpop-open" data-tost-type="2" data-focus>토스트팝업 - role="alert" 타입</a></p>
+				</div>
 			</div>
 		</div>
 	</section>

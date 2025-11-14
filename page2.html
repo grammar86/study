@@ -49,17 +49,23 @@
 			<div class="tab-cont-link" id="tabCont1" tabindex="0">
 
 				<div>
-					<a href="#">a태그 안에 input 선택 가능?
-						<input type="checkbox" id="check1" /><label for="check1">체크박스</label>
-					</a>
-					<a href="#">a태그 안에 button 선택 가능?
-						<button>버튼선택</button>
-					</a>
-					<a href="#">a태그 안에 role 선택 가능?
-						<span role="button" tabindex="0">span버튼</span>
-					</a>
+					<p>토스트 팝업 호출 테스트</p>
+					<p><a href="#tost" class="btn tostpop-open">토스트팝업 - 노멀 타입</a></p>
+					<p><a href="#tost" class="btn tostpop-open" data-tost-type="1">토스트팝업 - aria-live="polite" 타입</a></p>
+					<p><a href="#tost" class="btn tostpop-open" data-tost-type="2">토스트팝업 - role="alert" 타입</a></p>
 				</div>
-				
+
+				<script>
+				$(function () {
+					$('.tostpop-open').on('click', function () {
+						const type = $(this).data('tost-type');
+
+						tostpop.open('토스트 팝업 내용입니다.', 5000, type);
+						return false;
+					});
+				});
+				</script>
+
 				<a href="http://www.naver.com" class="btn" target="_blank">네이버</a>
 				<a href="http://www.naver.com" class="btn" target="_blank" title="새창열림">네이버</a>
 				<div class="tit-box">
