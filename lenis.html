@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenis 3단계 스크롤 샘플</title>
+    <style>
+        /* 기본 스타일 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            overflow-x: hidden; /* 가로 스크롤바 방지 */
+            background-color: #111;
+        }
+
+        /* 공통 섹션 스타일 */
+        .section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .step-1 { background-color: #1a1a1a; }
+        .step-3 { background-color: #222; }
+
+        /* 2단계: 가로 스크롤 트리거 영역 */
+        .horizontal-trigger {
+            height: 600vh; /* 스크롤 길이를 조절하여 가로 이동 속도 제어 */
+            position: relative;
+        }
+
+        /* 화면 고정 컨테이너 */
+        .sticky-wrapper {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 실제 가로로 움직이는 컨텐츠 */
+        .horizontal-content {
+            display: flex;
+            height: 80vh; /* 컨텐츠 높이 */
+            padding: 0 5vw;
+            will-change: transform;
+        }
+
+        /* 가로 스크롤 내부 아이템 */
+        .card {
+            width: 80vw;
+            height: 100%;
+            margin-right: 5vw;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0; /* 크기 유지 */
+        }
+
+        .card:nth-child(2) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .card:nth-child(3) { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+
+        .description {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-weight: normal;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section step-1">
+        <div>1단계: 세로 영역</div>
+        <div class="description">휠을 아래로 굴려보세요.</div>
+    </section>
+
+    <section class="horizontal-trigger">
+        <div class="sticky-wrapper">
+            <div class="horizontal-content">
+                <div class="card">가로 섹션 01</div>
+                <div class="card">가로 섹션 02</div>
+                <div class="card">가로 섹션 03</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section step-3">
+        <div>3단계: 다시 세로 영역</div>
+        <div class="description">가로 스크롤이 끝난 후 다시 내려옵니다.</div>
+    </section>
+
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <script>
+        // 1. Lenis 스무스 스크롤 초기화
+        const lenis = new Lenis({
+            duration: 1.2,   // 스크롤 속도
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 가속도 함수
+            smoothWheel: true
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. 가로 스크롤 인터랙션 로직
+        const horizontalTrigger = document.querySelector('.horizontal-trigger');
+        const horizontalContent = document.querySelector('.horizontal-content');
+
+        lenis.on('scroll', (e) => {
+            const triggerTop = horizontalTrigger.offsetTop;
+            const triggerHeight = horizontalTrigger.offsetHeight;
+            const windowHeight = window.innerHeight;
+            
+            // 현재 가로 섹션이 시작된 지점으로부터 얼마나 스크롤했는지 계산
+            let scrollDistance = window.scrollY - triggerTop;
+
+            // 가로로 이동해야 할 최대 거리 계산
+            const maxScroll = horizontalContent.offsetWidth - window.innerWidth;
+
+            if (scrollDistance >= 0 && scrollDistance <= (triggerHeight - windowHeight)) {
+                // 가로 섹션 안에서 스크롤 중일 때
+                const progress = scrollDistance / (triggerHeight - windowHeight);
+                const xMove = progress * maxScroll;
+                horizontalContent.style.transform = `translateX(-${xMove}px)`;
+            } 
+            else if (scrollDistance < 0) {
+                // 진입 전
+                horizontalContent.style.transform = `translateX(0px)`;
+            } 
+            else {
+                // 종료 후
+                horizontalContent.style.transform = `translateX(-${maxScroll}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
