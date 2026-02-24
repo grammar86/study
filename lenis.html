@@ -3,152 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenis 3단계 스크롤 샘플</title>
+    <title>Lenis 중첩 스크롤 샘플</title>
     <style>
-        /* 기본 스타일 초기화 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Pretendard', sans-serif; background-color: #111; color: white; overflow-x: hidden; }
 
-        body {
-            font-family: 'Pretendard', sans-serif;
-            overflow-x: hidden; /* 가로 스크롤바 방지 */
-            background-color: #111;
-        }
-
-        /* 공통 섹션 스타일 */
         .section {
             height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
+            font-size: 2.5rem;
+            background-color: #1a1a1a;
         }
 
-        .step-1 { background-color: #1a1a1a; }
-        .step-3 { background-color: #222; }
-
-        /* 2단계: 가로 스크롤 트리거 영역 */
+        /* 가로 트리거 영역 - 내부 스크롤을 위해 높이를 600vh로 넉넉히 설정 */
         .horizontal-trigger {
-            height: 600vh; /* 스크롤 길이를 조절하여 가로 이동 속도 제어 */
+            height: 600vh; 
             position: relative;
         }
 
-        /* 화면 고정 컨테이너 */
         .sticky-wrapper {
             position: sticky;
             top: 0;
             height: 100vh;
-            width: 100%;
             overflow: hidden;
             display: flex;
             align-items: center;
         }
 
-        /* 실제 가로로 움직이는 컨텐츠 */
         .horizontal-content {
             display: flex;
-            height: 80vh; /* 컨텐츠 높이 */
-            padding: 0 5vw;
             will-change: transform;
+            padding-left: 10vw;
         }
 
-        /* 가로 스크롤 내부 아이템 */
         .card {
             width: 80vw;
+            height: 70vh;
+            margin-right: 10vw;
+            background: #333;
+            border-radius: 30px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 가로섹션 01 내부의 세로 스크롤 박스 */
+        .inner-scroll-box {
+            width: 100%;
             height: 100%;
-            margin-right: 5vw;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .inner-content-wrapper {
+            will-change: transform; /* JS로 움직일 부분 */
+            text-align: center;
+        }
+
+        .inner-item {
+            height: 300px;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            flex-shrink: 0; /* 크기 유지 */
+            font-size: 1.5rem;
         }
 
-        .card:nth-child(2) { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
-        .card:nth-child(3) { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
-
-        .description {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            font-weight: normal;
-            opacity: 0.7;
-        }
+        .card-2 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-3 { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
     </style>
 </head>
 <body>
 
-    <section class="section step-1">
-        <div>1단계: 세로 영역</div>
-        <div class="description">휠을 아래로 굴려보세요.</div>
-    </section>
+    <section class="section">1단계: 시작 세로 섹션</section>
 
     <section class="horizontal-trigger">
         <div class="sticky-wrapper">
             <div class="horizontal-content">
-                <div class="card">가로 섹션 01</div>
-                <div class="card">가로 섹션 02</div>
-                <div class="card">가로 섹션 03</div>
+                
+                <div class="card card-1">
+                    <div class="inner-scroll-box">
+                        <div class="inner-content-wrapper">
+                            <h2>가로섹션 01</h2>
+                            <p style="margin-bottom: 50px;">이 카드는 세로 스크롤이 먼저 일어납니다.</p>
+                            <div class="inner-item">내부 아이템 1</div>
+                            <div class="inner-item">내부 아이템 2</div>
+                            <div class="inner-item">내부 아이템 3</div>
+                            <p>내부 스크롤 완료 ↓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-2">가로섹션 02</div>
+                <div class="card card-3">가로섹션 03</div>
+
             </div>
         </div>
     </section>
 
-    <section class="section step-3">
-        <div>3단계: 다시 세로 영역</div>
-        <div class="description">가로 스크롤이 끝난 후 다시 내려옵니다.</div>
-    </section>
+    <section class="section">3단계: 마지막 세로 섹션</section>
 
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
     <script>
-        // 1. Lenis 스무스 스크롤 초기화
-        const lenis = new Lenis({
-            duration: 1.2,   // 스크롤 속도
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 가속도 함수
-            smoothWheel: true
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+        const lenis = new Lenis({ duration: 1.2 });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
-        // 2. 가로 스크롤 인터랙션 로직
-        const horizontalTrigger = document.querySelector('.horizontal-trigger');
-        const horizontalContent = document.querySelector('.horizontal-content');
+        const trigger = document.querySelector('.horizontal-trigger');
+        const content = document.querySelector('.horizontal-content');
+        const innerWrapper = document.querySelector('.inner-content-wrapper');
 
-        lenis.on('scroll', (e) => {
-            const triggerTop = horizontalTrigger.offsetTop;
-            const triggerHeight = horizontalTrigger.offsetHeight;
-            const windowHeight = window.innerHeight;
-            
-            // 현재 가로 섹션이 시작된 지점으로부터 얼마나 스크롤했는지 계산
-            let scrollDistance = window.scrollY - triggerTop;
+        lenis.on('scroll', () => {
+            const start = trigger.offsetTop;
+            const end = start + trigger.offsetHeight - window.innerHeight;
+            const current = window.scrollY;
 
-            // 가로로 이동해야 할 최대 거리 계산
-            const maxScroll = horizontalContent.offsetWidth - window.innerWidth;
+            if (current < start) {
+                content.style.transform = `translateX(0px)`;
+                innerWrapper.style.transform = `translateY(0px)`;
+                return;
+            }
 
-            if (scrollDistance >= 0 && scrollDistance <= (triggerHeight - windowHeight)) {
-                // 가로 섹션 안에서 스크롤 중일 때
-                const progress = scrollDistance / (triggerHeight - windowHeight);
-                const xMove = progress * maxScroll;
-                horizontalContent.style.transform = `translateX(-${xMove}px)`;
+            if (current > end) return;
+
+            // 전체 구간에서의 진행률 (0 ~ 1)
+            const totalProgress = (current - start) / (trigger.offsetHeight - window.innerHeight);
+
+            // 1. 내부 세로 스크롤 구간 (전체 진행률의 0% ~ 40%)
+            if (totalProgress <= 0.4) {
+                const innerProgress = totalProgress / 0.4; // 0.4 구간 안에서의 0~1
+                const maxInnerTranslate = innerWrapper.offsetHeight - (window.innerHeight * 0.7); 
+                
+                // 가로 이동은 멈추고 내부 세로 이동만
+                content.style.transform = `translateX(0px)`;
+                innerWrapper.style.transform = `translateY(-${innerProgress * maxInnerTranslate}px)`;
             } 
-            else if (scrollDistance < 0) {
-                // 진입 전
-                horizontalContent.style.transform = `translateX(0px)`;
-            } 
+            // 2. 가로 스크롤 구간 (전체 진행률의 40% ~ 100%)
             else {
-                // 종료 후
-                horizontalContent.style.transform = `translateX(-${maxScroll}px)`;
+                const horizontalProgress = (totalProgress - 0.4) / 0.6; // 0.6 구간 안에서의 0~1
+                const maxHorizontalTranslate = content.offsetWidth - window.innerWidth + (window.innerWidth * 0.1);
+
+                // 내부 세로 이동은 최대로 고정하고 가로 이동 시작
+                const maxInnerTranslate = innerWrapper.offsetHeight - (window.innerHeight * 0.7);
+                innerWrapper.style.transform = `translateY(-${maxInnerTranslate}px)`;
+                content.style.transform = `translateX(-${horizontalProgress * maxHorizontalTranslate}px)`;
             }
         });
     </script>
