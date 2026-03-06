@@ -27,6 +27,14 @@
 	.radio-box input { overflow:hidden; position:absolute; width:1px; height:1px; margin:-1px !important; clip:rect(0 0 0 0);}
 	.radio-box:has(input:checked) { color:#fff; background:red;}
 </style>
+<script>
+	$(function(){
+		$(document).on('change','input',function(){
+			const check = $(this).is(":checked");
+			$(this).closest('.radio-box').attr('aria-checked',check).siblings().attr('aria-checked',false);
+		})	
+	})
+</script>
 </head>
 <body>
 	<!-- 컨텐츠 영역 -->
@@ -43,12 +51,12 @@
 			<div class="innerbox">
 				<h1>라디오 타입 확인</h1>
 				<label class="radio-box">내용입니다.<input type="radio" name="radioG1" /></label>
-				<label class="radio-box" role="radio">내용입니다.<input type="radio" name="radioG1" /></label>
-				<label class="radio-box" role="radio">
+				<label class="radio-box" role="radio" aria-checked="false">내용입니다.<input type="radio" name="radioG1" /></label>
+				<label class="radio-box" role="radio" aria-checked="false">
 					내용입니다.
 					<input type="radio" name="radioG1" inert />
 				</label>
-				<label class="radio-box" role="radio">
+				<label class="radio-box" role="radio" aria-checked="false">
 					내용입니다.(숨김)
 					<input type="radio" name="radioG1" aria-hidden="true" tabindex="-1" style="display: none;" />
 				</label>
