@@ -25,7 +25,7 @@
 
 	.radio-box { position:relative; display:flex; width:150px; height:50px; border:1px solid #000; align-items: center; justify-content: center;}
 	.radio-box input { overflow:hidden; position:absolute; width:1px; height:1px; margin:-1px !important; clip:rect(0 0 0 0);}
-	.radio-box:has(input:checked) { color:#fff; background:#000;}
+	.radio-box:has(input:checked) { color:#fff; background:red;}
 </style>
 </head>
 <body>
@@ -46,7 +46,7 @@
 				<label class="radio-box" role="radio">내용입니다.<input type="radio" name="radioG1" /></label>
 				<label class="radio-box" role="radio">
 					내용입니다.
-					<input type="radio" name="radioG1" aria-hidden="true" tabindex="-1" style="pointer-events: none;" />
+					<input type="radio" name="radioG1" inert />
 				</label>
 				<label class="radio-box" role="radio">
 					내용입니다.(숨김)
