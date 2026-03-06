@@ -43,9 +43,15 @@
 			<div class="innerbox">
 				<h1>라디오 타입 확인</h1>
 				<label class="radio-box">내용입니다.<input type="radio" name="radioG1" /></label>
-				<label class="radio-box">내용입니다.<input type="radio" name="radioG1" aria-hidden="true" /></label>
 				<label class="radio-box" role="radio">내용입니다.<input type="radio" name="radioG1" /></label>
-				<label class="radio-box" role="radio">내용입니다.<input type="radio" name="radioG1" aria-hidden="true" /></label>
+				<label class="radio-box" role="radio">
+					내용입니다.
+					<input type="radio" name="radioG1" aria-hidden="true" tabindex="-1" style="pointer-events: none;" />
+				</label>
+				<label class="radio-box" role="radio">
+					내용입니다.(숨김)
+					<input type="radio" name="radioG1" aria-hidden="true" tabindex="-1" style="display: none;" />
+				</label>
 
 				<div class="radio-box">
 					<input type="radio" id="radioTest1" name="radioG2" />
@@ -53,7 +59,7 @@
 				</div>
 				<div class="radio-box">
 					<input type="radio" id="radioTest2" name="radioG2" aria-hidden="true" />
-					<label for="radioTest2">라디오 모바일 테스트</label>
+					<label for="radioTest2" role="radio">라디오 모바일 테스트</label>
 				</div>
 				<div class="radio-box" role="group">
 					<input type="radio" id="radioTest3" name="radioG2" aria-hidden="true" />
