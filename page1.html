@@ -26,6 +26,8 @@
 	.radio-box { position:relative; display:flex; width:150px; height:50px; border:1px solid #000; align-items: center; justify-content: center;}
 	.radio-box input { overflow:hidden; position:absolute; width:1px; height:1px; margin:-1px !important; clip:rect(0 0 0 0);}
 	.radio-box:has(input:checked) { color:#fff; background:red;}
+
+	.focusout { border:1px solid red;}
 </style>
 <script>
 	$(function(){
@@ -35,7 +37,7 @@
 			$(this).closest('.radio-box').attr('aria-checked',check).siblings().attr('aria-checked',false);
 		});
 
-		$(document).on('blur','.focusout',function(){
+		$(document).on('focusin','.focusout',function(){
 			alert('포커스 아웃')
 		})
 	})
