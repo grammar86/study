@@ -33,7 +33,11 @@
 		$(document).on('change','input',function(){
 			const check = $(this).is(":checked");
 			$(this).closest('.radio-box').attr('aria-checked',check).siblings().attr('aria-checked',false);
-		})	
+		});
+
+		$(document).on('blur','.focusout',function(){
+			alert('포커스 아웃')
+		})
 	})
 </script>
 </head>
@@ -77,9 +81,14 @@
 			</div>
 
 			<div class="innerbox">
-				<button>버튼영역 입니다</button>
+				<button class="focusout">버튼영역 입니다</button>
 				<button aria-label="aria로 버튼 설명입니다.">버튼영역 입니다</button>
 				<button aria-label="aria로 버튼 설명입니다." title="선택됨">버튼영역 입니다</button>
+			</div>
+			<div class="innerbox">
+				<a href="#" class="focusout">a태그 입니다</a>
+				<a href="#" aria-label="aria로 버튼 설명입니다.">a태그 입니다</a>
+				<a href="#" aria-label="aria로 버튼 설명입니다." title="선택됨">a태그 입니다</a>
 			</div>
 			
 			<div class="innerbox">
