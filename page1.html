@@ -31,7 +31,7 @@
 </style>
 <script>
 	$(function(){
-		// $(':radio').attr('inert','');
+		//$(':radio').attr('inert','');
 		// $(document).on('change','input',function(){
 		// 	const check = $(this).is(":checked");
 		// 	$(this).closest('.radio-box').attr('aria-checked',check).siblings().attr('aria-checked',false);
@@ -58,12 +58,12 @@
 			<div class="innerbox">
 				<h1>라디오 타입 확인</h1>
 				<label class="radio-box">내용입니다.<input type="radio" name="radioG1" /></label>
-				<label class="radio-box" role="radio" aria-checked="false">내용입니다.<input type="radio" name="radioG1" /></label>
-				<label class="radio-box" role="radio" aria-checked="false">
+				<label class="radio-box">내용입니다.<input type="radio" name="radioG1" /></label>
+				<label class="radio-box">
 					내용입니다.
 					<input type="radio" name="radioG1" inert />
 				</label>
-				<label class="radio-box" role="radio" aria-checked="false">
+				<label class="radio-box">
 					내용입니다.(숨김)
 					<input type="radio" name="radioG1" aria-hidden="true" tabindex="-1" style="display: none;" />
 				</label>
