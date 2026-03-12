@@ -10,6 +10,12 @@
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
 	.blind { overflow: hidden; display: inline-block; position: absolute; z-index:-10; width:0; height:0;}
+	[role=dialog] { position:fixed; bottom:0; left:0; right:0; z-index:10; min-height:50vh; touch-action: none; overscroll-behavior: none; user-select: none; -webkit-tap-highlight-color: transparent; background:#fff; border:1px solid red; padding:20px;}
+	[role=dialog] * { user-select: none;-webkit-tap-highlight-color:revert;}
+	[role=dialog] [role=combobox] { border:1px solid #000; padding:10px;}
+	[role=dialog] [role=listbox] { overflow-y:auto; position:absolute; top:65px; left:20px; right:20px; max-height:150px; border:1px solid #e5e5e5; background:#fff;}
+	[role=dialog] [role=listbox]::-webkit-scrollbar { display: none;}
+	[role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
 </style>
 <script>
 	$(function(){
@@ -36,6 +42,22 @@
 			</div>
 		</header>
 		<div class="innerbox">
+
+			<div aria-modal="true" role="dialog" tabindex="-1">
+				<div role="combobox" aria-haspopup="listbox" aria-label="제품 카테고리 선택" tabindex="0">어떤 유형의 제품인가요?</div>
+				<div role="listbox" aria-label="카테고리 선택">
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴1</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴2</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴3</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴4</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴5</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴6</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴7</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴8</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴9</div>
+					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴10</div>
+				</div>
+			</div>
 
 			<div class="info-box">
 				<p class="tit">서울특별시 송파구 올림픽로 135, 리센츠</p>
