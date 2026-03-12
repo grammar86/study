@@ -13,7 +13,7 @@
 	[role=dialog] { position:fixed; bottom:0; left:0; right:0; z-index:10; min-height:90vh; touch-action: none; overscroll-behavior: none; user-select: none; -webkit-tap-highlight-color: transparent; background:#fff; border:1px solid red; padding:20px;}
 	[role=dialog] * { user-select: none;-webkit-tap-highlight-color:revert;}
 	[role=dialog] [role=combobox] { border:1px solid #000; padding:10px;}
-	[role=dialog] [role=listbox] { overflow-y:auto; right:20px; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
+	[role=dialog] .listbox { overflow-y:auto; right:20px; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
 	[role=dialog] [role=listbox]::-webkit-scrollbar { display: none;}
 	[role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
 	.scrollBox { overflow-y:auto; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
@@ -48,44 +48,19 @@
 
 			<div aria-modal="true" role="dialog" tabindex="-1">
 				<div role="combobox" aria-haspopup="listbox" aria-label="제품 카테고리 선택" tabindex="0">어떤 유형의 제품인가요?</div>
-				<div role="listbox" aria-label="카테고리 선택">
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴1</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴2</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴3</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴4</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴5</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴6</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴7</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴8</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴9</div>
-					<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴10</div>
-				</div>
-				<p>role 삭제</p>
-				<div role="listbox" aria-label="카테고리 선택">
-					<div class="option" tabindex="-1" aria-selected="false">메뉴1</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴2</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴3</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴4</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴5</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴6</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴7</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴8</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴9</div>
-					<div class="option" tabindex="-1" aria-selected="false">메뉴10</div>
-				</div>
-
-				<p>tabindex 삭제</p>
-				<div role="listbox" aria-label="카테고리 선택">
-					<div class="option" role="option" aria-selected="false">메뉴1</div>
-					<div class="option" role="option" aria-selected="false">메뉴2</div>
-					<div class="option" role="option" aria-selected="false">메뉴3</div>
-					<div class="option" role="option" aria-selected="false">메뉴4</div>
-					<div class="option" role="option" aria-selected="false">메뉴5</div>
-					<div class="option" role="option" aria-selected="false">메뉴6</div>
-					<div class="option" role="option" aria-selected="false">메뉴7</div>
-					<div class="option" role="option" aria-selected="false">메뉴8</div>
-					<div class="option" role="option" aria-selected="false">메뉴9</div>
-					<div class="option" role="option" aria-selected="false">메뉴10</div>
+				<div class="listbox">
+					<div role="listbox" aria-label="카테고리 선택">
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴1</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴2</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴3</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴4</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴5</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴6</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴7</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴8</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴9</div>
+						<div class="option" role="option" tabindex="-1" aria-selected="false">메뉴10</div>
+					</div>
 				</div>
 
 				<p>a태그 변환</p>
