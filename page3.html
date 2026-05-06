@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover" />
+<title>집코드 파인더</title>
+<link href="./static/css/ui.min.css" rel="stylesheet" />
+<script type="text/javascript" src="./static/js/common.js"></script>
+<script type="text/javascript" src="./static/js/ui.js"></script>
+<style>
+	.blind { overflow: hidden; display: inline-block; position: absolute; z-index:-10; width:0; height:0;}
+	[role=dialog] { position:fixed; bottom:0; left:0; right:0; z-index:10; min-height:90vh; touch-action: none; overscroll-behavior: none; user-select: none; -webkit-tap-highlight-color: transparent; background:#fff; border:1px solid red; padding:20px;}
+	[role=dialog] * { user-select: none;-webkit-tap-highlight-color:revert;}
+	[role=dialog] [role=combobox] { border:1px solid #000; padding:10px;}
+	[role=dialog] .listbox { overflow-y:auto; right:20px; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
+	[role=dialog] [role=listbox]::-webkit-scrollbar { display: none;}
+	[role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
+	.scrollBox { overflow-y:auto; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
+	.scrollBox::-webkit-scrollbar { display: none;}
+	.scrollBox > * { display: flex; height:40px; padding:0 20px; align-items: center;}
+</style>
+<script>
+	$(function(){
+		$('.btn').on('click',function(){
+			$('.error').remove();
+			$('.input-box').each(function(idx){
+				const html = "<div class='error' role='alert'><p>에러메시지 노출" + idx +"</p></div>"
+				$(this).append(html);
+			})
+		});
+		$('.btn2').on('click',function(){
+			$('.error').remove();
+			$('.input-box').each(function(idx){
+				const html = "<div class='error' role='log' aria-live='polite'><p>에러메시지 log노출" + idx +"</p></div>"
+				$(this).append(html);
+			})
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- 컨텐츠 영역 -->
+	<div id="container">
+		<div class="innerbox">
+			<div class="input-box">
+				<input type="text" />
+			</div>
+			<div class="input-box">
+				<input type="text" />
+			</div>
+			<div class="input-box">
+				<input type="text" />
+			</div>
+			<button class="btn">버튼</button>
+			<button class="btn2">버튼</button>
+		</div>
+	</div>
+	<!-- //컨텐츠 영역 -->
+
+</body>
+</html>
