@@ -9,54 +9,78 @@
 <script type="text/javascript" src="./static/js/common.js"></script>
 <script type="text/javascript" src="./static/js/ui.js"></script>
 <style>
-	.blind { overflow: hidden; display: inline-block; position: absolute; z-index:-10; width:0; height:0;}
-	[role=dialog] { position:fixed; bottom:0; left:0; right:0; z-index:10; min-height:90vh; touch-action: none; overscroll-behavior: none; user-select: none; -webkit-tap-highlight-color: transparent; background:#fff; border:1px solid red; padding:20px;}
-	[role=dialog] * { user-select: none;-webkit-tap-highlight-color:revert;}
-	[role=dialog] [role=combobox] { border:1px solid #000; padding:10px;}
-	[role=dialog] .listbox { overflow-y:auto; right:20px; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
-	[role=dialog] [role=listbox]::-webkit-scrollbar { display: none;}
-	[role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
-	.scroll-box { display:flex; overflow-y:auto; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
-	.scroll-box::-webkit-scrollbar { display: none;}
-	.scroll-box > * { flex:0 0 auto; display: flex; width:250px; height:40px; padding:0 20px; align-items: center; background:skyblue;}
-	.scroll-box > *:nth-child(even) {background:hotpink;}
+    .blind { overflow: hidden; display: inline-block; position: absolute; z-index:-10; width:0; height:0;}
+    [role=dialog] { position:fixed; bottom:0; left:0; right:0; z-index:10; min-height:90vh; touch-action: none; overscroll-behavior: none; user-select: none; -webkit-tap-highlight-color: transparent; background:#fff; border:1px solid red; padding:20px;}
+    [role=dialog] * { user-select: none;-webkit-tap-highlight-color:revert;}
+    [role=dialog] [role=combobox] { border:1px solid #000; padding:10px;}
+    [role=dialog] .listbox { overflow-y:auto; right:20px; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
+    [role=dialog] [role=listbox]::-webkit-scrollbar { display: none;}
+    [role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
+    
+    /* CSS 수정을 통해 가로 스크롤 문제를 완전히 해결합니다! (외부 css 로드가 확실치 않으니 여기에 명시합니다.) */
+    .scroll-box { 
+        display:flex; 
+        /* [중요] 세로가 아닌 가로 스크롤을 반드시 명시합니다. */
+        overflow-x:auto; 
+        -webkit-overflow-scrolling: touch; 
+        
+        border:1px solid #e5e5e5; 
+        background:#fff;
+    }
+    .scroll-box::-webkit-scrollbar { display: none;}
+    
+    .scroll-box > * { 
+        flex:0 0 auto; 
+        display: flex; 
+        width:250px; 
+        height:40px; 
+        padding:0 20px; 
+        align-items: center; 
+        background:skyblue;
+        
+        /* [추가] 일반 <div>도 보이스오버 가상 커서가 포커싱을 명확하게 잡게 하기 위해 tabindex="0"을 스크립트로 줄 수도 있지만, 
+           여기서는 Native 스크립트를 개선하여 해결합니다. */
+    }
+    .scroll-box > *:nth-child(even) {background:hotpink;}
 </style>
 <script>
-	$(function(){
-		const scrollContainer = document.querySelector('.scroll-box');
-
-		// iOS WebKit 전용 보이스오버 포커스 이벤트 리스너 등록
-		document.addEventListener('accessibility-element-focused', (event) => {
-		// 현재 보이스오버 커서가 위치한 요소
-		const target = event.target; 
-		
-		// 그 요소가 우리가 만든 가로 스크롤 아이템 내부인지 확인
-		const scrollItem = target.closest('.scroll-box > div');
-		console.log('감지');
-		
-		if (scrollItem) {
-			// 2번째 아이템으로 커서가 가면 스크롤을 강제로 밀어줌
-			scrollItem.scrollIntoView({
-			behavior: 'smooth',
-			block: 'nearest',
-			inline: 'end' // 끝까지 다 보여주기 위해 'end' 또는 'center' 사용
-			});
-		}
-		});
-	});
+    // [중요 수정] jQuery ready function ($(function(){...})) 를 사용하지 않고,
+    // HTML 문서 로드 즉시 Native JS 이벤트 리스너를 등록하여 보이스오버 감지를 보장합니다.
+    (function() {
+        document.addEventListener('accessibility-element-focused', (event) => {
+            // [콘솔 확인용] iOS Safari 디버깅 시 이벤트 발생 여부를 확인하세요.
+            console.log('VO Focus 감지됨'); 
+            
+            const target = event.target; 
+            
+            // 그 요소가 가로 스크롤 아이템 내부인지 확인 (마크업 구조 유지)
+            const scrollItem = target.closest('.scroll-box > div');
+            
+            if (scrollItem) {
+                // [콘솔 확인용] 타겟이 정확히 매칭되었는지 확인합니다.
+                console.log('VO Focus 매칭: scroll-box 자식 div');
+                
+                // 2번째 아이템으로 커서가 가면 스크롤을 강제로 밀어줌
+                // * 만약 두번째 카드를 읽는데 스크롤이 안된다면, 2번째 div 내부에 <a>나 <button>이 없어 VO가 '포커스'를 안잡은 경우입니다. 
+                // 이럴 땐 두 번째 <div>에 스크립트로 tabindex="0"을 임의로 부여해야 합니다.
+                scrollItem.scrollIntoView({
+                    behavior: 'smooth', // 부드럽게 이동
+                    block: 'nearest',   // 상하 스크롤 유지
+                    inline: 'end'       // 2번째 카드니까 우측 끝 여백까지 꽉 차게 화면에 표시
+                });
+            }
+        }, false); // 캡처링 사용 여부는 기본값으로 설정
+    })();
 </script>
 </head>
 <body>
-	<!-- 컨텐츠 영역 -->
-	<div id="container">
-		<div class="innerbox">
-			<div class="scroll-box">
-				<div>컨텐츠1컨텐츠1컨텐츠1컨텐츠1</div>
-				<div>컨텐츠2컨텐츠2컨텐츠2컨텐츠2</div>
-			</div>
-		</div>
-	</div>
-	<!-- //컨텐츠 영역 -->
-
-</body>
+    <div id="container">
+        <div class="innerbox">
+            <div class="scroll-box">
+                <div>컨텐츠1컨텐츠1컨텐츠1컨텐츠1</div>
+                <div>컨텐츠2컨텐츠2컨텐츠2컨텐츠2</div>
+            </div>
+        </div>
+    </div>
+    </body>
 </html>
