@@ -16,25 +16,30 @@
 	[role=dialog] .listbox { overflow-y:auto; right:20px; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
 	[role=dialog] [role=listbox]::-webkit-scrollbar { display: none;}
 	[role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
-	.scrollBox { overflow-y:auto; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
-	.scrollBox::-webkit-scrollbar { display: none;}
-	.scrollBox > * { display: flex; height:40px; padding:0 20px; align-items: center;}
+	.scroll-box { display:flex; overflow-y:auto; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
+	.scroll-box::-webkit-scrollbar { display: none;}
+	.scroll-box > * { flex:0 0 auto; display: flex; width:200px; height:40px; padding:0 20px; align-items: center; background:skyblue;}
 </style>
 <script>
 	$(function(){
-		$('.btn').on('click',function(){
-			$('.error').remove();
-			$('.input-box').each(function(idx){
-				const html = "<div class='error' role='alert'><p>에러메시지 노출" + idx +"</p></div>"
-				$(this).append(html);
-			})
-		});
-		$('.btn2').on('click',function(){
-			$('.error').remove();
-			$('.input-box').each(function(idx){
-				const html = "<div class='error' role='log' aria-live='polite'><p>에러메시지 log노출" + idx +"</p></div>"
-				$(this).append(html);
-			})
+		const scrollContainer = document.querySelector('.scroll-box');
+
+		// iOS WebKit 전용 보이스오버 포커스 이벤트 리스너 등록
+		document.addEventListener('accessibility-element-focused', (event) => {
+		// 현재 보이스오버 커서가 위치한 요소
+		const target = event.target; 
+		
+		// 그 요소가 우리가 만든 가로 스크롤 아이템 내부인지 확인
+		const scrollItem = target.closest('.scroll-box > div');
+		
+		if (scrollItem) {
+			// 2번째 아이템으로 커서가 가면 스크롤을 강제로 밀어줌
+			scrollItem.scrollIntoView({
+			behavior: 'smooth',
+			block: 'nearest',
+			inline: 'end' // 끝까지 다 보여주기 위해 'end' 또는 'center' 사용
+			});
+		}
 		});
 	});
 </script>
@@ -43,17 +48,10 @@
 	<!-- 컨텐츠 영역 -->
 	<div id="container">
 		<div class="innerbox">
-			<div class="input-box">
-				<input type="text" />
+			<div class="scroll-box">
+				<div>컨텐츠1컨텐츠1컨텐츠1컨텐츠1</div>
+				<div>컨텐츠2컨텐츠2컨텐츠2컨텐츠2</div>
 			</div>
-			<div class="input-box">
-				<input type="text" />
-			</div>
-			<div class="input-box">
-				<input type="text" />
-			</div>
-			<button class="btn">버튼</button>
-			<button class="btn2">버튼</button>
 		</div>
 	</div>
 	<!-- //컨텐츠 영역 -->
