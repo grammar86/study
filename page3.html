@@ -18,7 +18,8 @@
 	[role=dialog] [role=listbox] div { display: flex; height:40px; padding:0 20px; align-items: center;}
 	.scroll-box { display:flex; overflow-y:auto; max-height:100px; border:1px solid #e5e5e5; background:#fff;}
 	.scroll-box::-webkit-scrollbar { display: none;}
-	.scroll-box > * { flex:0 0 auto; display: flex; width:200px; height:40px; padding:0 20px; align-items: center; background:skyblue;}
+	.scroll-box > * { flex:0 0 auto; display: flex; width:250px; height:40px; padding:0 20px; align-items: center; background:skyblue;}
+	.scroll-box > *:nth-child(even) {background:hotpink;}
 </style>
 <script>
 	$(function(){
@@ -31,6 +32,7 @@
 		
 		// 그 요소가 우리가 만든 가로 스크롤 아이템 내부인지 확인
 		const scrollItem = target.closest('.scroll-box > div');
+		console.log('감지');
 		
 		if (scrollItem) {
 			// 2번째 아이템으로 커서가 가면 스크롤을 강제로 밀어줌
