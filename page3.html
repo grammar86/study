@@ -20,6 +20,21 @@
 	.scroll-box::-webkit-scrollbar { display: none;}
 	.scroll-box > * { flex:0 0 auto; display: flex; width:300px; height:40px; padding:0 20px; align-items: center; background:skyblue;}
 	.scroll-box > *:nth-child(even) {background:hotpink}
+
+	  @supports (-webkit-touch-callout: none) {
+		.scroll-box::after {
+			content:'가로 스크롤 끝부분';
+			color: transparent;
+			display: block;
+			flex: 0 0 1px;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			font-size: 5px;
+			letter-spacing: -3px;
+			clip-path: inset(-50% -50%);
+		}
+	}
 </style>
 </head>
 <body>
